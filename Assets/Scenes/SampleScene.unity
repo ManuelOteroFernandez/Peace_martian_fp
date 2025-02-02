@@ -2418,12 +2418,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetFps: 60
-  horizontalMovementSpeed: 300
-  dashSpeed: 0
-  dashDuration: 0
-  dashCd: 0
+  horizontalMovementSpeed: 500
+  dashSpeed: 2000
+  dashDuration: 0.2
+  dashCd: 1
   jumpForce: 20
-  airJumpForce: 10
+  airJumpForce: 20
   gravityScale: 2.5
   fallGravityScale: 3.5
   coyoteTime: 0.15
@@ -2664,7 +2664,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 26.915306, y: 8.700909}
+  m_Offset: {x: 26.915306, y: 6.2737293}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2674,7 +2674,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 71.12721, y: 33.55271}
+  m_Size: {x: 71.12721, y: 28.698345}
   m_EdgeRadius: 0
 --- !u!1 &2082587022
 GameObject:

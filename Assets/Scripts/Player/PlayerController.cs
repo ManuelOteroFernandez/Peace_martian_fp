@@ -4,18 +4,24 @@ using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.InputSystem.XR.Haptics;
 
+//TODO: Unificar velocity o addForce. No mezclar.
 public class PlayerController : MonoBehaviour
 {
     [Header("Testing")]
     [SerializeField] int targetFps;
 
-    [Header("Parameters")]
+    [Header("Movement Parameters")]
     [SerializeField] float horizontalMovementSpeed;
+
+    [Header("Dash Parameters")]
     [SerializeField] float dashSpeed;
     [SerializeField] float dashDuration;
+    public float DashDuration => dashDuration;
     [SerializeField] float dashCd;
+    float dashCurrentCd;
+    public bool canDash {get; private set;}
 
-    [Header( "Jump Parameters" )]
+    [Header("Jump Parameters")]
     [SerializeField] float jumpForce;
     [SerializeField] float airJumpForce;
     [SerializeField] float gravityScale;
@@ -58,6 +64,7 @@ public class PlayerController : MonoBehaviour
     {
         CheckGrounded();
         ApplyGravityScaling();
+        UpdateCooldowns();
         currentState.Update(this, inputController);
     }
 
@@ -103,7 +110,24 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Dash() {
-        rigidbody2D.AddForce(new Vector2(dashSpeed, 0), ForceMode2D.Impulse);
+        dashCurrentCd = dashCd;
+        //Desactivamos la gravedad para no caer durante un dash aéreo
+        rigidbody2D.gravityScale = 0;
+        rigidbody2D.linearVelocity = new Vector2(Time.fixedDeltaTime * transform.localScale.x * dashSpeed, 0);
+    }
+
+    public void EndDash() {
+        rigidbody2D.gravityScale = gravityScale;
+        rigidbody2D.linearVelocity = new Vector2(0, 0);
+    }
+
+    void UpdateCooldowns() {
+        //Dash cooldown
+        if (dashCurrentCd > 0) {
+            dashCurrentCd = Mathf.Clamp(dashCurrentCd - Time.fixedDeltaTime, 0, Mathf.Infinity);
+        } else if (!canDash){
+            canDash = true;
+        }
     }
 
     void CheckGrounded() {
@@ -122,21 +146,30 @@ public class PlayerController : MonoBehaviour
         wasGroundedLastFrame = isGrounded;
     }
 
-    private void OnDrawGizmos()
+    private void ApplyGravityScaling()
+    {
+        //Para evitar caer en un dash, tenemos que evitar que el sistema actualice la gravedad
+        if (currentState is PlayerDashingState) {
+            return;
+        }
+        //Para que el movimiento sea más natural y evitar la sensación de flotar, hacemos que la gravedad sea más fuerte al caer
+        if (rigidbody2D.linearVelocityY > 0) {
+            rigidbody2D.gravityScale = gravityScale; 
+        } else {
+            rigidbody2D.gravityScale = fallGravityScale;
+        }
+    }
+
+
+
+
+
+    /*=============TESTING=============*/
+        private void OnDrawGizmos()
     {
         //Dibuja el área de detección del suelo para depuración
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(groundCheckPoint.position, groundCheckSize);
-    }
-
-    private void ApplyGravityScaling()
-    {
-        //Para que el movimiento sea más natural y evitar la sensación de flotar, hacemos que la gravedad sea más fuerte al caer
-        if (rigidbody2D.linearVelocityY > 0) {
-            rigidbody2D.gravityScale = 2.5f; 
-        } else {
-            rigidbody2D.gravityScale = 3.5f;
-        }
     }
 
 }

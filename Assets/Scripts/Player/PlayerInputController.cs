@@ -12,26 +12,23 @@ public class PlayerInputController : MonoBehaviour
     private float jumpBufferCounter;
 
 
-    void Update()
-    {
+    void Update() {
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonDown("Jump"))
-        {
+        if (Input.GetButtonDown("Jump")) {
             jumpInput = true;
             jumpBufferCounter = jumpBufferTime;
         } else {
             jumpBufferCounter -= Time.deltaTime;
         }
-        if (Input.GetButtonDown("Dash"))
-        {
+
+        if (Input.GetButtonDown("Dash")) {
             dashInput = true;
         }
     }
 
     public bool UseJump() {
-        if (jumpBufferCounter > 0)
-        {
+        if (jumpBufferCounter > 0) {
             jumpBufferCounter = 0;
             jumpInput = false;
             return true;
@@ -39,8 +36,7 @@ public class PlayerInputController : MonoBehaviour
         return false;
     }
 
-    public void ResetInput()
-    {
+    public void ResetInput() {
         jumpInput = false;
         dashInput = false;
     }
