@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Peace martian.sln"
+    "dotnet.defaultSolution": "Peace_martian_fp.sln"
 }
