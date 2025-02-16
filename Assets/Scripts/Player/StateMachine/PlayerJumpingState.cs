@@ -11,7 +11,9 @@ namespace PlayerStateMachine{
         public override void Update(PlayerController controller, PlayerInputController inputController) {
             SetAnimation(controller);
 
+            UpdateWeaponState(controller, inputController);
             controller.Move(inputController.horizontalInput);
+            controller.Flip(inputController.aimDirection.x);
 
             if (inputController.jumpInput){
                 controller.Jump();

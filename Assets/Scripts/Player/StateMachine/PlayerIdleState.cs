@@ -8,6 +8,9 @@ namespace PlayerStateMachine{
         }
 
         public override void Update(PlayerController controller, PlayerInputController inputController) {
+            UpdateWeaponState(controller, inputController);
+            controller.Flip(inputController.aimDirection.x);
+
             if (inputController.horizontalInput != 0) {
                 controller.ChangeState(new PlayerRunningState());
             }
