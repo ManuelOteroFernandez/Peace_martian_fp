@@ -5,11 +5,9 @@ using UnityEngine;
 using UnityEngine.InputSystem.XR.Haptics;
 
 //TODO: Unificar velocity o addForce. No mezclar.
+//TODO: Controlar velocidad máxima de caída.
 public class PlayerController : MonoBehaviour
 {
-    [Header("Testing")]
-    [SerializeField] int targetFps;
-
     [Header("Movement Parameters")]
     [SerializeField] float horizontalMovementSpeed;
 
@@ -29,6 +27,9 @@ public class PlayerController : MonoBehaviour
     int jumpCount;
     bool jumpedFromGround;
 
+    [Header("Attack parameters")]
+
+
     [Header("Coyote Time")]
     [SerializeField] float coyoteTime;
     float coyoteTimeCounter;
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rigidbody2D {get; private set;}
     public Animator animator {get; private set;}
     public PlayerInputController inputController {get; private set;}
+    public WeaponManager weaponManager {get; private set;}
 
     [Header("States")]
     PlayerState currentState;
@@ -49,11 +51,10 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded {get; private set;}
 
     void Awake() {
-        //Application.targetFrameRate = targetFps;
-
         rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         inputController = GetComponent<PlayerInputController>();
+        weaponManager = GetComponentInChildren<WeaponManager>();
     }
     void Start()
     {
@@ -65,6 +66,10 @@ public class PlayerController : MonoBehaviour
         CheckGrounded();
         ApplyGravityScaling();
         UpdateCooldowns();
+        UpdateState();
+    }
+
+    void UpdateState() {
         currentState.Update(this, inputController);
     }
 
@@ -79,11 +84,9 @@ public class PlayerController : MonoBehaviour
 
     public void Move(float direction) {
         rigidbody2D.linearVelocity = new Vector2(Time.fixedDeltaTime * direction * horizontalMovementSpeed, rigidbody2D.linearVelocityY);
-
-        Flip(direction);
     }
 
-    void Flip(float direction) {
+    public void Flip(float direction) {
         if (direction != 0) {
             transform.localScale = new Vector3(Mathf.Sign(direction), 1, 1);
         }
@@ -113,7 +116,14 @@ public class PlayerController : MonoBehaviour
         dashCurrentCd = dashCd;
         //Desactivamos la gravedad para no caer durante un dash aéreo
         rigidbody2D.gravityScale = 0;
-        rigidbody2D.linearVelocity = new Vector2(Time.fixedDeltaTime * transform.localScale.x * dashSpeed, 0);
+        //El dash tiene 2 comportamientos distintos
+        //Si el personaje está en movimiento horizontal, se desplaza en esa dirección
+        //Si no, se desplaza en la dirección en la que mira
+        if (rigidbody2D.linearVelocityX != 0) {
+            rigidbody2D.linearVelocity = new Vector2(Time.fixedDeltaTime * Mathf.Sign(rigidbody2D.linearVelocityX) * dashSpeed, 0);
+        } else {
+            rigidbody2D.linearVelocity = new Vector2(Time.fixedDeltaTime * Mathf.Sign(transform.localScale.x) * dashSpeed, 0);
+        }
     }
 
     public void EndDash() {
