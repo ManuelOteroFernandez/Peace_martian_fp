@@ -23,7 +23,11 @@ public abstract class Weapon : MonoBehaviour
             transform.localScale = new Vector3(1, 1, 1);
         }
 
-        this.transform.rotation = Quaternion.Euler(0, 0, adjustedAngle);
+        if (playerInputController.aimDirection.x == 0 && playerInputController.aimDirection.y == 0) {
+            this.transform.rotation = Quaternion.Euler(0, 0, transform.root.localScale.x < 0 ? 180 : 0);
+        } else {
+            this.transform.rotation = Quaternion.Euler(0, 0, adjustedAngle);
+        }
     }
 
     //public virtual void Shoot() {}
