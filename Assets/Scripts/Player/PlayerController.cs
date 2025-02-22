@@ -50,6 +50,13 @@ public class PlayerController : MonoBehaviour
     bool wasGroundedLastFrame;
     public bool isGrounded {get; private set;}
 
+    [Header("Audio")]
+    [SerializeField] AudioClip walkSFX;
+    [SerializeField] AudioClip dashSFX;
+    [SerializeField] AudioClip jumpSFX;
+    [SerializeField] AudioClip doubleJumpSFX;
+    [SerializeField] AudioClip landSFX;
+
     void Awake() {
         rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -92,37 +99,33 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Jump() {
-        if (isGrounded || coyoteTimeCounter > 0) {
-            DoJump(jumpForce);
-            jumpedFromGround = true;
-        } else {
-            //Si no estamos en el suelo, podemos hacer un salto extra en el aire
-            if (jumpedFromGround && jumpCount < 2) {
-                DoJump(airJumpForce);
-            } else if (jumpCount < 1) {
-                DoJump(airJumpForce);
-            }
-        }
+    public bool CanDoubleJump() {
+        return (jumpedFromGround && jumpCount < 2) || (!jumpedFromGround && jumpCount < 1);
     }
 
-    void DoJump(float jumpForce) {
+    public void Jump() {
+        //Guardamos un flag indicando si el saltos e hizo desde tierra o no para controlar si puede realizar doble salto o no
+        jumpedFromGround = isGrounded;
+
         rigidbody2D.linearVelocity = new Vector2(rigidbody2D.linearVelocityX, 0);
-        rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        rigidbody2D.AddForce(new Vector2(0, isGrounded ? jumpForce : airJumpForce), ForceMode2D.Impulse);
         jumpCount++;
     }
 
     public void Dash() {
-        dashCurrentCd = dashCd;
-        //Desactivamos la gravedad para no caer durante un dash aéreo
-        rigidbody2D.gravityScale = 0;
-        //El dash tiene 2 comportamientos distintos
-        //Si el personaje está en movimiento horizontal, se desplaza en esa dirección
-        //Si no, se desplaza en la dirección en la que mira
-        if (rigidbody2D.linearVelocityX != 0) {
-            rigidbody2D.linearVelocity = new Vector2(Time.fixedDeltaTime * Mathf.Sign(rigidbody2D.linearVelocityX) * dashSpeed, 0);
-        } else {
-            rigidbody2D.linearVelocity = new Vector2(Time.fixedDeltaTime * Mathf.Sign(transform.localScale.x) * dashSpeed, 0);
+        if (canDash) {
+            dashCurrentCd = dashCd;
+            canDash = false;
+            //Desactivamos la gravedad para no caer durante un dash aéreo
+            rigidbody2D.gravityScale = 0;
+            //El dash tiene 2 comportamientos distintos
+            //Si el personaje está en movimiento horizontal, se desplaza en esa dirección
+            //Si no, se desplaza en la dirección en la que mira
+            if (rigidbody2D.linearVelocityX != 0) {
+                rigidbody2D.linearVelocity = new Vector2(Time.fixedDeltaTime * Mathf.Sign(rigidbody2D.linearVelocityX) * dashSpeed, 0);
+            } else {
+                rigidbody2D.linearVelocity = new Vector2(Time.fixedDeltaTime * Mathf.Sign(transform.localScale.x) * dashSpeed, 0);
+            }
         }
     }
 
@@ -131,13 +134,30 @@ public class PlayerController : MonoBehaviour
         rigidbody2D.linearVelocity = new Vector2(0, 0);
     }
 
+    public void ResetDash() {
+        dashCurrentCd = 0;
+        canDash = true;
+    }
+
     void UpdateCooldowns() {
         //Dash cooldown
         if (dashCurrentCd > 0) {
             dashCurrentCd = Mathf.Clamp(dashCurrentCd - Time.fixedDeltaTime, 0, Mathf.Infinity);
-        } else if (!canDash){
+        } else if (!canDash && isGrounded){
             canDash = true;
         }
+    }
+
+    public void UpdateWeaponState() {
+        if(inputController.nextWeaponInput) {
+            weaponManager.SwitchWeapon(true);
+            inputController.ResetInput();
+        } else if (inputController.previousWeaponInput) {
+            weaponManager.SwitchWeapon(false);
+            inputController.ResetInput();
+        }
+
+        weaponManager.ManageShooting(inputController);
     }
 
     void CheckGrounded() {
@@ -168,6 +188,39 @@ public class PlayerController : MonoBehaviour
         } else {
             rigidbody2D.gravityScale = fallGravityScale;
         }
+    }
+
+    void PlayWalkSFX() {
+        if (isGrounded) {
+            AudioManager.Instance.PlaySFX(walkSFX, true);
+        }
+    }
+
+    public void StartWalkSFX()
+    {
+        CancelInvoke(nameof(PlayWalkSFX));
+        InvokeRepeating(nameof(PlayWalkSFX), 0f, 0.45f);
+    }
+
+    public void StopWalkSFX()
+    {
+        CancelInvoke(nameof(PlayWalkSFX));
+    }
+
+    public void PlayDashSFX() {
+        AudioManager.Instance.PlaySFX(dashSFX);
+    }
+
+    public void PlayJumpSFX() {
+        AudioManager.Instance.PlaySFX(jumpSFX);
+    }
+
+    public void PlayDoubleJumpSFX() {
+        AudioManager.Instance.PlaySFX(doubleJumpSFX);
+    }
+
+    public void PlayLandSFX() {
+        AudioManager.Instance.PlaySFX(landSFX);
     }
 
 

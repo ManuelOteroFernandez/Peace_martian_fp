@@ -4,6 +4,7 @@ public abstract class ProjectileWeapon : Weapon
 {
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] float fireCooldown;
+    [SerializeField] AudioClip shootSFX;
     float lastFireTime;
 
     public override void StartShooting() {
@@ -16,6 +17,7 @@ public abstract class ProjectileWeapon : Weapon
     public override void StopShooting(){}
 
     public virtual void Shoot(){
+        AudioManager.Instance.PlaySFX(shootSFX);
         Instantiate(projectilePrefab, firePoint.position, transform.rotation);
     }
 }

@@ -135,3 +135,4 @@ MonoBehaviour:
   firePoint: {fileID: 8206134768967013183}
   projectilePrefab: {fileID: 522427561513723392, guid: e935d3ace487ad9448ac820be8e8ba6d, type: 3}
   fireCooldown: 1
+  shootSFX: {fileID: 8300000, guid: cd850f9fd2993db4b9f8b24b674823f7, type: 3}

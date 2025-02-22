@@ -104,6 +104,7 @@ MonoBehaviour:
   firePoint: {fileID: 6568432641963037646}
   projectilePrefab: {fileID: 522427561513723392, guid: 121244fd3829e304394788838eac61ac, type: 3}
   fireCooldown: 0.1
+  shootSFX: {fileID: 8300000, guid: cd850f9fd2993db4b9f8b24b674823f7, type: 3}
 --- !u!1 &7740105305467548053
 GameObject:
   m_ObjectHideFlags: 0

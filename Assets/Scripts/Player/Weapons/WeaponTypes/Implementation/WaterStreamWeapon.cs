@@ -21,6 +21,7 @@ public class WaterStreamWeapon : StreamWeapon
         lineRenderer = GetComponent<LineRenderer>();
     }
 
+    //TODO: implementar cooldown?
     protected override void Update() {
         base.Update();
 

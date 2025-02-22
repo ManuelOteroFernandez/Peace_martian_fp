@@ -6,6 +6,7 @@ public class WeaponManager : MonoBehaviour
 {
     [SerializeField] Transform weaponHolder;
     [SerializeField] WeaponDatabase weaponDatabase;
+    [SerializeField] AudioClip changeWeaponSFX;
     Weapon currentWeapon;
 
     List<Weapon> availableWeapons;
@@ -66,6 +67,7 @@ public class WeaponManager : MonoBehaviour
         } else {
             currentWeaponIndex = (currentWeaponIndex - 1 + weaponDatabase.unlockedWeapons.Count) % weaponDatabase.unlockedWeapons.Count;
         }
+        AudioManager.Instance.PlaySFX(changeWeaponSFX, true);
 
         EquipWeapon(currentWeaponIndex);
     }
