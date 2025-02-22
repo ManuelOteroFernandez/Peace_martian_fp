@@ -100,4 +100,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb2783d1f6fa634b9e4ad8cc27e7a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 0.6
+  lifeTime: 0.4
+  bubblePopSFX: {fileID: 8300000, guid: a4818d5dfaafdf143857d9318a9cabec, type: 3}

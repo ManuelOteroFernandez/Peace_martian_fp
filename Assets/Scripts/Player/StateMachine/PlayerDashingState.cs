@@ -7,6 +7,7 @@ namespace PlayerStateMachine{
 
         public override void Enter(PlayerController controller) {
             controller.animator.SetTrigger("isDashing");
+            controller.PlayDashSFX();
             controller.Dash();
         }
 
