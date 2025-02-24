@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7023578618242736548}
   - component: {fileID: 8641535156653590699}
-  - component: {fileID: 693812171123426543}
-  - component: {fileID: 8135807622004103435}
-  - component: {fileID: 5225785940309036451}
+  - component: {fileID: 5366700975929824053}
+  - component: {fileID: 2689918308463924091}
+  - component: {fileID: 5326718275405889363}
   m_Layer: 8
-  m_Name: BigBubbleProjectile
+  m_Name: BigBubbleAttached
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.137086, y: 2.9408991, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: -1697816127
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2727194386381995188, guid: 79cc65c1bd9241141bcb86f118a5cd1d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: deba07f021339454fa5a4833202c4ed9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -90,7 +90,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &693812171123426543
+--- !u!50 &5366700975929824053
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522427561513723392}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &2689918308463924091
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,40 +147,13 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.375
---- !u!50 &8135807622004103435
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 522427561513723392}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 27ad51fbb29bbdb4ea10fc4248de14fa, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &5225785940309036451
+  m_Offset: {x: -0.014949679, y: 0}
+  m_Radius: 1.3894352
+--- !u!114 &5326718275405889363
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,11 +162,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 522427561513723392}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcb636169ae49094f9d358e2f9c849fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 63f3120b97305f3458d364c958f93e4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 500
-  damage: 4
-  maxBounces: 1
-  lifeTime: 1
-  bubblePopEffect: {fileID: 7925794663765491743, guid: 208e97cba3584ec48b2a55d833541a5c, type: 3}
+  maxFloatSpeed: 1.5
+  horizontalOscillationSpeed: 1
+  horizontalOscillationAmount: 0.5
+  trapLayer:
+    serializedVersion: 2
+    m_Bits: 1024
