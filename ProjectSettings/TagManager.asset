@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -14,8 +15,8 @@ TagManager:
   - Ground
   - CameraLimits
   - Player
-  - 
-  - 
+  - Enemy
+  - Traps
   - 
   - 
   - 
@@ -40,6 +41,21 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 4109634927
+    locked: 0
+  - name: Enemies
+    uniqueID: 2856125929
+    locked: 0
+  - name: Player
+    uniqueID: 4170160683
+    locked: 0
+  - name: Weapons
+    uniqueID: 4202652327
+    locked: 0
+  - name: Projectiles
+    uniqueID: 2597151169
     locked: 0
   m_RenderingLayers:
   - Default
