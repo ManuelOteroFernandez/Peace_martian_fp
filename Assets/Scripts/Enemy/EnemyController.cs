@@ -10,7 +10,7 @@ public class EnemyController : MonoBehaviour
     public Animator animator {get; private set;}
     public EnemyHealth enemyHealth {get; private set;}
     public AIAgent aiAgent {get; private set;}
-    Rigidbody2D rigidbody2D;
+    public Rigidbody2D rigidbody2D {get; private set;}
     SpriteRenderer spriteRenderer;
 
     [Header("Movement")]
@@ -55,29 +55,33 @@ public class EnemyController : MonoBehaviour
         return !enemyHealth.IsInBubble() && rigidbody2D.linearVelocityY == 0;
     }
 
-    public void MoveEnemy() {
-        if (aiAgent.path.Count == 0 || aiAgent.currentWpIndex >= aiAgent.path.Count) {
+    //TODO: Necesita ajuste
+    public void MoveEnemy(){
+        Waypoint currentWaypoint = aiAgent.GetCurrentWaypoint();
+        Waypoint nextWaypoint = currentWaypoint.bestNextWaypoint;
+
+        if (nextWaypoint == null){
             return;
         }
 
+        Vector2 direction = nextWaypoint.position - currentWaypoint.position;
         enemyPosition = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y);
 
-        if (Vector2.Distance(enemyPosition, aiAgent.path[aiAgent.currentWpIndex].position) < 0.5f) {
-            aiAgent.AdvanceToNextWaypoint();
-
-            if (aiAgent.path[aiAgent.currentWpIndex].type == WaypointType.Ladder) {
-                transform.position = new Vector3(aiAgent.path[aiAgent.currentWpIndex].position.x, transform.position.y, transform.position.z);
-            }
+        if (IsGrounded() || currentWaypoint.type != WaypointType.Cliff) {
+            rigidbody2D.linearVelocity = direction * moveSpeed;
         }
 
-        Vector2 direction = (aiAgent.currentWaypoint.position - enemyPosition).normalized;
-        if (aiAgent.currentWaypoint.type == WaypointType.Ladder) {
-            rigidbody2D.linearVelocity = new Vector2(0, direction.y * moveSpeed * Time.deltaTime);
-        } else {
-            rigidbody2D.linearVelocity = new Vector2(direction.x * moveSpeed * Time.deltaTime, rigidbody2D.linearVelocityY);
+        if (Vector2.Distance(enemyPosition, nextWaypoint.position) < 0.5f){
+            if (nextWaypoint.type == WaypointType.Ladder) {
+                transform.position = new Vector3(nextWaypoint.position.x, transform.position.y, 0);
+            }
+            aiAgent.AdvanceToNextWaypoint();
         }
     }
 
+    public void StartChasing() {
+        aiAgent.RelocateCurrentWaypoint();
+    }
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.green;

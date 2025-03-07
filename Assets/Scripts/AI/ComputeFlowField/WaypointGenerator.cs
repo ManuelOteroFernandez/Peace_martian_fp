@@ -14,9 +14,10 @@ public class WaypointGenerator : MonoBehaviour {
     private WaypointGraph graph = new WaypointGraph();
     public WaypointGraph GetGraph => graph;
 
-    private void Start() {
+    private void Awake() {
         mapLimits = GetComponent<Collider2D>();
         GenerateGroundWaypoints();
+        UpdatePath();
         InvokeRepeating(nameof(UpdatePath), 1f, 1f);
     }
 

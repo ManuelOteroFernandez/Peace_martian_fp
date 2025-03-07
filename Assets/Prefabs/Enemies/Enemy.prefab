@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1176726250869688738}
   - component: {fileID: 2263706642943898916}
   - component: {fileID: 877892585812149401}
-  - component: {fileID: 4257119000238851790}
+  - component: {fileID: 4175953136428278790}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea86a1f2a1cc90d4cb9547c90f9c1a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 300
+  moveSpeed: 5
 --- !u!114 &877892585812149401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,7 +207,7 @@ MonoBehaviour:
   maxBubblesResists: 4
   smallBubblePrefab: {fileID: 522427561513723392, guid: 87b5a64ed572b4640be404a8447d613d, type: 3}
   bigBubblePrefab: {fileID: 522427561513723392, guid: 85d4be932bf279144b39394557d1b724, type: 3}
---- !u!114 &4257119000238851790
+--- !u!114 &4175953136428278790
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -216,8 +216,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5825225980843053711}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6eb10e38389aa742ae8bf72bf1fc4d4, type: 3}
+  m_Script: {fileID: 11500000, guid: d4f862984eaddac4aab88526fe03b9b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   waypointGenerator: {fileID: 0}

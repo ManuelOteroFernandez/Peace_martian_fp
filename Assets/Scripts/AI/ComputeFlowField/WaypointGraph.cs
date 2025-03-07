@@ -170,19 +170,6 @@ public class WaypointGraph {
         return closestLadder;
     }
 
-    //Obtiene todos los nodos no conectados con el targetWaypoint
-    public List<Waypoint> GetIsolatedWaypoints(Waypoint targetWaypoints) {
-        List<Waypoint> isolatedWaypoints = new List<Waypoint>();
-
-        foreach(Waypoint waypoint in waypoints) {
-            if (waypoint.groupId != targetWaypoints.groupId) {
-                isolatedWaypoints.Add(waypoint);
-            }
-        }
-
-        return isolatedWaypoints;
-    }
-
     public Waypoint FindClosestWaypoint(Transform target) {
         Waypoint closest = null;
         foreach(Waypoint waypoint in waypoints) {

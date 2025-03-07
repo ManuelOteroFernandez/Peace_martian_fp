@@ -8,8 +8,6 @@ public class Waypoint
     public Vector2 position { get; }
     public List<Waypoint> neighbors { get; } = new List<Waypoint>();
     public WaypointType type { get; }
-    public int groupId { get; set; } = -1;
-    public int weight = int.MaxValue;
     public Waypoint bestNextWaypoint;
 
     //public Waypoint parent {get; set;} = null;
