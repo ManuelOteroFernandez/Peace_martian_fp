@@ -228,8 +228,7 @@ public class PlayerController : MonoBehaviour
 
 
     /*=============TESTING=============*/
-        private void OnDrawGizmos()
-    {
+    private void OnDrawGizmos() {
         //Dibuja el área de detección del suelo para depuración
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(groundCheckPoint.position, groundCheckSize);

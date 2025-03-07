@@ -12,6 +12,10 @@ public class EnemyIdleState : EnemyState
         if (controller.enemyHealth.IsInBubble()) {
             controller.ChangeState(new EnemyBubbleTrappedState());
         }
+
+        if (controller.aiAgent.path.Count > 0) {
+            controller.ChangeState(new EnemyChaseState());
+        }   
     }
 
     public override void Exit(EnemyController controller)

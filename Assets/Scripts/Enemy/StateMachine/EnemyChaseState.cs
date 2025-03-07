@@ -9,7 +9,7 @@ public class EnemyChaseState : EnemyState
 
     public override void Update(EnemyController controller)
     {
-        
+        controller.MoveEnemy();
     }
 
     public override void Exit(EnemyController controller)
