@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public abstract class EnemyController : MonoBehaviour
 {
     [Header("States")]
     EnemyState currentState;
@@ -11,30 +11,43 @@ public class EnemyController : MonoBehaviour
     public EnemyHealth enemyHealth {get; private set;}
     public AIAgent aiAgent {get; private set;}
     public Rigidbody2D rigidbody2D {get; private set;}
-    SpriteRenderer spriteRenderer;
+    [SerializeField] public LayerMask obstaclesLayerMask;
+    protected SpriteRenderer spriteRenderer;
+
+    [Header("Parameters")]
+    [SerializeField] protected float chaseSpeed = 5f;
+    [SerializeField] protected float patrolSpeed = 2f;
+    [SerializeField] protected float chaseDistance = 10f;
+    [SerializeField] protected float attackRange = 5f;
+    [SerializeField] protected float attackCooldown = 2f;
+    [SerializeField] protected float attackDuration = 1f;
+    protected float currentAttackCooldown;
+    protected Vector2 enemyPosition;
 
     [Header("Movement")]
-    [SerializeField] float moveSpeed = 1f;
+    Waypoint currentWaypoint;
+    Waypoint nextWaypoint;
 
-    Vector2 enemyPosition;
-    
+    [Header("Player")]
+    protected Transform target;
 
-    void Awake()
-    {
+    public float AttackDuration => attackDuration;
+
+    protected virtual void Awake(){
         animator = GetComponent<Animator>();
         enemyHealth = GetComponent<EnemyHealth>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         aiAgent = GetComponent<AIAgent>();
+        target = GameObject.FindGameObjectWithTag("Player")?.transform;
     }
 
-    void Start()
-    {
+    protected virtual void Start(){
         ChangeState(new EnemyIdleState());
     }
 
-    void FixedUpdate()
-    {
+    protected virtual void FixedUpdate(){
+        UpdateCooldowns();
         UpdateState();
     }
 
@@ -51,14 +64,10 @@ public class EnemyController : MonoBehaviour
         currentState.Enter(this);
     }
 
-    public bool IsGrounded() {
-        return !enemyHealth.IsInBubble() && rigidbody2D.linearVelocityY == 0;
-    }
-
     //TODO: Necesita ajuste
     public void MoveEnemy(){
-        Waypoint currentWaypoint = aiAgent.GetCurrentWaypoint();
-        Waypoint nextWaypoint = currentWaypoint.bestNextWaypoint;
+        currentWaypoint = aiAgent.GetCurrentWaypoint();
+        nextWaypoint = currentWaypoint.bestNextWaypoint;
 
         if (nextWaypoint == null){
             return;
@@ -68,7 +77,7 @@ public class EnemyController : MonoBehaviour
         enemyPosition = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y);
 
         if (IsGrounded() || currentWaypoint.type != WaypointType.Cliff) {
-            rigidbody2D.linearVelocity = direction * moveSpeed;
+            rigidbody2D.linearVelocity = direction * chaseSpeed;
         }
 
         if (Vector2.Distance(enemyPosition, nextWaypoint.position) < 0.5f){
@@ -79,12 +88,67 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    public bool IsGrounded() {
+        return !enemyHealth.IsInBubble() && rigidbody2D.linearVelocityY == 0;
+    }
+
+    public bool IsTargetInChaseRange() {
+        return Vector3.Distance(target.position, transform.position) < chaseDistance;
+    }
+
+    public bool IsTargetInAttackRange() {
+        Vector2 direction = (target.position - transform.position).normalized;
+        float distance = Vector2.Distance(transform.position, target.position);
+
+        if (distance > attackRange) {
+            return false;
+        }
+
+        return Physics2D.Raycast(transform.position, direction, distance, obstaclesLayerMask).collider == null;
+    }
+
+    void UpdateCooldowns() {
+        currentAttackCooldown -= Time.fixedDeltaTime;
+    }
+
+    public bool IsAttackCooldownReady() {
+        return currentAttackCooldown <= 0;
+    }
+
     public void StartChasing() {
         aiAgent.RelocateCurrentWaypoint();
     }
 
+    /*public void ResetVelocity() {
+        rigidbody2D.linearVelocity = Vector2.zero;
+    }*/
+
     private void OnDrawGizmos() {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(enemyPosition, 0.1f);
+        Gizmos.DrawWireSphere(transform.position, chaseDistance);
+
+        if (target != null) {
+            Vector2 direction = (target.position - transform.position).normalized;
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(transform.position, transform.position + (Vector3)(direction * attackRange));
+        }
+
+        if (currentWaypoint != null)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawSphere(currentWaypoint.position, 0.3f); // Dibuja el currentWaypoint
+
+            if (nextWaypoint != null)
+            {
+                Gizmos.color = Color.blue;
+                Gizmos.DrawSphere(nextWaypoint.position, 0.3f); // Dibuja el nextWaypoint
+                Gizmos.color = Color.cyan;
+                Gizmos.DrawLine(currentWaypoint.position, nextWaypoint.position); // Dibuja la conexión entre ellos
+            }
+        }
     }
+
+    public abstract void EnemyAttack();
 }

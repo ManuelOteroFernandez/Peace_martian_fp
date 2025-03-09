@@ -13,7 +13,9 @@ public class EnemyIdleState : EnemyState
             controller.ChangeState(new EnemyBubbleTrappedState());
         }
 
-        controller.ChangeState(new EnemyChaseState());
+        if (controller.IsTargetInChaseRange()) {
+            controller.ChangeState(new EnemyChaseState());
+        }
     }
 
     public override void Exit(EnemyController controller)

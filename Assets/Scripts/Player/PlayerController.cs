@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
         currentState?.Exit(this);
         currentState = newState;
 
-        Debug.Log("current state: " + currentState);
+        //Debug.Log("current state: " + currentState);
 
         currentState.Enter(this);
     }

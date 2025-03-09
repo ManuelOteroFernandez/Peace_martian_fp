@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 7911965489111379628}
   - component: {fileID: 7391443418255696593}
   - component: {fileID: 1176726250869688738}
-  - component: {fileID: 2263706642943898916}
+  - component: {fileID: 5468862835075726419}
   - component: {fileID: 877892585812149401}
   - component: {fileID: 4175953136428278790}
   m_Layer: 9
-  m_Name: Enemy
+  m_Name: MeleeEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,7 +179,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
---- !u!114 &2263706642943898916
+--- !u!114 &5468862835075726419
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,7 +188,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5825225980843053711}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea86a1f2a1cc90d4cb9547c90f9c1a65, type: 3}
+  m_Script: {fileID: 11500000, guid: cfbc9ee717bb3954a86dcf85cb530363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclesLayerMask:
@@ -196,8 +196,8 @@ MonoBehaviour:
     m_Bits: 1088
   chaseSpeed: 5
   patrolSpeed: 2
-  chaseDistance: 20
-  attackRange: 1
+  chaseDistance: 10
+  attackRange: 5
   attackCooldown: 2
   attackDuration: 1
 --- !u!114 &877892585812149401

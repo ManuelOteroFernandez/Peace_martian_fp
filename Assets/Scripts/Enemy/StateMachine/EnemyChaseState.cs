@@ -15,6 +15,10 @@ public class EnemyChaseState : EnemyState
         if (controller.rigidbody2D.linearVelocityY < 0) {
             controller.ChangeState(new EnemyFallingState());
         }
+
+        if (controller.IsTargetInAttackRange() && controller.IsGrounded() && controller.IsAttackCooldownReady()) {
+            controller.ChangeState(new EnemyAttackState());
+        }
     }
 
     public override void Exit(EnemyController controller)
