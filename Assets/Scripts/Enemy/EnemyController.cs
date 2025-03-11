@@ -76,6 +76,7 @@ public abstract class EnemyController : MonoBehaviour
         }
 
         Vector2 direction = nextWaypoint.position - currentWaypoint.position;
+        Flip(-direction.x);
         enemyPosition = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y);
 
         if (IsGrounded() || currentWaypoint.type != WaypointType.Cliff) {
@@ -87,6 +88,12 @@ public abstract class EnemyController : MonoBehaviour
                 transform.position = new Vector3(nextWaypoint.position.x, transform.position.y, 0);
             }
             aiAgent.AdvanceToNextWaypoint();
+        }
+    }
+
+    public void Flip(float direction) {
+        if (direction != 0) {
+            transform.localScale = new Vector3(Mathf.Sign(direction), 1, 1);
         }
     }
 
