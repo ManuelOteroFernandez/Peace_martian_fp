@@ -5,9 +5,12 @@ public class AIAgent : MonoBehaviour
 {
     //TODO Este campo no puede ser un SerializeField. Al ser un prefab necesita obtener una referencia al 
     //WaypointGenerator sin tener que asignarla desde el editor para poder instanciar nuevos enemigos en runtime.
-    [SerializeField] private WaypointGenerator waypointGenerator;
+    private WaypointGenerator waypointGenerator;
     Waypoint currentWaypoint;
 
+    private void Awake() {
+        waypointGenerator = GameObject.FindGameObjectWithTag("WaypointManager")?.GetComponent<WaypointGenerator>();
+    }
     //TODO: Cambiar como se está obteniendo FindClosestWaypoint. Tal y como está ahora puede provocar que se esté seleccionando un waypoint que se encuentre más arriba de lo deseado
     //Esto provoca que a veces el movimiento resulte en un movimiento negativo en el eje Y cuando queremos movimiento en el eje X. 
     //Por culpa de esto, el enemigo se queda bloqueado en secciones donde hay Ladders o Cliffs.
