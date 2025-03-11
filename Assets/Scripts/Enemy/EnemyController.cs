@@ -14,17 +14,19 @@ public abstract class EnemyController : MonoBehaviour
     [SerializeField] public LayerMask obstaclesLayerMask;
     protected SpriteRenderer spriteRenderer;
 
-    [Header("Parameters")]
+    [Header("Movement Parameters")]
     [SerializeField] protected float chaseSpeed = 5f;
     [SerializeField] protected float patrolSpeed = 2f;
     [SerializeField] protected float chaseDistance = 10f;
+    protected Vector2 enemyPosition;
+
+    [Header("General Attack Parameters")]
     [SerializeField] protected float attackRange = 5f;
     [SerializeField] protected float attackCooldown = 2f;
     [SerializeField] protected float attackDuration = 1f;
     protected float currentAttackCooldown;
-    protected Vector2 enemyPosition;
 
-    [Header("Movement")]
+    [Header("AI Movement")]
     Waypoint currentWaypoint;
     Waypoint nextWaypoint;
 

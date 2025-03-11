@@ -10,6 +10,10 @@ public class EnemyAttackState : EnemyState
 
     public override void Update(EnemyController controller)
     {
+        if (controller.enemyHealth.IsInBubble()) {
+            controller.ChangeState(new EnemyBubbleTrappedState());
+        }
+
         if (controller.IsAttackCooldownReady()) {
             controller.StartCoroutine(ExecuteAttack(controller));
         }
@@ -23,7 +27,7 @@ public class EnemyAttackState : EnemyState
         if (controller.IsTargetInAttackRange() && controller.IsAttackCooldownReady()) {
             controller.StartCoroutine(ExecuteAttack(controller));
         } else {
-            controller.ChangeState(new EnemyChaseState());
+            controller.ChangeState(new EnemyIdleState());
         }
     }
 

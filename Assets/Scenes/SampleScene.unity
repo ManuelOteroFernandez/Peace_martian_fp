@@ -4936,14 +4936,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2263706642943898916, guid: 54611f395f8ecd44891807c5f2b4b334, type: 3}
-      propertyPath: attackRange
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2263706642943898916, guid: 54611f395f8ecd44891807c5f2b4b334, type: 3}
-      propertyPath: chaseDistance
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 4175953136428278790, guid: 54611f395f8ecd44891807c5f2b4b334, type: 3}
       propertyPath: waypointGenerator
       value: 

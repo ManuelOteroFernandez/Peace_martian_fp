@@ -13,8 +13,12 @@ public class EnemyIdleState : EnemyState
             controller.ChangeState(new EnemyBubbleTrappedState());
         }
 
-        if (controller.IsTargetInChaseRange()) {
+        if (controller.IsTargetInChaseRange() && !controller.IsTargetInAttackRange()) {
             controller.ChangeState(new EnemyChaseState());
+        }
+
+        if (controller.IsTargetInAttackRange() && controller.IsGrounded()) {
+            controller.ChangeState(new EnemyAttackState());
         }
     }
 

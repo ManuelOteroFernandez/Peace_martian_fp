@@ -12,6 +12,10 @@ public class EnemyChaseState : EnemyState
     {
         controller.MoveEnemy();
 
+        if (controller.enemyHealth.IsInBubble()) {
+            controller.ChangeState(new EnemyBubbleTrappedState());
+        }
+
         if (controller.rigidbody2D.linearVelocityY < 0) {
             controller.ChangeState(new EnemyFallingState());
         }
