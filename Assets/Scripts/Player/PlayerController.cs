@@ -1,3 +1,4 @@
+using System;
 using PlayerStateMachine;
 using UnityEditor.Callbacks;
 using UnityEditor.Tilemaps;
@@ -74,10 +75,42 @@ public class PlayerController : MonoBehaviour
         ApplyGravityScaling();
         UpdateCooldowns();
         UpdateState();
+        UpdateAnimator();
     }
 
     void UpdateState() {
         currentState.Update(this, inputController);
+    }
+
+    public void UpdateAnimator(){
+        int aimDirection;
+        float angle = weaponManager.GetCurrentWeapon().getAdjustedAngle();
+        switch (angle)
+        {
+            case 90:
+                aimDirection = 4;
+                break;
+
+            case 135:
+            case 45: 
+                aimDirection = 3;
+                break;
+
+            case -45:
+            case -135:
+                aimDirection = 1;
+                break;
+            
+            case -90:
+                aimDirection = 0;
+                break;
+
+            default: 
+                aimDirection = 2;
+                break;
+        }
+        if(animator.GetInteger("aimDirection") != aimDirection)
+            animator.SetInteger("aimDirection",aimDirection);
     }
 
     public void ChangeState(PlayerState newState) {

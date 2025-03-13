@@ -3,8 +3,13 @@ using UnityEngine;
 namespace PlayerStateMachine{
     public class PlayerIdleState : PlayerState
     {
+        public override int id {
+            get {
+                return 0;
+            }
+        }
         public override void Enter(PlayerController controller) {
-            controller.animator.SetTrigger("isIdle");
+            controller.animator.SetInteger("currentStateId", id);
         }
 
         public override void Update(PlayerController controller, PlayerInputController inputController) {
@@ -27,7 +32,7 @@ namespace PlayerStateMachine{
         }
 
         public override void Exit(PlayerController controller) {
-            controller.animator.ResetTrigger("isIdle");
+            Debug.Log("Idle OUT");
         }
     }
 }
