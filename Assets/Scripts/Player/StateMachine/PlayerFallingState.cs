@@ -3,7 +3,14 @@ using UnityEngine;
 namespace PlayerStateMachine{
     public class PlayerFallingState : PlayerState
     {
+        public override int id {
+            get {
+                return 2;
+            }
+        }
+
         public override void Enter(PlayerController controller) {
+            controller.animator.SetInteger("currentStateId", id);
             //controller.animator.SetTrigger("isRunning");
         }
 

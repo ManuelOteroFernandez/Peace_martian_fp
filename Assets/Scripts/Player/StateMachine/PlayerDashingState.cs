@@ -4,9 +4,14 @@ namespace PlayerStateMachine{
     public class PlayerDashingState : PlayerState
     {
         float dashTime;
+        public override int id {
+            get {
+                return 4;
+            }
+        }
 
         public override void Enter(PlayerController controller) {
-            controller.animator.SetTrigger("isDashing");
+            controller.animator.SetInteger("currentStateId", id);
             controller.PlayDashSFX();
             controller.Dash();
         }

@@ -3,8 +3,14 @@ using UnityEngine;
 namespace PlayerStateMachine{
     public class PlayerJumpingState : PlayerState
     {
+        public override int id {
+            get {
+                return 3;
+            }
+        }
+
         public override void Enter(PlayerController controller) {
-            controller.animator.SetTrigger("isJumping");
+            controller.animator.SetInteger("currentStateId", id);
             Jump(controller);
         }
 
