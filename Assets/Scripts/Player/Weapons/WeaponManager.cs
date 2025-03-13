@@ -84,4 +84,8 @@ public class WeaponManager : MonoBehaviour
             StopShooting();
         }
     }
+
+    public Weapon GetCurrentWeapon(){
+        return currentWeapon;
+    }
 }

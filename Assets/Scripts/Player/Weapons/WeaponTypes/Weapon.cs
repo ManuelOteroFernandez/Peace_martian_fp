@@ -5,6 +5,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected Transform firePoint;
     protected float damage;
     protected float cooldown;
+    protected float adjustedAngle;
     protected PlayerInputController playerInputController;
 
     protected virtual void Awake() {
@@ -14,7 +15,7 @@ public abstract class Weapon : MonoBehaviour
     protected virtual void Update() {
         float angle = Mathf.Atan2(playerInputController.aimDirection.y, playerInputController.aimDirection.x) * Mathf.Rad2Deg;
 
-        float adjustedAngle = Mathf.Round(angle / 45) * 45;
+        adjustedAngle = Mathf.Round(angle / 45) * 45;
 
         //Si el jugador está mirando a la izquierda, se invierte el sprite
         if (transform.root.localScale.x < 0) {
@@ -33,4 +34,8 @@ public abstract class Weapon : MonoBehaviour
     //public virtual void Shoot() {}
     public abstract void StartShooting();
     public abstract void StopShooting();
+
+    public float getAdjustedAngle(){
+        return adjustedAngle;
+    }
 }

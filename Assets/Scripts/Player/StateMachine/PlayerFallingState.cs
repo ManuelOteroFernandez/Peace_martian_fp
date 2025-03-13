@@ -3,8 +3,15 @@ using UnityEngine;
 namespace PlayerStateMachine{
     public class PlayerFallingState : PlayerState
     {
+        public override int id {
+            get {
+                return 2;
+            }
+        }
+
         public override void Enter(PlayerController controller) {
-            controller.animator.SetTrigger("isRunning");
+            controller.animator.SetInteger("currentStateId", id);
+            //controller.animator.SetTrigger("isRunning");
         }
 
         public override void Update(PlayerController controller, PlayerInputController inputController) {
@@ -30,7 +37,7 @@ namespace PlayerStateMachine{
         }
 
         public override void Exit(PlayerController controller) {
-            controller.animator.ResetTrigger("isRunning");
+            //controller.animator.ResetTrigger("isRunning");
             if (controller.isGrounded) {
                 controller.PlayLandSFX();
             }
