@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour
     [Header("Movement Parameters")]
     [SerializeField] float horizontalMovementSpeed;
 
+    [Header("Skills")]
+    [SerializeField] bool dashUnlocked;
+    [SerializeField] bool doubleJumpUnlocked;
+
     [Header("Dash Parameters")]
     [SerializeField] float dashSpeed;
     [SerializeField] float dashDuration;
@@ -56,6 +60,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioClip jumpSFX;
     [SerializeField] AudioClip doubleJumpSFX;
     [SerializeField] AudioClip landSFX;
+
+    [Header("References")]
+    public bool DoubleJumpUnlocked => doubleJumpUnlocked;
+    public bool DashUnlocked => dashUnlocked;
 
     void Awake() {
         rigidbody2D = GetComponent<Rigidbody2D>();

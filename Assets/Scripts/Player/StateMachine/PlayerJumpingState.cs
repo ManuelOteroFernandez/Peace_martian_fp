@@ -13,7 +13,7 @@ namespace PlayerStateMachine{
             controller.Move(inputController.horizontalInput);
             controller.Flip(inputController.aimDirection.x);
 
-            if (inputController.jumpInput && controller.CanDoubleJump()){
+            if (inputController.jumpInput && controller.CanDoubleJump() && controller.DoubleJumpUnlocked){
                 Jump(controller);
             }
 
@@ -21,7 +21,7 @@ namespace PlayerStateMachine{
                 controller.ChangeState(new PlayerFallingState());
             }
 
-            if(inputController.dashInput && controller.canDash) {
+            if(inputController.dashInput && controller.canDash && controller.DashUnlocked) {
                 controller.ChangeState(new PlayerDashingState());
             }
 
