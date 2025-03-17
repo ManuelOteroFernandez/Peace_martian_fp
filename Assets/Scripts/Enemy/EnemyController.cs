@@ -1,8 +1,11 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class EnemyController : MonoBehaviour
 {
+    //TODO: Si el enemigo está persiguiendo al jugador, cambia a otro estado (por ejemplo Attack) y al salir de ese estado el jugador
+    //está fuera de su alcance, el enemigo se mantiene en Idle. Revisar este comportamiento.
     [Header("States")]
     EnemyState currentState;
 
@@ -27,6 +30,9 @@ public abstract class EnemyController : MonoBehaviour
     protected float currentAttackCooldown;
 
     [Header("AI Movement")]
+    [SerializeField] protected int patrolWaypointsRange = 2;
+    List<Waypoint> patrolRoute;
+    int patrolWaypointIndex = 0;
     Waypoint currentWaypoint;
     Waypoint nextWaypoint;
 
@@ -45,7 +51,8 @@ public abstract class EnemyController : MonoBehaviour
     }
 
     protected virtual void Start(){
-        ChangeState(new EnemyIdleState());
+        patrolRoute = aiAgent.GetPatrolRoute(patrolWaypointsRange);
+        ChangeState(new EnemyPatrolState());
     }
 
     protected virtual void FixedUpdate(){
@@ -91,6 +98,26 @@ public abstract class EnemyController : MonoBehaviour
         }
     }
 
+    public void Patrol() {
+        currentWaypoint = aiAgent.GetCurrentWaypoint();
+        nextWaypoint = patrolRoute[patrolWaypointIndex];
+
+        Vector2 direction = nextWaypoint.position - currentWaypoint.position;
+        Flip(-direction.x);
+        enemyPosition = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y);
+        rigidbody2D.linearVelocity = direction.normalized * patrolSpeed;
+
+        if (Vector2.Distance(enemyPosition, nextWaypoint.position) < 0.5f){
+            if (patrolWaypointIndex + 1 == patrolRoute.Count) {
+                patrolWaypointIndex--;
+            } else {
+                patrolWaypointIndex++;
+            }
+
+            aiAgent.RelocateCurrentWaypoint();
+        }
+    }
+
     public void Flip(float direction) {
         if (direction != 0) {
             transform.localScale = new Vector3(Mathf.Sign(direction), 1, 1);
@@ -127,10 +154,6 @@ public abstract class EnemyController : MonoBehaviour
     public void StartChasing() {
         aiAgent.RelocateCurrentWaypoint();
     }
-
-    /*public void ResetVelocity() {
-        rigidbody2D.linearVelocity = Vector2.zero;
-    }*/
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.green;

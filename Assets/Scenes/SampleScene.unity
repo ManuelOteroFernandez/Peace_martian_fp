@@ -510,11 +510,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 30545886213455747, guid: 54611f395f8ecd44891807c5f2b4b334, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.48
+      value: 32.95
       objectReference: {fileID: 0}
     - target: {fileID: 30545886213455747, guid: 54611f395f8ecd44891807c5f2b4b334, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.43
+      value: 10.28
       objectReference: {fileID: 0}
     - target: {fileID: 30545886213455747, guid: 54611f395f8ecd44891807c5f2b4b334, type: 3}
       propertyPath: m_LocalPosition.z
@@ -548,9 +548,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2187741209805068506, guid: 54611f395f8ecd44891807c5f2b4b334, type: 3}
+      propertyPath: patrolWaypointsRange
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5825225980843053711, guid: 54611f395f8ecd44891807c5f2b4b334, type: 3}
       propertyPath: m_Name
       value: RangeEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825225980843053711, guid: 54611f395f8ecd44891807c5f2b4b334, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2880,16 +2888,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 30, y: 8, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 31, y: 8, z: 0}
     second:
       serializedVersion: 2
@@ -3066,7 +3064,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: c2a885b0b4423df49a69b5803ab25ab8, type: 2}
   - m_RefCount: 18
     m_Data: {fileID: 11400000, guid: e3ca52839c0ba344aa80b94e1af98453, type: 2}
-  - m_RefCount: 107
+  - m_RefCount: 106
     m_Data: {fileID: 11400000, guid: 728cfe89701eedf4eb015123c4c3eb34, type: 2}
   - m_RefCount: 81
     m_Data: {fileID: 11400000, guid: 6959bb5cf3fdb7346ab1897b2672965d, type: 2}
@@ -3077,14 +3075,14 @@ Tilemap:
     m_Data: {fileID: 7827470447151488021, guid: 4f8962e9c8d2a2441a355371552f0f6d, type: 3}
   - m_RefCount: 18
     m_Data: {fileID: 5119971492981962814, guid: b4c1de5778d229c48ae548f45579f843, type: 3}
-  - m_RefCount: 107
+  - m_RefCount: 106
     m_Data: {fileID: -8941519833378295907, guid: 2ba4ac1a1e966114b9dff4a1bbb22854, type: 3}
   - m_RefCount: 81
     m_Data: {fileID: -2727194386381995188, guid: 9d029ba28f7c17443b5ba6ded29e138f, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   m_TileMatrixArray:
-  - m_RefCount: 217
+  - m_RefCount: 216
     m_Data:
       e00: 1
       e01: 0
@@ -3103,7 +3101,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 217
+  - m_RefCount: 216
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -3180,9 +3178,9 @@ CompositeCollider2D:
         Y: 99375000
     - - X: 360624992
         Y: 90625000
-      - X: 299375008
+      - X: 309375008
         Y: 90625000
-      - X: 299375008
+      - X: 309375008
         Y: 79375000
       - X: 360624992
         Y: 79375000
@@ -3254,8 +3252,8 @@ CompositeCollider2D:
       - {x: -3.062471, y: 9.9375}
     - - {x: 36.06247, y: 7.9375}
       - {x: 36.06247, y: 9.0625}
-      - {x: 29.937502, y: 9.06247}
-      - {x: 29.93753, y: 7.9375}
+      - {x: 30.937502, y: 9.06247}
+      - {x: 30.93753, y: 7.9375}
     - - {x: 47.06247, y: 3.9375}
       - {x: 47.06247, y: 5.0625}
       - {x: 40.9375, y: 5.062471}
@@ -3434,9 +3432,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5468862835075726419, guid: 360cab38c58265b459327bbe80bc9857, type: 3}
+      propertyPath: chaseDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5825225980843053711, guid: 360cab38c58265b459327bbe80bc9857, type: 3}
       propertyPath: m_Name
       value: ArmoredEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825225980843053711, guid: 360cab38c58265b459327bbe80bc9857, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5052,9 +5058,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5468862835075726419, guid: 4f9c8f8c9baa1af4dbafd1ca3a02f545, type: 3}
+      propertyPath: patrolWaypointsRange
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5825225980843053711, guid: 4f9c8f8c9baa1af4dbafd1ca3a02f545, type: 3}
       propertyPath: m_Name
       value: MeleeEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825225980843053711, guid: 4f9c8f8c9baa1af4dbafd1ca3a02f545, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

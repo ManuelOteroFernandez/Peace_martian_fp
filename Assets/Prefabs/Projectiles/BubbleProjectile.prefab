@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 693812171123426543}
   - component: {fileID: 8135807622004103435}
   - component: {fileID: 5225785940309036451}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: BubbleProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

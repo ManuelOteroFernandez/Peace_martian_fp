@@ -27,7 +27,7 @@ public class WaypointGraph {
     //3.- Entre waypoints de tipo Ladder se puede mover arriba y abajo.
     //4.- El objetivo es el nodo accesible más cercano al targetTransform.
     public void ComputeFlowField(Transform targetTransform, LayerMask groundLayer) {
-        Waypoint originalTarget = FindClosestWaypoint(targetTransform);
+        Waypoint originalTarget = FindClosestWaypoint(targetTransform, targetTransform.GetComponent<SpriteRenderer>());
         Waypoint target = GetCorrectedTarget(originalTarget);
         foreach (var waypoint in waypoints) {
             waypoint.bestNextWaypoint = null;
@@ -170,13 +170,15 @@ public class WaypointGraph {
         return closestLadder;
     }
 
-    public Waypoint FindClosestWaypoint(Transform target) {
+    public Waypoint FindClosestWaypoint(Transform target, SpriteRenderer spriteRenderer) {
+        Vector2 position = new Vector2(target.position.x, target.position.y - spriteRenderer.bounds.extents.y);
+
         Waypoint closest = null;
         foreach(Waypoint waypoint in waypoints) {
             if (closest == null) {
                 closest = waypoint;
             } else {
-                if (Vector2.Distance(waypoint.position, target.position) < Vector2.Distance(closest.position, target.position)) {
+                if (Vector2.Distance(waypoint.position, position) < Vector2.Distance(closest.position, position)) {
                     closest = waypoint;
                 }
             }
