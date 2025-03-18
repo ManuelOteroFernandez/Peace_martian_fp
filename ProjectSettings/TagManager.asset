@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Enemy
+  - Limits
+  - WaypointManager
   layers:
   - Default
   - TransparentFX
@@ -17,8 +19,8 @@ TagManager:
   - Player
   - Enemy
   - Traps
-  - 
-  - 
+  - Ladders
+  - PlayerAttack
   - 
   - 
   - 

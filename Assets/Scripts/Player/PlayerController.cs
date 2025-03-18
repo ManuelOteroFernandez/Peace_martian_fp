@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour
     [Header("Movement Parameters")]
     [SerializeField] float horizontalMovementSpeed;
 
+    [Header("Skills")]
+    [SerializeField] bool dashUnlocked;
+    [SerializeField] bool doubleJumpUnlocked;
+
     [Header("Dash Parameters")]
     [SerializeField] float dashSpeed;
     [SerializeField] float dashDuration;
@@ -57,6 +61,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioClip jumpSFX;
     [SerializeField] AudioClip doubleJumpSFX;
     [SerializeField] AudioClip landSFX;
+
+    [Header("References")]
+    public bool DoubleJumpUnlocked => doubleJumpUnlocked;
+    public bool DashUnlocked => dashUnlocked;
 
     void Awake() {
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -117,7 +125,7 @@ public class PlayerController : MonoBehaviour
         currentState?.Exit(this);
         currentState = newState;
 
-        Debug.Log("current state: " + currentState);
+        //Debug.Log("current state: " + currentState);
 
         currentState.Enter(this);
     }
@@ -261,8 +269,7 @@ public class PlayerController : MonoBehaviour
 
 
     /*=============TESTING=============*/
-        private void OnDrawGizmos()
-    {
+    private void OnDrawGizmos() {
         //Dibuja el área de detección del suelo para depuración
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(groundCheckPoint.position, groundCheckSize);

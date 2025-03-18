@@ -6,6 +6,7 @@ public class BigBubbleTrap : MonoBehaviour
     [Header("Bubble Trap Settings")]
     [SerializeField] private float maxFloatSpeed = 1.5f;
     [SerializeField] private LayerMask trapLayer;
+    private Collider2D mapLimits;
 
     [Header("Components")]
     Rigidbody2D rigidbody2D;
@@ -16,9 +17,16 @@ public class BigBubbleTrap : MonoBehaviour
 
     private void Awake() {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        mapLimits = GameObject.FindGameObjectWithTag("Limits").GetComponent<Collider2D>();
     }
 
     private void Update() {
+        //TODO: Destruir burbuja y enemigo si se salen de X límites.
+        /*if (!mapLimits.bounds.Contains(transform.position)) {
+            Destroy(trappedEnemy);
+            Destroy(gameObject);
+        }*/
+
         if (rigidbody2D.linearVelocity.y > maxFloatSpeed) {
             rigidbody2D.linearVelocity = new Vector2(rigidbody2D.linearVelocity.x, maxFloatSpeed);
         }

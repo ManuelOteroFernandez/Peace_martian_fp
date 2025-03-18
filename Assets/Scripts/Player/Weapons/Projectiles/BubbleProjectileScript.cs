@@ -26,58 +26,27 @@ public class BubbleProjectileScript : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collision){
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            bounces++;
-            if (bounces >= maxBounces)
-            {
-                DestroyProjectile();
-            }
-        }
-
-        if (collision.gameObject.CompareTag("Enemy")) {
-            EnemyHealth healthComponent = collision.gameObject.GetComponent<EnemyHealth>();
-            if (healthComponent == null) {
-                return;
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Traps")) {
+            DestroyProjectile();
+        } else {
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Ground")) {
+                bounces++;
+                if (bounces >= maxBounces) {
+                    DestroyProjectile();
+                }
             }
 
-            healthComponent.TakeBubbleDamage(damage);
-            Destroy(gameObject);
+            if (collision.gameObject.CompareTag("Enemy")) {
+                EnemyHealth healthComponent = collision.gameObject.GetComponent<EnemyHealth>();
+                if (healthComponent == null) {
+                    return;
+                }
+
+                healthComponent.TakeBubbleDamage(damage);
+                Destroy(gameObject);
+            }
         }
     }
-
-    /*void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            bounces++;
-            if (bounces >= maxBounces)
-            {
-                DestroyProjectile();
-            }
-        }
-
-        if (collision.gameObject.CompareTag("Enemy")) {
-            EnemyHealth healthComponent = collision.gameObject.GetComponent<EnemyHealth>();
-            if (healthComponent == null) {
-                return;
-            }
-
-            healthComponent.TakeBubbleDamage(damage);
-            Destroy(gameObject);
-        }
-    }*/
-
-    /*void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.CompareTag("Enemy")) {
-            EnemyHealth healthComponent = collision.GetComponent<EnemyHealth>();
-            if (healthComponent == null) {
-                return;
-            }
-
-            healthComponent.TakeBubbleDamage(damage);
-            Destroy(gameObject);
-        }
-    }*/
 
     void DestroyProjectile(){
         Instantiate(bubblePopEffect, transform.position, Quaternion.identity);
