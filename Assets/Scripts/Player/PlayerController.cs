@@ -4,6 +4,7 @@ using UnityEditor.Callbacks;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.InputSystem.XR.Haptics;
+using UnityEngine.SceneManagement;
 
 //TODO: Unificar velocity o addForce. No mezclar.
 //TODO: Controlar velocidad máxima de caída.
@@ -15,6 +16,9 @@ public class PlayerController : MonoBehaviour
     [Header("Skills")]
     [SerializeField] bool dashUnlocked;
     [SerializeField] bool doubleJumpUnlocked;
+
+    [Header("HP")]
+    [SerializeField] bool hasArmor;
 
     [Header("Dash Parameters")]
     [SerializeField] float dashSpeed;
@@ -31,9 +35,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float fallGravityScale;
     int jumpCount;
     bool jumpedFromGround;
-
-    [Header("Attack parameters")]
-
 
     [Header("Coyote Time")]
     [SerializeField] float coyoteTime;
@@ -65,6 +66,7 @@ public class PlayerController : MonoBehaviour
     [Header("References")]
     public bool DoubleJumpUnlocked => doubleJumpUnlocked;
     public bool DashUnlocked => dashUnlocked;
+    public bool HasArmor => hasArmor;
 
     void Awake() {
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -180,6 +182,10 @@ public class PlayerController : MonoBehaviour
         canDash = true;
     }
 
+    public void AddArmor() {
+        hasArmor = true;
+    }
+
     void UpdateCooldowns() {
         //Dash cooldown
         if (dashCurrentCd > 0) {
@@ -262,6 +268,17 @@ public class PlayerController : MonoBehaviour
 
     public void PlayLandSFX() {
         AudioManager.Instance.PlaySFX(landSFX);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision) {
+        Debug.Log("Recibe ataque enemigo");
+        if (collision.CompareTag("EnemyAttack")) {
+            if (hasArmor) {
+                hasArmor = false;
+            } else {
+                SceneManager.LoadScene(0);
+            }
+        }
     }
 
 
