@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Enemy_Body_fall0004_0: -1041177275866497587
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

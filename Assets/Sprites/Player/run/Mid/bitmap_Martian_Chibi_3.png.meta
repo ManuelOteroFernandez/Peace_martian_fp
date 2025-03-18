@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bitmap_Martian_Chibi_3_0: -3458679253944519692
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

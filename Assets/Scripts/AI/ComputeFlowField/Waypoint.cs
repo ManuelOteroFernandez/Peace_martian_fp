@@ -10,11 +10,6 @@ public class Waypoint
     public WaypointType type { get; }
     public Waypoint bestNextWaypoint;
 
-    //public Waypoint parent {get; set;} = null;
-    /*public float f {get; set;} //Suma de g + h - Coste total
-    public float g {get; set;} //El coste empleado en llegar hasta este nodo desde el inicio
-    public float h {get; set;} //El coste de llegar hasta el destino desde este nodo*/
-
     //Constructor
     public Waypoint(Vector2 position, WaypointType type) {
         this.position = position;
