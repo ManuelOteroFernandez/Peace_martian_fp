@@ -15,8 +15,8 @@ public class WeaponPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //other.GetComponentInChildren<WeaponManager>().AddWeapon(weapon);
             other.GetComponentInChildren<WeaponManager>().UnlockWeapon(weapon);
+            SaveSystem.SetUnlockedWeapon(weapon.WeaponId);
             Destroy(gameObject);
         }
     }

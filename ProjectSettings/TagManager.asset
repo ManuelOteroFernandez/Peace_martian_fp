@@ -8,6 +8,7 @@ TagManager:
   - Limits
   - WaypointManager
   - EnemyAttack
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
