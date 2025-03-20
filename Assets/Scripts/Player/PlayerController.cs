@@ -74,8 +74,7 @@ public class PlayerController : MonoBehaviour
         inputController = GetComponent<PlayerInputController>();
         weaponManager = GetComponentInChildren<WeaponManager>();
     }
-    void Start()
-    {
+    void Start() {
         ChangeState(new PlayerIdleState());
     }
 
@@ -276,11 +275,15 @@ public class PlayerController : MonoBehaviour
             if (hasArmor) {
                 hasArmor = false;
             } else {
-                SceneManager.LoadScene(0);
+                Die();
             }
         }
     }
 
+    public void Die() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        GameManager.Instance.RespawnPlayer();
+    }
 
 
 
