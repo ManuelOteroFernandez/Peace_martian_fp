@@ -271,7 +271,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision) {
         Debug.Log("Recibe ataque enemigo");
-        if (collision.CompareTag("EnemyAttack")) {
+        if (collision.CompareTag("EnemyAttack") || collision.CompareTag("EnemyProjectile")) {
             if (hasArmor) {
                 hasArmor = false;
             } else {

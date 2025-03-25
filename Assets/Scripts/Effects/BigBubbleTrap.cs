@@ -47,13 +47,23 @@ public class BigBubbleTrap : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision){
         if (((1 << collision.gameObject.layer) & trapLayer) != 0){
             if (trappedEnemy != null && enemyRigidbody2D != null){
-                enemyRigidbody2D.bodyType = RigidbodyType2D.Dynamic;
-                enemyRigidbody2D.rotation = 0;
-                enemyRigidbody2D.angularVelocity = 0;
-
-                trappedEnemy.GetComponent<EnemyHealth>().ReleaseFromBubble();
-                Destroy(gameObject);
+                ReleaseEnemy();
             }
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.CompareTag("EnemyProjectile")) {
+            ReleaseEnemy();
+        }
+    }
+
+    public void ReleaseEnemy() {
+        enemyRigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+        enemyRigidbody2D.rotation = 0;
+        enemyRigidbody2D.angularVelocity = 0;
+
+        trappedEnemy.GetComponent<EnemyHealth>().ReleaseFromBubble();
+        Destroy(gameObject);
     }
 }

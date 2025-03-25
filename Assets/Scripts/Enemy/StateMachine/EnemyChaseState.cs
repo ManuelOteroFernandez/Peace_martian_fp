@@ -20,7 +20,7 @@ public class EnemyChaseState : EnemyState
             controller.ChangeState(new EnemyFallingState());
         }
 
-        if (controller.IsTargetInAttackRange() && controller.IsGrounded() && controller.IsAttackCooldownReady()) {
+        if (controller.IsTrappedEnemyInAttackRange() || (controller.IsTargetInAttackRange() && controller.IsGrounded() && controller.IsAttackCooldownReady())) {
             controller.ChangeState(new EnemyAttackState());
         }
     }
