@@ -185,6 +185,14 @@ public class PlayerController : MonoBehaviour
         hasArmor = true;
     }
 
+    public void UnlockDoubleJump() {
+        doubleJumpUnlocked = true;
+    }
+
+    public void UnlockDash() {
+        dashUnlocked = true;
+    }
+
     void UpdateCooldowns() {
         //Dash cooldown
         if (dashCurrentCd > 0) {

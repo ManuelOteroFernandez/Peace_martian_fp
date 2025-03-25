@@ -34,7 +34,7 @@ public class Checkpoint : MonoBehaviour
             if (!SaveSystem.IsCheckpointActive(checkpointID)) {
                 PlayerController player = collision.GetComponent<PlayerController>();
                 if (player != null) {
-                    SaveSystem.SetCheckpoint(transform.position, checkpointID, player.HasArmor);
+                    SaveSystem.SetCheckpoint(transform.position, checkpointID, player);
                     Debug.Log("Checkpoint activado: " + checkpointID);
                     DisableCheckpoint();
                 }

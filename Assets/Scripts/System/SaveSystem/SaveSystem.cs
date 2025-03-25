@@ -31,12 +31,15 @@ public static class SaveSystem {
     }
 
     // Setear nuevo checkpoint y estado de hasArmor
-    public static void SetCheckpoint(Vector2 checkpoint, string checkpointID, bool hasArmor) {
+    public static void SetCheckpoint(Vector2 checkpoint, string checkpointID, PlayerController player) {
         saveData.lastCheckpoint = checkpoint;
-        saveData.hasArmor = hasArmor;
+        saveData.hasArmor = player.HasArmor;
+        saveData.hasDoubleJump = player.DoubleJumpUnlocked;
+        saveData.hasDash = player.DashUnlocked;
         if (!saveData.activatedCheckpoints.Contains(checkpointID)) {
             saveData.activatedCheckpoints.Add(checkpointID);
         }
+
         SaveGame();
     }
 
