@@ -27,6 +27,14 @@ public class GameManager : MonoBehaviour {
             if (saveData.hasArmor) {
                 player.GetComponent<PlayerController>().AddArmor();
             }
+
+            if (saveData.hasDoubleJump) {
+                player.GetComponent<PlayerController>().UnlockDoubleJump();
+            }
+
+            if (saveData.hasDash) {
+                player.GetComponent<PlayerController>().UnlockDash();
+            }
         }
     }
 
