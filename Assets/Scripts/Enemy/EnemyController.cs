@@ -27,6 +27,7 @@ public abstract class EnemyController : MonoBehaviour
     [SerializeField] protected float attackRange = 5f;
     [SerializeField] protected float attackCooldown = 2f;
     [SerializeField] protected float attackDuration = 1f;
+    [SerializeField] protected float freeEnemyChance = 0.5f;
     protected float currentAttackCooldown;
 
     [Header("AI Movement")]
@@ -36,8 +37,9 @@ public abstract class EnemyController : MonoBehaviour
     Waypoint currentWaypoint;
     Waypoint nextWaypoint;
 
-    [Header("Player")]
+    [Header("Target")]
     protected Transform target;
+    protected Transform trappedEnemyTarget;
 
     public float AttackDuration => attackDuration;
 
@@ -133,6 +135,10 @@ public abstract class EnemyController : MonoBehaviour
     }
 
     public bool IsTargetInAttackRange() {
+        return IsTargetInAttackRange(target);
+    }
+
+    private bool IsTargetInAttackRange(Transform target) {
         Vector2 direction = (target.position - transform.position).normalized;
         float distance = Vector2.Distance(transform.position, target.position);
 
@@ -141,6 +147,25 @@ public abstract class EnemyController : MonoBehaviour
         }
 
         return Physics2D.Raycast(transform.position, direction, distance, obstaclesLayerMask).collider == null;
+    }
+
+    public bool IsTrappedEnemyInAttackRange() {
+        GameObject[] trappedEnemies = GameObject.FindGameObjectsWithTag("BigBubbleTrap");
+
+        foreach (GameObject trappedEnemy in trappedEnemies) {
+            if (IsTargetInAttackRange(trappedEnemy.transform)) {
+                trappedEnemyTarget = trappedEnemy.transform;
+
+                return true;
+            }
+        }
+
+        trappedEnemyTarget = null;
+        return false;
+    }
+
+    public bool ChooseToFreeEnemy() {
+        return Random.Range(0f, 1f) < freeEnemyChance;
     }
 
     void UpdateCooldowns() {

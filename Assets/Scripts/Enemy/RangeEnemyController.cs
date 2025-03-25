@@ -22,6 +22,12 @@ public class RangeEnemyController : EnemyController {
     }
 
     public override void EnemyAttack() {
+        Transform target = this.target;
+
+        if (ChooseToFreeEnemy() && trappedEnemyTarget != null) {
+            target = trappedEnemyTarget;    
+        }
+
         rigidbody2D.linearVelocity = Vector2.zero;
 
         float randomAimOffset = Random.Range(-aimOffsetAngle, aimOffsetAngle);
