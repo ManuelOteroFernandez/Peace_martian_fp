@@ -4,6 +4,7 @@ using UnityEditor.Callbacks;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.InputSystem.XR.Haptics;
+using UnityEngine.SceneManagement;
 
 //TODO: Unificar velocity o addForce. No mezclar.
 //TODO: Controlar velocidad máxima de caída.
@@ -11,6 +12,13 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement Parameters")]
     [SerializeField] float horizontalMovementSpeed;
+
+    [Header("Skills")]
+    [SerializeField] bool dashUnlocked;
+    [SerializeField] bool doubleJumpUnlocked;
+
+    [Header("HP")]
+    [SerializeField] bool hasArmor;
 
     [Header("Dash Parameters")]
     [SerializeField] float dashSpeed;
@@ -27,9 +35,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float fallGravityScale;
     int jumpCount;
     bool jumpedFromGround;
-
-    [Header("Attack parameters")]
-
 
     [Header("Coyote Time")]
     [SerializeField] float coyoteTime;
@@ -58,14 +63,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioClip doubleJumpSFX;
     [SerializeField] AudioClip landSFX;
 
+    [Header("References")]
+    public bool DoubleJumpUnlocked => doubleJumpUnlocked;
+    public bool DashUnlocked => dashUnlocked;
+    public bool HasArmor => hasArmor;
+
     void Awake() {
         rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         inputController = GetComponent<PlayerInputController>();
         weaponManager = GetComponentInChildren<WeaponManager>();
     }
-    void Start()
-    {
+    void Start() {
         ChangeState(new PlayerIdleState());
     }
 
@@ -117,7 +126,7 @@ public class PlayerController : MonoBehaviour
         currentState?.Exit(this);
         currentState = newState;
 
-        Debug.Log("current state: " + currentState);
+        //Debug.Log("current state: " + currentState);
 
         currentState.Enter(this);
     }
@@ -170,6 +179,18 @@ public class PlayerController : MonoBehaviour
     public void ResetDash() {
         dashCurrentCd = 0;
         canDash = true;
+    }
+
+    public void AddArmor() {
+        hasArmor = true;
+    }
+
+    public void UnlockDoubleJump() {
+        doubleJumpUnlocked = true;
+    }
+
+    public void UnlockDash() {
+        dashUnlocked = true;
     }
 
     void UpdateCooldowns() {
@@ -256,13 +277,27 @@ public class PlayerController : MonoBehaviour
         AudioManager.Instance.PlaySFX(landSFX);
     }
 
+    void OnTriggerEnter2D(Collider2D collision) {
+        Debug.Log("Recibe ataque enemigo");
+        if (collision.CompareTag("EnemyAttack") || collision.CompareTag("EnemyProjectile")) {
+            if (hasArmor) {
+                hasArmor = false;
+            } else {
+                Die();
+            }
+        }
+    }
+
+    public void Die() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        GameManager.Instance.RespawnPlayer();
+    }
 
 
 
 
     /*=============TESTING=============*/
-        private void OnDrawGizmos()
-    {
+    private void OnDrawGizmos() {
         //Dibuja el área de detección del suelo para depuración
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(groundCheckPoint.position, groundCheckSize);

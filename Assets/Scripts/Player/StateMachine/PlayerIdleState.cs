@@ -24,7 +24,7 @@ namespace PlayerStateMachine{
                 controller.ChangeState(new PlayerJumpingState());
             }
 
-            if(inputController.dashInput && controller.canDash) {
+            if(inputController.dashInput && controller.canDash && controller.DashUnlocked) {
                 controller.ChangeState(new PlayerDashingState());
             }
 

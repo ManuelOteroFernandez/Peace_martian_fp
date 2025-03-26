@@ -13,10 +13,11 @@ GameObject:
   - component: {fileID: 7911965489111379628}
   - component: {fileID: 7391443418255696593}
   - component: {fileID: 1176726250869688738}
-  - component: {fileID: 2263706642943898916}
+  - component: {fileID: 2187741209805068506}
   - component: {fileID: 877892585812149401}
+  - component: {fileID: 4175953136428278790}
   m_Layer: 9
-  m_Name: Enemy
+  m_Name: RangeEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +35,8 @@ Transform:
   m_LocalPosition: {x: 4.89, y: -1.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1404923271042333976}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3730685310169686235
@@ -178,7 +180,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
---- !u!114 &2263706642943898916
+--- !u!114 &2187741209805068506
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,9 +189,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 5825225980843053711}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea86a1f2a1cc90d4cb9547c90f9c1a65, type: 3}
+  m_Script: {fileID: 11500000, guid: f21b7bf9fc3024b4b9af05cee59b9100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 1088
+  chaseSpeed: 5
+  patrolSpeed: 2
+  chaseDistance: 15
+  attackRange: 8
+  attackCooldown: 2
+  attackDuration: 1
+  freeEnemyChance: 0.5
+  patrolWaypointsRange: 2
+  firePoint: {fileID: 1404923271042333976}
+  projectilePrefab: {fileID: 2968890381435723290, guid: 816c926e79f55af48a887f0e7f36ef76, type: 3}
+  aimOffsetAngle: 5
 --- !u!114 &877892585812149401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,3 +221,46 @@ MonoBehaviour:
   maxBubblesResists: 4
   smallBubblePrefab: {fileID: 522427561513723392, guid: 87b5a64ed572b4640be404a8447d613d, type: 3}
   bigBubblePrefab: {fileID: 522427561513723392, guid: 85d4be932bf279144b39394557d1b724, type: 3}
+--- !u!114 &4175953136428278790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5825225980843053711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4f862984eaddac4aab88526fe03b9b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &6659726436407384069
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1404923271042333976}
+  m_Layer: 9
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1404923271042333976
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6659726436407384069}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.63, y: 0.16, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 30545886213455747}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

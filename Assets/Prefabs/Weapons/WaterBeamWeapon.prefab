@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 5569335791399888789}
+  weaponId: 3
   lineLength: 10
   growSpeed: 15
   maxDuration: 5

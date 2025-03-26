@@ -9,8 +9,8 @@ public class EnemyFallingState : EnemyState
 
     public override void Update(EnemyController controller)
     {
-        if (controller.IsGrounded())
-        {
+        if (controller.IsGrounded()){
+            //controller.ResetVelocity();
             controller.ChangeState(new EnemyIdleState());
         }
     }
