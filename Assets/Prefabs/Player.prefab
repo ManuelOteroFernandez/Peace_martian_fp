@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 5700308788194350239}
   - component: {fileID: 3101614704512210727}
   - component: {fileID: 1700453699533127585}
-  - component: {fileID: 3414722708186505170}
+  - component: {fileID: 1506665043324590068}
   - component: {fileID: 6188222137446568085}
   - component: {fileID: 7360852312344758068}
   - component: {fileID: 7712179225545981288}
@@ -148,8 +148,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!61 &3414722708186505170
-BoxCollider2D:
+--- !u!70 &1506665043324590068
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -182,18 +182,9 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.48, y: 2.49}
-    newSize: {x: 2.47, y: 2.31}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1.4, y: 2.2}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.0029227734, y: -0.00000023841858}
+  m_Size: {x: 1.3868937, y: 2.2094169}
+  m_Direction: 0
 --- !u!50 &6188222137446568085
 Rigidbody2D:
   serializedVersion: 5
@@ -205,8 +196,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1.5
+  m_UseAutoMass: 1
+  m_Mass: 2.6514454
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
@@ -330,14 +321,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 767681a0b6040ca4c969df5e2551c7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalMovementSpeed: 500
+  horizontalMovementSpeed: 450
+  dashUnlocked: 0
+  doubleJumpUnlocked: 0
+  hasArmor: 0
   dashSpeed: 1000
   dashDuration: 0.2
   dashCd: 1
   jumpForce: 20
   airJumpForce: 20
-  gravityScale: 2.5
-  fallGravityScale: 3.5
+  gravityScale: 1
+  fallGravityScale: 2.5
   coyoteTime: 0.15
   groundLayer:
     serializedVersion: 2
