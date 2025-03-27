@@ -3,8 +3,15 @@ using UnityEngine;
 namespace PlayerStateMachine{
     public class PlayerFallingState : PlayerState
     {
+        public override int id {
+            get {
+                return 2;
+            }
+        }
+
         public override void Enter(PlayerController controller) {
-            controller.animator.SetTrigger("isRunning");
+            controller.animator.SetInteger("currentStateId", id);
+            //controller.animator.SetTrigger("isRunning");
         }
 
         public override void Update(PlayerController controller, PlayerInputController inputController) {
@@ -13,11 +20,11 @@ namespace PlayerStateMachine{
             controller.Move(inputController.horizontalInput);
             controller.Flip(inputController.aimDirection.x);
 
-            if (inputController.jumpInput && controller.CanDoubleJump()){
+            if (inputController.jumpInput && controller.CanDoubleJump() && controller.DoubleJumpUnlocked){
                 controller.ChangeState(new PlayerJumpingState());
             }
 
-            if(inputController.dashInput && controller.canDash) {
+            if(inputController.dashInput && controller.canDash && controller.DashUnlocked) {
                 controller.ChangeState(new PlayerDashingState());
             }
 
@@ -30,7 +37,7 @@ namespace PlayerStateMachine{
         }
 
         public override void Exit(PlayerController controller) {
-            controller.animator.ResetTrigger("isRunning");
+            //controller.animator.ResetTrigger("isRunning");
             if (controller.isGrounded) {
                 controller.PlayLandSFX();
             }

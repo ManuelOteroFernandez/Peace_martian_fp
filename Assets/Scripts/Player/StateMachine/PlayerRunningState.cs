@@ -3,8 +3,14 @@ using UnityEngine;
 namespace PlayerStateMachine{
     public class PlayerRunningState : PlayerState
     {
+        public override int id {
+            get {
+                return 1;
+            }
+        }
+
         public override void Enter(PlayerController controller) {
-            controller.animator.SetTrigger("isRunning");
+            controller.animator.SetInteger("currentStateId", id);
             controller.StartWalkSFX();
         }
 
@@ -25,7 +31,7 @@ namespace PlayerStateMachine{
                 controller.ChangeState(new PlayerJumpingState());
             }
 
-            if(inputController.dashInput && controller.canDash) {
+            if(inputController.dashInput && controller.canDash && controller.DashUnlocked) {
                 controller.ChangeState(new PlayerDashingState());
             }
 
@@ -33,7 +39,6 @@ namespace PlayerStateMachine{
         }
 
         public override void Exit(PlayerController controller) {
-            controller.animator.ResetTrigger("isRunning");
             controller.StopWalkSFX();
         }
     }

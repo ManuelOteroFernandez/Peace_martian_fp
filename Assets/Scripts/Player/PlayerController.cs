@@ -1,8 +1,10 @@
+using System;
 using PlayerStateMachine;
 using UnityEditor.Callbacks;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.InputSystem.XR.Haptics;
+using UnityEngine.SceneManagement;
 
 //TODO: Unificar velocity o addForce. No mezclar.
 //TODO: Controlar velocidad máxima de caída.
@@ -10,6 +12,13 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement Parameters")]
     [SerializeField] float horizontalMovementSpeed;
+
+    [Header("Skills")]
+    [SerializeField] bool dashUnlocked;
+    [SerializeField] bool doubleJumpUnlocked;
+
+    [Header("HP")]
+    [SerializeField] bool hasArmor;
 
     [Header("Dash Parameters")]
     [SerializeField] float dashSpeed;
@@ -26,9 +35,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float fallGravityScale;
     int jumpCount;
     bool jumpedFromGround;
-
-    [Header("Attack parameters")]
-
 
     [Header("Coyote Time")]
     [SerializeField] float coyoteTime;
@@ -57,6 +63,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioClip doubleJumpSFX;
     [SerializeField] AudioClip landSFX;
 
+    [Header("References")]
+    public bool DoubleJumpUnlocked => doubleJumpUnlocked;
+    public bool DashUnlocked => dashUnlocked;
+    public bool HasArmor => hasArmor;
+
     void Awake() {
         rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -74,17 +85,49 @@ public class PlayerController : MonoBehaviour
         ApplyGravityScaling();
         UpdateCooldowns();
         UpdateState();
+        UpdateAnimator();
     }
 
     void UpdateState() {
         currentState.Update(this, inputController);
     }
 
+    public void UpdateAnimator(){
+        int aimDirection;
+        float angle = weaponManager.GetCurrentWeapon().getAdjustedAngle();
+        switch (angle)
+        {
+            case 90:
+                aimDirection = 4;
+                break;
+
+            case 135:
+            case 45: 
+                aimDirection = 3;
+                break;
+
+            case -45:
+            case -135:
+                aimDirection = 1;
+                break;
+            
+            case -90:
+                aimDirection = 0;
+                break;
+
+            default: 
+                aimDirection = 2;
+                break;
+        }
+        if(animator.GetInteger("aimDirection") != aimDirection)
+            animator.SetInteger("aimDirection",aimDirection);
+    }
+
     public void ChangeState(PlayerState newState) {
         currentState?.Exit(this);
         currentState = newState;
 
-        Debug.Log("current state: " + currentState);
+        //Debug.Log("current state: " + currentState);
 
         currentState.Enter(this);
     }
@@ -137,6 +180,10 @@ public class PlayerController : MonoBehaviour
     public void ResetDash() {
         dashCurrentCd = 0;
         canDash = true;
+    }
+
+    public void AddArmor() {
+        hasArmor = true;
     }
 
     void UpdateCooldowns() {
@@ -223,13 +270,23 @@ public class PlayerController : MonoBehaviour
         AudioManager.Instance.PlaySFX(landSFX);
     }
 
+    void OnTriggerEnter2D(Collider2D collision) {
+        Debug.Log("Recibe ataque enemigo");
+        if (collision.CompareTag("EnemyAttack")) {
+            if (hasArmor) {
+                hasArmor = false;
+            } else {
+                SceneManager.LoadScene(0);
+            }
+        }
+    }
+
 
 
 
 
     /*=============TESTING=============*/
-        private void OnDrawGizmos()
-    {
+    private void OnDrawGizmos() {
         //Dibuja el área de detección del suelo para depuración
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(groundCheckPoint.position, groundCheckSize);

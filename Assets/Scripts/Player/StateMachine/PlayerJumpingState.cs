@@ -3,8 +3,14 @@ using UnityEngine;
 namespace PlayerStateMachine{
     public class PlayerJumpingState : PlayerState
     {
+        public override int id {
+            get {
+                return 3;
+            }
+        }
+
         public override void Enter(PlayerController controller) {
-            controller.animator.SetTrigger("isJumping");
+            controller.animator.SetInteger("currentStateId", id);
             Jump(controller);
         }
 
@@ -13,7 +19,7 @@ namespace PlayerStateMachine{
             controller.Move(inputController.horizontalInput);
             controller.Flip(inputController.aimDirection.x);
 
-            if (inputController.jumpInput && controller.CanDoubleJump()){
+            if (inputController.jumpInput && controller.CanDoubleJump() && controller.DoubleJumpUnlocked){
                 Jump(controller);
             }
 
@@ -21,7 +27,7 @@ namespace PlayerStateMachine{
                 controller.ChangeState(new PlayerFallingState());
             }
 
-            if(inputController.dashInput && controller.canDash) {
+            if(inputController.dashInput && controller.canDash && controller.DashUnlocked) {
                 controller.ChangeState(new PlayerDashingState());
             }
 
