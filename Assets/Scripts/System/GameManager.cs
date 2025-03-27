@@ -23,7 +23,9 @@ public class GameManager : MonoBehaviour {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null) {
             SaveData saveData = SaveSystem.GetSaveData();
-            player.transform.position = saveData.lastCheckpoint;
+            //Calculo de la mitad de la altura del sprite del jugador para que no se quede bajo tierra
+            Vector2 yOffset = player.GetComponent<SpriteRenderer>().bounds.extents.y / 2 * Vector2.up;
+            player.transform.position = saveData.lastCheckpoint + yOffset;
             if (saveData.hasArmor) {
                 player.GetComponent<PlayerController>().AddArmor();
             }
