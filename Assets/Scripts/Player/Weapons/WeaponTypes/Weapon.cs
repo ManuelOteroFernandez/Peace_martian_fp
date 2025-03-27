@@ -8,6 +8,12 @@ public abstract class Weapon : MonoBehaviour
     protected float adjustedAngle;
     protected PlayerInputController playerInputController;
 
+    [Header("Weapon ID")]
+    [SerializeField ]protected int weaponId;
+
+    [Header("References")]
+    public int WeaponId => weaponId;
+
     protected virtual void Awake() {
         playerInputController = GetComponentInParent<PlayerInputController>();
     }

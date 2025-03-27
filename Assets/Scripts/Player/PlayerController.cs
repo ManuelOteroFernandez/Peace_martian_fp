@@ -74,8 +74,7 @@ public class PlayerController : MonoBehaviour
         inputController = GetComponent<PlayerInputController>();
         weaponManager = GetComponentInChildren<WeaponManager>();
     }
-    void Start()
-    {
+    void Start() {
         ChangeState(new PlayerIdleState());
     }
 
@@ -186,6 +185,14 @@ public class PlayerController : MonoBehaviour
         hasArmor = true;
     }
 
+    public void UnlockDoubleJump() {
+        doubleJumpUnlocked = true;
+    }
+
+    public void UnlockDash() {
+        dashUnlocked = true;
+    }
+
     void UpdateCooldowns() {
         //Dash cooldown
         if (dashCurrentCd > 0) {
@@ -272,15 +279,19 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision) {
         Debug.Log("Recibe ataque enemigo");
-        if (collision.CompareTag("EnemyAttack")) {
+        if (collision.CompareTag("EnemyAttack") || collision.CompareTag("EnemyProjectile")) {
             if (hasArmor) {
                 hasArmor = false;
             } else {
-                SceneManager.LoadScene(0);
+                Die();
             }
         }
     }
 
+    public void Die() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        GameManager.Instance.RespawnPlayer();
+    }
 
 
 

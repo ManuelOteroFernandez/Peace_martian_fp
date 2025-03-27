@@ -1,8 +1,6 @@
 using UnityEngine;
 
-public class WeaponPickup : MonoBehaviour
-{
-    [SerializeField] Weapon weapon;
+public class UnlockDoubleJumpPickup : MonoBehaviour {
     [SerializeField] float rotationSpeed;
 
     private void Update() {
@@ -11,12 +9,11 @@ public class WeaponPickup : MonoBehaviour
         transform.localScale = new Vector3(Mathf.Lerp(-1, 1, t), transform.localScale.y, transform.localScale.z);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            other.GetComponentInChildren<WeaponManager>().UnlockWeapon(weapon);
-            SaveSystem.SetUnlockedWeapon(weapon.WeaponId);
+    void OnTriggerEnter2D(Collider2D other) {
+        PlayerController playerController = other.GetComponent<PlayerController>();
+
+        if (other.CompareTag("Player") && !playerController.DoubleJumpUnlocked) {
+            playerController.UnlockDoubleJump();
             Destroy(gameObject);
         }
     }

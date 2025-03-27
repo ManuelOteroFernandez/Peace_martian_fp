@@ -4,11 +4,14 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Enemy
   - Limits
   - WaypointManager
+  - Checkpoint
+  - BigBubbleTrap
+  - Enemy
   - EnemyAttack
   - opciones
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX
