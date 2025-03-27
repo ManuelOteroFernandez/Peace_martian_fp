@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement Parameters")]
     [SerializeField] float horizontalMovementSpeed;
+    [SerializeField] float airHorizontalMovementSpeed;
 
     [Header("Skills")]
     [SerializeField] bool dashUnlocked;
@@ -132,7 +133,10 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Move(float direction) {
-        rigidbody2D.linearVelocity = new Vector2(Time.fixedDeltaTime * direction * horizontalMovementSpeed, rigidbody2D.linearVelocityY);
+
+        float linearVelocityX = Time.fixedDeltaTime * direction;
+        linearVelocityX *= isGrounded ? horizontalMovementSpeed : airHorizontalMovementSpeed;
+        rigidbody2D.linearVelocity = new Vector2(linearVelocityX, rigidbody2D.linearVelocityY);
     }
 
     public void Flip(float direction) {
