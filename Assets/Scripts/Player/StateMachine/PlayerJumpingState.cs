@@ -11,6 +11,7 @@ namespace PlayerStateMachine{
 
         public override void Enter(PlayerController controller) {
             controller.animator.SetInteger("currentStateId", id);
+            controller.animator.SetTrigger("isJumping");
             Jump(controller);
         }
 

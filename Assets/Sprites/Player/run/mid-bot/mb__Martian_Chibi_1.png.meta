@@ -129,12 +129,12 @@ TextureImporter:
       name: mb__Martian_Chibi_1_0
       rect:
         serializedVersion: 2
-        x: 56
-        y: 14
-        width: 143
-        height: 217
+        x: 0
+        y: 0
+        width: 248
+        height: 249
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 20a93f3fc98ef4b4f8d1d3b9873b485e
     internalID: 0
     vertices: []
     indices: 

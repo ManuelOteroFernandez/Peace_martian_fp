@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement Parameters")]
     [SerializeField] float horizontalMovementSpeed;
+    [SerializeField] float airHorizontalMovementSpeed;
 
     [Header("Skills")]
     [SerializeField] bool dashUnlocked;
@@ -92,22 +93,22 @@ public class PlayerController : MonoBehaviour
     }
 
     public void UpdateAnimator(){
-        int aimDirection;
+        float aimDirection;
         float angle = weaponManager.GetCurrentWeapon().getAdjustedAngle();
         switch (angle)
         {
             case 90:
-                aimDirection = 4;
+                aimDirection = 1;
                 break;
 
             case 135:
             case 45: 
-                aimDirection = 3;
+                aimDirection = 0.75f;
                 break;
 
             case -45:
             case -135:
-                aimDirection = 1;
+                aimDirection = 0.25f;
                 break;
             
             case -90:
@@ -115,11 +116,11 @@ public class PlayerController : MonoBehaviour
                 break;
 
             default: 
-                aimDirection = 2;
+                aimDirection = 0.5f;
                 break;
         }
-        if(animator.GetInteger("aimDirection") != aimDirection)
-            animator.SetInteger("aimDirection",aimDirection);
+        if(animator.GetFloat("aimDirection") != aimDirection)
+            animator.SetFloat("aimDirection",aimDirection);
     }
 
     public void ChangeState(PlayerState newState) {
@@ -132,7 +133,10 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Move(float direction) {
-        rigidbody2D.linearVelocity = new Vector2(Time.fixedDeltaTime * direction * horizontalMovementSpeed, rigidbody2D.linearVelocityY);
+
+        float linearVelocityX = Time.fixedDeltaTime * direction;
+        linearVelocityX *= isGrounded ? horizontalMovementSpeed : airHorizontalMovementSpeed;
+        rigidbody2D.linearVelocity = new Vector2(linearVelocityX, rigidbody2D.linearVelocityY);
     }
 
     public void Flip(float direction) {
