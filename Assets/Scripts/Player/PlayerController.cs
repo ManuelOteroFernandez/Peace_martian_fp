@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        RemoveSliding();
         CheckGrounded();
         ApplyGravityScaling();
         UpdateCooldowns();
@@ -90,6 +91,12 @@ public class PlayerController : MonoBehaviour
 
     void UpdateState() {
         currentState.Update(this, inputController);
+    }
+
+    void RemoveSliding() {
+        if (isGrounded && inputController.horizontalInput < 0.1f && currentState is not PlayerDashingState) {
+            rigidbody2D.linearVelocity = new Vector2(0, rigidbody2D.linearVelocityY);
+        }
     }
 
     public void UpdateAnimator(){
