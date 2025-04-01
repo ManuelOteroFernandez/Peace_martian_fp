@@ -21,6 +21,7 @@ public abstract class EnemyController : MonoBehaviour
     [SerializeField] protected float chaseSpeed = 5f;
     [SerializeField] protected float patrolSpeed = 2f;
     [SerializeField] protected float chaseDistance = 10f;
+    [SerializeField] protected float maxDistanceFromOrigin = 5f;
     protected Vector2 enemyPosition;
 
     [Header("General Attack Parameters")]
@@ -33,15 +34,19 @@ public abstract class EnemyController : MonoBehaviour
     [Header("AI Movement")]
     [SerializeField] protected int patrolWaypointsRange = 2;
     List<Waypoint> patrolRoute;
+    List<Waypoint> routeToOrigin;
     int patrolWaypointIndex = 0;
-    Waypoint currentWaypoint;
-    Waypoint nextWaypoint;
+    int routeToOriginWaypointIndex = 0;
+    protected Waypoint currentWaypoint;
+    protected Waypoint nextWaypoint;
+    protected Waypoint originWaypoint;
 
     [Header("Target")]
     protected Transform target;
     protected Transform trappedEnemyTarget;
 
     public float AttackDuration => attackDuration;
+    public float MaxDistanceFromOrigin => maxDistanceFromOrigin;
 
     protected virtual void Awake(){
         animator = GetComponent<Animator>();
@@ -54,6 +59,7 @@ public abstract class EnemyController : MonoBehaviour
 
     protected virtual void Start(){
         patrolRoute = aiAgent.GetPatrolRoute(patrolWaypointsRange);
+        originWaypoint = aiAgent.GetCurrentWaypoint();
         ChangeState(new EnemyPatrolState());
     }
 
@@ -76,7 +82,7 @@ public abstract class EnemyController : MonoBehaviour
     }
 
     //TODO: Necesita ajuste
-    public void MoveEnemy(){
+    public virtual void MoveEnemy(){
         currentWaypoint = aiAgent.GetCurrentWaypoint();
         nextWaypoint = currentWaypoint.bestNextWaypoint;
 
@@ -89,7 +95,8 @@ public abstract class EnemyController : MonoBehaviour
         enemyPosition = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y);
 
         if (IsGrounded() || currentWaypoint.type != WaypointType.Cliff) {
-            rigidbody2D.linearVelocity = direction * chaseSpeed;
+            Vector2 horizontalVelocity = direction * chaseSpeed;
+            rigidbody2D.linearVelocity = new Vector2(horizontalVelocity.x, rigidbody2D.linearVelocity.y);
         }
 
         if (Vector2.Distance(enemyPosition, nextWaypoint.position) < 0.5f){
@@ -107,7 +114,9 @@ public abstract class EnemyController : MonoBehaviour
         Vector2 direction = nextWaypoint.position - currentWaypoint.position;
         Flip(-direction.x);
         enemyPosition = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y);
-        rigidbody2D.linearVelocity = direction.normalized * patrolSpeed;
+
+        Vector2 horizontalVelocity = direction.normalized * patrolSpeed;
+        rigidbody2D.linearVelocity = new Vector2(horizontalVelocity.x, rigidbody2D.linearVelocity.y);
 
         if (Vector2.Distance(enemyPosition, nextWaypoint.position) < 0.5f){
             if (patrolWaypointIndex + 1 == patrolRoute.Count) {
@@ -117,6 +126,56 @@ public abstract class EnemyController : MonoBehaviour
             }
 
             aiAgent.RelocateCurrentWaypoint();
+        }
+    }
+
+    //TODO: Refactorizar
+    public void ReturnToOrigin() {
+        if (!IsBackInOrigin()) {
+            //Se calcula la ruta al origen si esta no existe
+            if (routeToOrigin == null) {
+                routeToOrigin = aiAgent.FindRouteToWaypoint(originWaypoint);
+            }
+
+            //Evitamos un indexOutOfBoundsException
+            if (routeToOriginWaypointIndex >= routeToOrigin.Count) {
+                routeToOriginWaypointIndex = 0;
+                return;
+            }
+
+            currentWaypoint = aiAgent.GetCurrentWaypoint();
+            nextWaypoint = routeToOrigin[routeToOriginWaypointIndex];
+
+            //Si el enemigo se encuentra con una subida que no sea escalera, se queda patrullando en el sitio en el que está
+            if (nextWaypoint.type == WaypointType.Cliff && nextWaypoint.position.y > currentWaypoint.position.y){
+                originWaypoint = currentWaypoint;
+                patrolRoute = aiAgent.GetPatrolRoute(originWaypoint, patrolWaypointsRange);
+                return;
+            }
+
+            enemyPosition = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y);
+
+            Vector2 direction = nextWaypoint.position - currentWaypoint.position;
+
+            //En caso de que la dirección sea cero, significa que el WP actual y el siguiente con el mismo, así que avanzamos en la lista.
+            if (direction.Equals(Vector2.zero)) {
+                routeToOriginWaypointIndex++;
+                return;
+            }
+
+            Flip(-direction.x);
+            rigidbody2D.linearVelocity = direction.normalized * patrolSpeed;
+
+            //Cuando el enemigo llega al siguiente WP, se actualiza el currentWaypoint
+            if (Vector2.Distance(enemyPosition, nextWaypoint.position) < 0.6f){
+                aiAgent.RelocateCurrentWaypoint();
+            }
+
+            //Cuando el enemigo llega al originWaypoint, se reinicia la ruta al origen y se vuelve a patrullar
+            if (currentWaypoint == originWaypoint) {
+                routeToOrigin = null;
+                routeToOriginWaypointIndex = 0;
+            }
         }
     }
 
@@ -136,6 +195,14 @@ public abstract class EnemyController : MonoBehaviour
 
     public bool IsTargetInAttackRange() {
         return IsTargetInAttackRange(target);
+    }
+
+    public bool IsBackInOrigin() {
+        return Vector2.Distance(currentWaypoint.position, originWaypoint.position) < 0.5f;
+    }
+
+    public bool CantReachTarget() {
+        return nextWaypoint == null && !IsTargetInChaseRange();
     }
 
     private bool IsTargetInAttackRange(Transform target) {
@@ -162,6 +229,10 @@ public abstract class EnemyController : MonoBehaviour
 
         trappedEnemyTarget = null;
         return false;
+    }
+
+    public float DistanceToOriginWaypoint() {
+        return Vector2.Distance(currentWaypoint.position, originWaypoint.position);
     }
 
     public bool ChooseToFreeEnemy() {
@@ -194,8 +265,11 @@ public abstract class EnemyController : MonoBehaviour
 
         if (currentWaypoint != null)
         {
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(originWaypoint.position, 0.3f); // Dibuja el originWaypoint
             Gizmos.color = Color.yellow;
             Gizmos.DrawSphere(currentWaypoint.position, 0.3f); // Dibuja el currentWaypoint
+            Gizmos.DrawLine(currentWaypoint.position, originWaypoint.position);
 
             if (nextWaypoint != null)
             {

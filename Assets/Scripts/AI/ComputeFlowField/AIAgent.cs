@@ -52,6 +52,41 @@ public class AIAgent : MonoBehaviour {
         return new List<Waypoint> { leftWaypoint, rightWaypoint };
     }
 
+        public List<Waypoint> GetPatrolRoute(Waypoint originWaypoint, int range) {
+        List<Waypoint> groundWaypoints = waypointGenerator.GetGraph.waypoints
+            .Where(w => w.type == WaypointType.Ground && w.position.y == originWaypoint.position.y)
+            .OrderBy(w => w.position.x)
+            .ToList();
+
+        int currentIndex = groundWaypoints.FindIndex(w => w == originWaypoint);
+
+        if (currentIndex == -1) {
+            return new List<Waypoint>();
+        } 
+
+        Waypoint leftWaypoint = null;
+        if (currentIndex > 0) {
+            leftWaypoint = FindFurthestWaypoint(groundWaypoints, currentIndex, false, range);
+        } else {
+            leftWaypoint = groundWaypoints[0];
+        }
+
+        Waypoint rightWaypoint = null;
+        if (currentIndex < groundWaypoints.Count - 1) {
+            rightWaypoint = FindFurthestWaypoint(groundWaypoints, currentIndex, true, range);
+        } else {
+            rightWaypoint = groundWaypoints[groundWaypoints.Count - 1];
+        }
+        /*Waypoint leftWaypoint = FindFurthestWaypoint(groundWaypoints, currentIndex, false, range);
+        Waypoint rightWaypoint = FindFurthestWaypoint(groundWaypoints, currentIndex, true, range);*/
+
+        return new List<Waypoint> { leftWaypoint, rightWaypoint };
+    }
+
+    public List<Waypoint> FindRouteToWaypoint(Waypoint targetWaypoint) {
+        return waypointGenerator.GetGraph.FindPath(currentWaypoint, targetWaypoint);
+    }
+
     private bool AreNeighbors(Waypoint a, Waypoint b) {
         return a.neighbors.Contains(b) || b.neighbors.Contains(a);
     }
@@ -75,5 +110,9 @@ public class AIAgent : MonoBehaviour {
         }
 
         return furthestWaypoint;
+    }
+
+    public bool CanJumpFromCliff(Waypoint waypoint) {
+        return waypoint.bestNextWaypoint.type == WaypointType.Ground;
     }
 }

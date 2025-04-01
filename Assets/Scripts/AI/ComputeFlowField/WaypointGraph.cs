@@ -63,6 +63,85 @@ public class WaypointGraph {
         }
     }
 
+    public List<Waypoint> FindPath(Waypoint startWaypoint, Waypoint targetWaypoint) {
+        if (startWaypoint == targetWaypoint) {
+            return null;
+        }
+
+        if (startWaypoint == null || targetWaypoint == null) {
+            return null;
+        }
+
+        List<Waypoint> openList = new List<Waypoint>();
+        List<Waypoint> closedList = new List<Waypoint>();
+
+        Dictionary<Waypoint, float> gCost = new Dictionary<Waypoint, float>();
+        Dictionary<Waypoint, float> hCost = new Dictionary<Waypoint, float>();
+        Dictionary<Waypoint, float> fCost = new Dictionary<Waypoint, float>();
+        Dictionary<Waypoint, Waypoint> cameFrom = new Dictionary<Waypoint, Waypoint>();
+
+        gCost.Add(startWaypoint, 0);
+        hCost.Add(startWaypoint, Distance(startWaypoint, targetWaypoint));
+        fCost.Add(startWaypoint, hCost[startWaypoint]);
+
+        openList.Add(startWaypoint);
+
+        while (openList.Count > 0) {
+            Waypoint currentWaypoint = openList[0];
+
+            for (int i = 1; i < openList.Count; i++) {
+                if (fCost[openList[i]] < fCost[currentWaypoint] || fCost[openList[i]] == fCost[currentWaypoint] && hCost[openList[i]] < hCost[currentWaypoint]) {
+                    currentWaypoint = openList[i];
+                }
+            }
+
+            if (currentWaypoint == targetWaypoint) {
+                return ReconstructPath(cameFrom, startWaypoint, targetWaypoint);
+            }
+
+            openList.Remove(currentWaypoint);
+            closedList.Add(currentWaypoint);
+
+            foreach(Waypoint neighbor in currentWaypoint.neighbors) {
+                if (closedList.Contains(neighbor)) {
+                    continue;
+                }
+
+                float tentativeG = gCost[currentWaypoint] + Distance(currentWaypoint, neighbor);
+
+                if (!openList.Contains(neighbor) || tentativeG < gCost[neighbor]) {
+                    cameFrom[neighbor] = currentWaypoint;
+                    gCost[neighbor] = tentativeG;
+                    hCost[neighbor] = Distance(neighbor, targetWaypoint);
+                    fCost[neighbor] = gCost[neighbor] + hCost[neighbor];
+
+                    if (!openList.Contains(neighbor)) {
+                        openList.Add(neighbor);
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public List<Waypoint> ReconstructPath(Dictionary<Waypoint, Waypoint> cameFrom, Waypoint startWaypoint, Waypoint endWaypoint) {
+        List<Waypoint> pathList = new List<Waypoint>(){
+            endWaypoint
+        };
+
+        var p = cameFrom[endWaypoint];
+
+        while (p != null && p != startWaypoint) {
+            pathList.Insert(0, p);
+            p = cameFrom[p];
+        }
+
+        pathList.Insert(0, startWaypoint);
+
+        return pathList;
+    }
+
     private bool IsNotAccesibleWaypoint(Waypoint waypoint) {
         bool hasCliffLeft = false;
         bool hasCliffRight = false;
@@ -197,5 +276,9 @@ public class WaypointGraph {
         }
 
         return waypointsOfType;
+    }
+
+    public float Distance(Waypoint a, Waypoint b) {
+        return Vector2.Distance(a.position, b.position);
     }
 }

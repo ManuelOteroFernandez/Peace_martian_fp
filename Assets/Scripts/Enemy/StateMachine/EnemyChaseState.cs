@@ -5,7 +5,7 @@ public class EnemyChaseState : EnemyState
     public override void Enter(EnemyController controller)
     {
         controller.StartChasing();
-        controller.animator.SetTrigger("isRunning");
+        //controller.animator.SetTrigger("isRunning");
     }
 
     public override void Update(EnemyController controller)
@@ -20,6 +20,10 @@ public class EnemyChaseState : EnemyState
             controller.ChangeState(new EnemyFallingState());
         }
 
+        if (controller.DistanceToOriginWaypoint() > controller.MaxDistanceFromOrigin || controller.CantReachTarget()) {
+            controller.ChangeState(new EnemyRetreatState());
+        }
+
         if (controller.IsTrappedEnemyInAttackRange() || (controller.IsTargetInAttackRange() && controller.IsGrounded() && controller.IsAttackCooldownReady())) {
             controller.ChangeState(new EnemyAttackState());
         }
@@ -27,6 +31,6 @@ public class EnemyChaseState : EnemyState
 
     public override void Exit(EnemyController controller)
     {
-        controller.animator.ResetTrigger("isRunning");
+        //controller.animator.ResetTrigger("isRunning");
     }
 }
