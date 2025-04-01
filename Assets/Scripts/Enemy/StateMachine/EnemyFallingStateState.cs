@@ -11,7 +11,7 @@ public class EnemyFallingState : EnemyState
     {
         if (controller.IsGrounded()){
             //controller.ResetVelocity();
-            controller.ChangeState(new EnemyIdleState());
+            controller.ChangeState(new EnemyChaseState());
         }
     }
 

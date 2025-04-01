@@ -22,33 +22,32 @@ public class RangeEnemyController : EnemyController {
     }
 
     public override void MoveEnemy() {
-        currentWaypoint = aiAgent.GetCurrentWaypoint();
-        nextWaypoint = currentWaypoint.bestNextWaypoint;
+        aiAgent.UpdateFieldFlowNextWaypoint();
 
-        if (nextWaypoint == null){
+        if (aiAgent.nextWaypoint == null){
             return;
         }
 
-        if (nextWaypoint.type == WaypointType.Cliff) {
-            if (!aiAgent.CanJumpFromCliff(nextWaypoint)) {
-                nextWaypoint = null;
+        if (aiAgent.nextWaypoint.type == WaypointType.Cliff) {
+            if (!aiAgent.CanJumpFromCliff(aiAgent.nextWaypoint)) {
+                aiAgent.nextWaypoint = null;
                 rigidbody2D.linearVelocity = Vector2.zero;
                 return;
             }
         }
 
-        Vector2 direction = nextWaypoint.position - currentWaypoint.position;
+        Vector2 direction = aiAgent.nextWaypoint.position - aiAgent.currentWaypoint.position;
         Flip(-direction.x);
         enemyPosition = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y);
 
-        if (IsGrounded() || currentWaypoint.type != WaypointType.Cliff) {
+        if (IsGrounded() || aiAgent.currentWaypoint.type != WaypointType.Cliff) {
             Vector2 horizontalVelocity = direction * chaseSpeed;
             rigidbody2D.linearVelocity = new Vector2(horizontalVelocity.x, rigidbody2D.linearVelocity.y);
         }
 
-        if (Vector2.Distance(enemyPosition, nextWaypoint.position) < 0.5f){
-            if (nextWaypoint.type == WaypointType.Ladder) {
-                transform.position = new Vector3(nextWaypoint.position.x, transform.position.y, 0);
+        if (Vector2.Distance(enemyPosition, aiAgent.nextWaypoint.position) < 0.5f){
+            if (aiAgent.nextWaypoint.type == WaypointType.Ladder) {
+                transform.position = new Vector3(aiAgent.nextWaypoint.position.x, transform.position.y, 0);
             }
             aiAgent.AdvanceToNextWaypoint();
         }

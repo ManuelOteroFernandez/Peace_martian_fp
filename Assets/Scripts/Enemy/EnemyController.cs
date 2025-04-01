@@ -31,16 +31,6 @@ public abstract class EnemyController : MonoBehaviour
     [SerializeField] protected float freeEnemyChance = 0.5f;
     protected float currentAttackCooldown;
 
-    [Header("AI Movement")]
-    [SerializeField] protected int patrolWaypointsRange = 2;
-    List<Waypoint> patrolRoute;
-    List<Waypoint> routeToOrigin;
-    int patrolWaypointIndex = 0;
-    int routeToOriginWaypointIndex = 0;
-    protected Waypoint currentWaypoint;
-    protected Waypoint nextWaypoint;
-    protected Waypoint originWaypoint;
-
     [Header("Target")]
     protected Transform target;
     protected Transform trappedEnemyTarget;
@@ -58,8 +48,7 @@ public abstract class EnemyController : MonoBehaviour
     }
 
     protected virtual void Start(){
-        patrolRoute = aiAgent.GetPatrolRoute(patrolWaypointsRange);
-        originWaypoint = aiAgent.GetCurrentWaypoint();
+        aiAgent.GetPatrolRoute();
         ChangeState(new EnemyPatrolState());
     }
 
@@ -83,83 +72,73 @@ public abstract class EnemyController : MonoBehaviour
 
     //TODO: Necesita ajuste
     public virtual void MoveEnemy(){
-        currentWaypoint = aiAgent.GetCurrentWaypoint();
-        nextWaypoint = currentWaypoint.bestNextWaypoint;
+        aiAgent.UpdateFieldFlowNextWaypoint();
 
-        if (nextWaypoint == null){
+        if (aiAgent.nextWaypoint == null){
             return;
         }
 
-        Vector2 direction = nextWaypoint.position - currentWaypoint.position;
+        Vector2 direction = aiAgent.DirectionToNextWaypoint();
         Flip(-direction.x);
         enemyPosition = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y);
 
-        if (IsGrounded() || currentWaypoint.type != WaypointType.Cliff) {
+        if (IsGrounded() || aiAgent.currentWaypoint.type != WaypointType.Cliff) {
             Vector2 horizontalVelocity = direction * chaseSpeed;
             rigidbody2D.linearVelocity = new Vector2(horizontalVelocity.x, rigidbody2D.linearVelocity.y);
         }
 
-        if (Vector2.Distance(enemyPosition, nextWaypoint.position) < 0.5f){
-            if (nextWaypoint.type == WaypointType.Ladder) {
-                transform.position = new Vector3(nextWaypoint.position.x, transform.position.y, 0);
+        if (Vector2.Distance(enemyPosition, aiAgent.nextWaypoint.position) < 0.5f){
+            if (aiAgent.nextWaypoint.type == WaypointType.Ladder) {
+                transform.position = new Vector3(aiAgent.nextWaypoint.position.x, transform.position.y, 0);
             }
             aiAgent.AdvanceToNextWaypoint();
         }
     }
 
     public void Patrol() {
-        currentWaypoint = aiAgent.GetCurrentWaypoint();
-        nextWaypoint = patrolRoute[patrolWaypointIndex];
+        aiAgent.UpdateNextPatrolWaypoint();
 
-        Vector2 direction = nextWaypoint.position - currentWaypoint.position;
+        Vector2 direction = aiAgent.DirectionToNextWaypoint();
         Flip(-direction.x);
         enemyPosition = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y);
 
         Vector2 horizontalVelocity = direction.normalized * patrolSpeed;
         rigidbody2D.linearVelocity = new Vector2(horizontalVelocity.x, rigidbody2D.linearVelocity.y);
 
-        if (Vector2.Distance(enemyPosition, nextWaypoint.position) < 0.5f){
-            if (patrolWaypointIndex + 1 == patrolRoute.Count) {
-                patrolWaypointIndex--;
-            } else {
-                patrolWaypointIndex++;
-            }
-
+        if (Vector2.Distance(enemyPosition, aiAgent.nextWaypoint.position) < 0.5f){
+            aiAgent.UpdatePatrolWaypointIndex();
             aiAgent.RelocateCurrentWaypoint();
         }
     }
 
     //TODO: Refactorizar
     public void ReturnToOrigin() {
-        if (!IsBackInOrigin()) {
+        if (!aiAgent.IsInOriginWaypoint()) {
             //Se calcula la ruta al origen si esta no existe
-            if (routeToOrigin == null) {
-                routeToOrigin = aiAgent.FindRouteToWaypoint(originWaypoint);
-            }
+            aiAgent.CalculateRouteToOrigin();
 
             //Evitamos un indexOutOfBoundsException
-            if (routeToOriginWaypointIndex >= routeToOrigin.Count) {
-                routeToOriginWaypointIndex = 0;
+            if (aiAgent.RouteIndexOutOfBounds()) {
+                aiAgent.ResetRouteToOriginWaypointIndex();
                 return;
             }
 
-            currentWaypoint = aiAgent.GetCurrentWaypoint();
-            nextWaypoint = routeToOrigin[routeToOriginWaypointIndex];
+            aiAgent.UpdateRouteToOriginNextWaypoint();
 
             //Si el enemigo se encuentra con una subida que no sea escalera, se queda patrullando en el sitio en el que está
-            if (nextWaypoint.type == WaypointType.Cliff && nextWaypoint.position.y > currentWaypoint.position.y){
-                originWaypoint = currentWaypoint;
-                patrolRoute = aiAgent.GetPatrolRoute(originWaypoint, patrolWaypointsRange);
+            if (aiAgent.nextWaypoint.type == WaypointType.Cliff && aiAgent.nextWaypoint.position.y > aiAgent.currentWaypoint.position.y){
+                aiAgent.UpdateOriginWaypoint(aiAgent.currentWaypoint);
+                aiAgent.GetPatrolRoute();
                 return;
             }
 
             enemyPosition = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y);
 
-            Vector2 direction = nextWaypoint.position - currentWaypoint.position;
+            Vector2 direction = aiAgent.nextWaypoint.position - aiAgent.currentWaypoint.position;
 
             //En caso de que la dirección sea cero, significa que el WP actual y el siguiente con el mismo, así que avanzamos en la lista.
             if (direction.Equals(Vector2.zero)) {
-                routeToOriginWaypointIndex++;
+                aiAgent.IncreaseRouteToOriginWaypointIndex();
                 return;
             }
 
@@ -167,14 +146,13 @@ public abstract class EnemyController : MonoBehaviour
             rigidbody2D.linearVelocity = direction.normalized * patrolSpeed;
 
             //Cuando el enemigo llega al siguiente WP, se actualiza el currentWaypoint
-            if (Vector2.Distance(enemyPosition, nextWaypoint.position) < 0.6f){
+            if (Vector2.Distance(enemyPosition, aiAgent.nextWaypoint.position) < 0.6f){
                 aiAgent.RelocateCurrentWaypoint();
             }
 
             //Cuando el enemigo llega al originWaypoint, se reinicia la ruta al origen y se vuelve a patrullar
-            if (currentWaypoint == originWaypoint) {
-                routeToOrigin = null;
-                routeToOriginWaypointIndex = 0;
+            if (aiAgent.IsInOriginWaypoint()) {
+                aiAgent.ResetRouteToOrigin();
             }
         }
     }
@@ -197,12 +175,8 @@ public abstract class EnemyController : MonoBehaviour
         return IsTargetInAttackRange(target);
     }
 
-    public bool IsBackInOrigin() {
-        return Vector2.Distance(currentWaypoint.position, originWaypoint.position) < 0.5f;
-    }
-
     public bool CantReachTarget() {
-        return nextWaypoint == null && !IsTargetInChaseRange();
+        return aiAgent.nextWaypoint == null && !IsTargetInChaseRange();
     }
 
     private bool IsTargetInAttackRange(Transform target) {
@@ -231,8 +205,12 @@ public abstract class EnemyController : MonoBehaviour
         return false;
     }
 
+    public bool IsBackInOrigin() {
+        return aiAgent.IsInOriginWaypoint();
+    }
+
     public float DistanceToOriginWaypoint() {
-        return Vector2.Distance(currentWaypoint.position, originWaypoint.position);
+        return aiAgent.DistanceToOriginWaypoint();
     }
 
     public bool ChooseToFreeEnemy() {
@@ -261,23 +239,6 @@ public abstract class EnemyController : MonoBehaviour
 
             Gizmos.color = Color.red;
             Gizmos.DrawLine(transform.position, transform.position + (Vector3)(direction * attackRange));
-        }
-
-        if (currentWaypoint != null)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawSphere(originWaypoint.position, 0.3f); // Dibuja el originWaypoint
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawSphere(currentWaypoint.position, 0.3f); // Dibuja el currentWaypoint
-            Gizmos.DrawLine(currentWaypoint.position, originWaypoint.position);
-
-            if (nextWaypoint != null)
-            {
-                Gizmos.color = Color.blue;
-                Gizmos.DrawSphere(nextWaypoint.position, 0.3f); // Dibuja el nextWaypoint
-                Gizmos.color = Color.cyan;
-                Gizmos.DrawLine(currentWaypoint.position, nextWaypoint.position); // Dibuja la conexión entre ellos
-            }
         }
     }
 
