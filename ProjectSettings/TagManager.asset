@@ -63,5 +63,8 @@ TagManager:
   - name: Projectiles
     uniqueID: 2597151169
     locked: 0
+  - name: PropsNear
+    uniqueID: 3311557217
+    locked: 0
   m_RenderingLayers:
   - Default
