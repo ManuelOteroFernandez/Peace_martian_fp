@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5366700975929824053}
   - component: {fileID: 2689918308463924091}
   - component: {fileID: 5326718275405889363}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: BigBubbleAttached
   m_TagString: BigBubbleTrap
   m_Icon: {fileID: 0}

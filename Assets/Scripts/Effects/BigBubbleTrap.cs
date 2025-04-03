@@ -14,6 +14,7 @@ public class BigBubbleTrap : MonoBehaviour
     [Header("Trapped Enemy")]
     private GameObject trappedEnemy;
     private Rigidbody2D enemyRigidbody2D;
+    private bool isBeingDestroyed = false;
 
     private void Awake() {
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -54,7 +55,18 @@ public class BigBubbleTrap : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("EnemyProjectile")) {
+            isBeingDestroyed = true;
             ReleaseEnemy();
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision){
+        if (isBeingDestroyed) {
+            return;
+        }
+
+        if (collision.CompareTag("Limits")) {
+            DestroyEnemy();
         }
     }
 
@@ -64,6 +76,11 @@ public class BigBubbleTrap : MonoBehaviour
         enemyRigidbody2D.angularVelocity = 0;
 
         trappedEnemy.GetComponent<EnemyHealth>().ReleaseFromBubble();
+        Destroy(gameObject);
+    }
+
+    public void DestroyEnemy() {
+        Destroy(trappedEnemy);
         Destroy(gameObject);
     }
 }
