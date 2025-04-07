@@ -17,12 +17,13 @@ public class LogicaOpciones : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            MostrarOpciones();
+            AlternarOpciones();
         }
     }
 
-    public void MostrarOpciones()
+    public void AlternarOpciones()
     {
-        panelOpciones.pantallaOpciones.SetActive(true);
+        bool estaActivo = panelOpciones.pantallaOpciones.activeSelf;
+        panelOpciones.pantallaOpciones.SetActive(!estaActivo);
     }
 }
