@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ControladorOpciones : MonoBehaviour
 {
+    public GameObject pantallaPausa;
     public GameObject pantallaOpciones;
 
     // Start is called before the first frame update

@@ -3674,6 +3674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb8aa931e46ad84a97da7b15b6680b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panelPausa: {fileID: 0}
   panelOpciones: {fileID: 0}
 --- !u!4 &1706789664
 Transform:
@@ -4199,14 +4200,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2245102610533203519, guid: 0be82bc9feb827d4793ec2a7920f6eb5, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2245102610533203519, guid: 0be82bc9feb827d4793ec2a7920f6eb5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2245102610533203519, guid: 0be82bc9feb827d4793ec2a7920f6eb5, type: 3}
       propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704216104654827725, guid: 0be82bc9feb827d4793ec2a7920f6eb5, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5140385968042486528, guid: 0be82bc9feb827d4793ec2a7920f6eb5, type: 3}
@@ -4251,7 +4256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5392220213472186228, guid: 0be82bc9feb827d4793ec2a7920f6eb5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5861653441421788222, guid: 0be82bc9feb827d4793ec2a7920f6eb5, type: 3}
       propertyPath: m_Name
@@ -4259,15 +4264,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7671863117601991158, guid: 0be82bc9feb827d4793ec2a7920f6eb5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7785645125764262888, guid: 0be82bc9feb827d4793ec2a7920f6eb5, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7785645125764262888, guid: 0be82bc9feb827d4793ec2a7920f6eb5, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629571206830454004, guid: 0be82bc9feb827d4793ec2a7920f6eb5, type: 3}
+      propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629571206830454004, guid: 0be82bc9feb827d4793ec2a7920f6eb5, type: 3}
+      propertyPath: m_TagString
+      value: opciones
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -12,6 +12,7 @@ TagManager:
   - EnemyAttack
   - opciones
   - EnemyProjectile
+  - pausa
   layers:
   - Default
   - TransparentFX

@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class LogicaOpciones : MonoBehaviour
 {
+    public ControladorOpciones panelPausa;
     public ControladorOpciones panelOpciones;
 
     // Start is called before the first frame update
     void Start()
     {
-        panelOpciones = GameObject.FindGameObjectWithTag("opciones").GetComponent<ControladorOpciones>();
+        panelPausa = GameObject.FindGameObjectWithTag("opciones").GetComponent<ControladorOpciones>();
+        panelOpciones = GameObject.FindGameObjectWithTag("pausa").GetComponent<ControladorOpciones>();
     }
 
     // Update is called once per frame
@@ -17,13 +19,13 @@ public class LogicaOpciones : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            AlternarOpciones();
+            AlternarPausa();
         }
     }
 
-    public void AlternarOpciones()
+    public void AlternarPausa()
     {
-        bool estaActivo = panelOpciones.pantallaOpciones.activeSelf;
-        panelOpciones.pantallaOpciones.SetActive(!estaActivo);
+        bool estaActivo = panelPausa.pantallaPausa.activeSelf;
+        panelPausa.pantallaPausa.SetActive(!estaActivo);
     }
 }
