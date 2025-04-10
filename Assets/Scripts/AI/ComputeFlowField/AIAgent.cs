@@ -1,11 +1,20 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
+using Vector2 = UnityEngine.Vector2;
 
 public class AIAgent : MonoBehaviour {
     private WaypointGenerator waypointGenerator;
-    Waypoint currentWaypoint;
+    public Waypoint currentWaypoint {get; set;}
+    public Waypoint originWaypoint {get; set;}
+    public Waypoint nextWaypoint {get; set;}
+    List<Waypoint> patrolRoute;
+    List<Waypoint> routeToOrigin;
+    int patrolWaypointIndex = 0;
+    public int routeToOriginWaypointIndex {get; private set;} = 0;
+    [SerializeField] protected int patrolWaypointsRange = 2;
 
     private void Awake() {
         waypointGenerator = GameObject.FindGameObjectWithTag("WaypointManager")?.GetComponent<WaypointGenerator>();
@@ -16,43 +25,10 @@ public class AIAgent : MonoBehaviour {
     //¿Corregido usando el spriteRenderer?
     private void Start() {
         currentWaypoint = waypointGenerator.GetGraph.FindClosestWaypoint(transform, transform.GetComponent<SpriteRenderer>());
+        originWaypoint = currentWaypoint;
     }
 
-    public void AdvanceToNextWaypoint() {
-        currentWaypoint = currentWaypoint.bestNextWaypoint;
-    }
-
-    public Vector2 GetCurrentDirection() {
-        return currentWaypoint.position - currentWaypoint.bestNextWaypoint.position;
-    }
-
-    public Waypoint GetCurrentWaypoint() {
-        return currentWaypoint;
-    }
-
-    public void RelocateCurrentWaypoint() {
-        currentWaypoint = waypointGenerator.GetGraph.FindClosestWaypoint(transform, transform.GetComponent<SpriteRenderer>());
-    }
-
-    public List<Waypoint> GetPatrolRoute(int range) {
-        List<Waypoint> groundWaypoints = waypointGenerator.GetGraph.waypoints
-            .Where(w => w.type == WaypointType.Ground && w.position.y == currentWaypoint.position.y)
-            .OrderBy(w => w.position.x)
-            .ToList();
-
-        int currentIndex = groundWaypoints.FindIndex(w => w == currentWaypoint);
-
-        if (currentIndex == -1) {
-            return new List<Waypoint>();
-        } 
-
-        Waypoint leftWaypoint = FindFurthestWaypoint(groundWaypoints, currentIndex, false, range);
-        Waypoint rightWaypoint = FindFurthestWaypoint(groundWaypoints, currentIndex, true, range);
-
-        return new List<Waypoint> { leftWaypoint, rightWaypoint };
-    }
-
-        public List<Waypoint> GetPatrolRoute(Waypoint originWaypoint, int range) {
+    public void GetPatrolRoute() {
         List<Waypoint> groundWaypoints = waypointGenerator.GetGraph.waypoints
             .Where(w => w.type == WaypointType.Ground && w.position.y == originWaypoint.position.y)
             .OrderBy(w => w.position.x)
@@ -61,30 +37,13 @@ public class AIAgent : MonoBehaviour {
         int currentIndex = groundWaypoints.FindIndex(w => w == originWaypoint);
 
         if (currentIndex == -1) {
-            return new List<Waypoint>();
+            patrolRoute = new List<Waypoint>();
         } 
 
-        Waypoint leftWaypoint = null;
-        if (currentIndex > 0) {
-            leftWaypoint = FindFurthestWaypoint(groundWaypoints, currentIndex, false, range);
-        } else {
-            leftWaypoint = groundWaypoints[0];
-        }
+        Waypoint leftWaypoint = FindFurthestWaypoint(groundWaypoints, currentIndex, false);;
+        Waypoint rightWaypoint = FindFurthestWaypoint(groundWaypoints, currentIndex, true);;
 
-        Waypoint rightWaypoint = null;
-        if (currentIndex < groundWaypoints.Count - 1) {
-            rightWaypoint = FindFurthestWaypoint(groundWaypoints, currentIndex, true, range);
-        } else {
-            rightWaypoint = groundWaypoints[groundWaypoints.Count - 1];
-        }
-        /*Waypoint leftWaypoint = FindFurthestWaypoint(groundWaypoints, currentIndex, false, range);
-        Waypoint rightWaypoint = FindFurthestWaypoint(groundWaypoints, currentIndex, true, range);*/
-
-        return new List<Waypoint> { leftWaypoint, rightWaypoint };
-    }
-
-    public List<Waypoint> FindRouteToWaypoint(Waypoint targetWaypoint) {
-        return waypointGenerator.GetGraph.FindPath(currentWaypoint, targetWaypoint);
+        patrolRoute = new List<Waypoint> { leftWaypoint, rightWaypoint };
     }
 
     private bool AreNeighbors(Waypoint a, Waypoint b) {
@@ -98,12 +57,12 @@ public class AIAgent : MonoBehaviour {
     /// <param name="direction">Dirección en la que se busca el nodo más alejado. false = izquierda, true derecha</param>
     /// <param name="range">Distancia medida en waypoints</param>
     /// <returns></returns>
-    private Waypoint FindFurthestWaypoint(List<Waypoint> waypoints, int currentIndex, bool directionRight, int range) {
+    private Waypoint FindFurthestWaypoint(List<Waypoint> waypoints, int currentIndex, bool directionRight) {
         Waypoint furthestWaypoint = currentWaypoint;
-        for (int i = 1; i <= range; i++)
+        for (int i = 1; i <= patrolWaypointsRange; i++)
         {
             int furthestIndex = directionRight ? currentIndex + i : currentIndex - i;
-            if (furthestIndex < 0 || !AreNeighbors(waypoints[furthestIndex], furthestWaypoint)) {
+            if (furthestIndex < 0 || furthestIndex >= waypoints.Count || !AreNeighbors(waypoints[furthestIndex], furthestWaypoint)) {
                 break;
             }
             furthestWaypoint = waypoints[furthestIndex];
@@ -112,7 +71,97 @@ public class AIAgent : MonoBehaviour {
         return furthestWaypoint;
     }
 
+    public void CalculateRouteToOrigin() {
+        if (routeToOrigin == null) {
+            routeToOrigin = waypointGenerator.GetGraph.FindPath(currentWaypoint, originWaypoint);
+        }
+    }
+
     public bool CanJumpFromCliff(Waypoint waypoint) {
         return waypoint.bestNextWaypoint.type == WaypointType.Ground;
+    }
+
+    public bool IsInOriginWaypoint() {
+        return currentWaypoint == originWaypoint;
+    }
+
+    public float DistanceToOriginWaypoint() {
+        return Vector2.Distance(currentWaypoint.position, originWaypoint.position);
+    }
+
+    public Vector2 DirectionToNextWaypoint() {
+        return nextWaypoint.position - currentWaypoint.position;
+    }
+
+    public void AdvanceToNextWaypoint() {
+        currentWaypoint = nextWaypoint;
+    }
+
+    public Vector2 GetCurrentDirection() {
+        return currentWaypoint.position - currentWaypoint.bestNextWaypoint.position;
+    }
+
+    public void UpdateFieldFlowNextWaypoint() {
+        nextWaypoint = currentWaypoint.bestNextWaypoint;
+    }
+
+    public void UpdateRouteToOriginNextWaypoint() {
+        nextWaypoint = routeToOrigin[routeToOriginWaypointIndex];
+    }
+
+    public void UpdateNextPatrolWaypoint() {
+        nextWaypoint = patrolRoute[patrolWaypointIndex];
+    }
+
+    public bool RouteIndexOutOfBounds() {
+        return routeToOriginWaypointIndex >= routeToOrigin.Count;
+    }
+
+    public void IncreaseRouteToOriginWaypointIndex() {
+        routeToOriginWaypointIndex++;
+    }
+
+    public void ResetRouteToOriginWaypointIndex() {
+        routeToOriginWaypointIndex = 0;
+    }
+
+    public void ResetRouteToOrigin() {
+        routeToOrigin = null;
+        ResetRouteToOriginWaypointIndex();
+    }
+
+    public void UpdatePatrolWaypointIndex() {
+        if (patrolWaypointIndex + 1 == patrolRoute.Count) {
+            patrolWaypointIndex--;
+        } else {
+            patrolWaypointIndex++;
+        }
+    }
+
+    public void UpdateOriginWaypoint(Waypoint waypoint) {
+        originWaypoint = waypoint;
+    }
+
+    public void RelocateCurrentWaypoint() {
+        currentWaypoint = waypointGenerator.GetGraph.FindClosestWaypoint(transform, transform.GetComponent<SpriteRenderer>());
+    }
+
+    private void OnDrawGizmos() {
+        if (currentWaypoint != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(originWaypoint.position, 0.3f); // Dibuja el originWaypoint
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawSphere(currentWaypoint.position, 0.3f); // Dibuja el currentWaypoint
+            Gizmos.DrawLine(currentWaypoint.position, originWaypoint.position);
+
+            if (nextWaypoint != null)
+            {
+                Gizmos.color = Color.blue;
+                Gizmos.DrawSphere(nextWaypoint.position, 0.3f); // Dibuja el nextWaypoint
+                Gizmos.color = Color.cyan;
+                Gizmos.DrawLine(currentWaypoint.position, nextWaypoint.position); // Dibuja la conexión entre ellos
+            }
+        }
     }
 }

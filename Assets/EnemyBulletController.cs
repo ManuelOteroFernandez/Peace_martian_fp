@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyBulletController : MonoBehaviour
@@ -7,8 +8,7 @@ public class EnemyBulletController : MonoBehaviour
     Vector2 direction;
     Rigidbody2D rigidbody2D;
 
-    void Start()
-    {
+    void Start() {
         rigidbody2D = GetComponent<Rigidbody2D>();
         Destroy(gameObject, lifetime);
     }
@@ -22,9 +22,14 @@ public class EnemyBulletController : MonoBehaviour
         this.direction = direction;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.transform.CompareTag("Player")) {
+    void OnTriggerEnter2D(Collider2D collision) {
+        if (!collision.CompareTag("Limits")){
+            Destroy(gameObject);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision){
+        if (collision.CompareTag("Limits")) {
             Destroy(gameObject);
         }
     }
