@@ -198,11 +198,11 @@ MonoBehaviour:
   chaseSpeed: 5
   patrolSpeed: 2
   chaseDistance: 15
-  attackRange: 8
+  maxDistanceFromOrigin: 5
+  attackRange: 10
   attackCooldown: 2
   attackDuration: 1
   freeEnemyChance: 0.5
-  patrolWaypointsRange: 2
   firePoint: {fileID: 1404923271042333976}
   projectilePrefab: {fileID: 2968890381435723290, guid: 816c926e79f55af48a887f0e7f36ef76, type: 3}
   aimOffsetAngle: 5
@@ -233,6 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4f862984eaddac4aab88526fe03b9b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  patrolWaypointsRange: 2
 --- !u!1 &6659726436407384069
 GameObject:
   m_ObjectHideFlags: 0
