@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d64229822b75aba4ab681826ad0af990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxBubblesResists: 4
+  maxBubblesResists: 3
   smallBubblePrefab: {fileID: 522427561513723392, guid: 87b5a64ed572b4640be404a8447d613d, type: 3}
   bigBubblePrefab: {fileID: 522427561513723392, guid: 85d4be932bf279144b39394557d1b724, type: 3}
 --- !u!114 &4175953136428278790
