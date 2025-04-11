@@ -5,7 +5,7 @@ namespace PlayerStateMachine{
     {
         public override int id {
             get {
-                return 3;
+                return (int)PlayerStateID.Jumping;
             }
         }
 

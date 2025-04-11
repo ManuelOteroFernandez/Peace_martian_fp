@@ -6,7 +6,7 @@ namespace PlayerStateMachine{
         float dashTime;
         public override int id {
             get {
-                return 4;
+                return (int)PlayerStateID.Dashing;
             }
         }
 
