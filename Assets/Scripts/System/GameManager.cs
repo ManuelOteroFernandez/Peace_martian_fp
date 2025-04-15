@@ -1,4 +1,8 @@
+using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     public static GameManager Instance { get; private set; }
@@ -25,7 +29,24 @@ public class GameManager : MonoBehaviour {
             SaveData saveData = SaveSystem.GetSaveData();
             //Calculo de la mitad de la altura del sprite del jugador para que no se quede bajo tierra
             Vector2 yOffset = player.GetComponent<SpriteRenderer>().bounds.extents.y / 2 * Vector2.up;
-            player.transform.position = saveData.lastCheckpoint + yOffset;
+
+            if (saveData.sceneIndex != SceneManager.GetActiveScene().buildIndex) {
+                SceneManager.LoadScene(saveData.sceneIndex);
+            }
+
+            if (saveData.lastCheckpointID != null) {
+                List<Checkpoint> checkpointList = FindObjectsByType<Checkpoint>(FindObjectsSortMode.None).ToList();
+
+                Checkpoint lastActiveCheckpoint = checkpointList.Find(checkpoint => checkpoint.CheckpointID == saveData.lastCheckpointID);
+                if (lastActiveCheckpoint != null) {
+                    player.transform.position = (Vector2) lastActiveCheckpoint.transform.position + yOffset;
+                } else {
+                    player.transform.position = Vector2.zero + yOffset;
+                }
+            } else {
+                player.transform.position = Vector2.zero + yOffset;
+            }
+
             if (saveData.hasArmor) {
                 player.GetComponent<PlayerController>().AddArmor();
             }
