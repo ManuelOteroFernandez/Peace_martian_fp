@@ -38,14 +38,14 @@ public class RangeEnemyController : EnemyController {
 
         Vector2 direction = aiAgent.nextWaypoint.position - aiAgent.currentWaypoint.position;
         Flip(-direction.x);
-        enemyPosition = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y);
+        enemyPosition = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y + enemyCenterOffset);
 
         if (IsGrounded() || aiAgent.currentWaypoint.type != WaypointType.Cliff) {
             Vector2 horizontalVelocity = direction * chaseSpeed;
             rigidbody2D.linearVelocity = new Vector2(horizontalVelocity.x, rigidbody2D.linearVelocity.y);
         }
 
-        if (Vector2.Distance(enemyPosition, aiAgent.nextWaypoint.position) < 0.5f){
+        if (Vector2.Distance(enemyPosition, aiAgent.nextWaypoint.position) < 0.1f){
             if (aiAgent.nextWaypoint.type == WaypointType.Ladder) {
                 transform.position = new Vector3(aiAgent.nextWaypoint.position.x, transform.position.y, 0);
             }

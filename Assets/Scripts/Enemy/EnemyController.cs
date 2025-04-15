@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class EnemyController : MonoBehaviour
@@ -23,6 +24,7 @@ public abstract class EnemyController : MonoBehaviour
     [SerializeField] protected float chaseDistance = 10f;
     [SerializeField] protected float maxDistanceFromOrigin = 5f;
     protected Vector2 enemyPosition;
+    protected float enemyCenterOffset = 0.5f;
 
     [Header("General Attack Parameters")]
     [SerializeField] protected float attackRange = 5f;
@@ -34,6 +36,11 @@ public abstract class EnemyController : MonoBehaviour
     [Header("Target")]
     protected Transform target;
     protected Transform trappedEnemyTarget;
+
+    [Header("Ground Check Properties")]
+    [SerializeField] LayerMask groundLayer;
+    [SerializeField] Vector2 groundCheckSize;
+    [SerializeField] Transform groundCheckPoint;
 
     public float AttackDuration => attackDuration;
     public float MaxDistanceFromOrigin => maxDistanceFromOrigin;
@@ -73,24 +80,55 @@ public abstract class EnemyController : MonoBehaviour
     //TODO: Necesita ajuste
     public virtual void MoveEnemy(){
         aiAgent.UpdateFieldFlowNextWaypoint();
+        if (aiAgent.nextWaypoint == null) return;
 
-        if (aiAgent.nextWaypoint == null){
-            return;
-        }
+        Waypoint current = aiAgent.currentWaypoint;
+        Waypoint next = aiAgent.nextWaypoint;
 
         Vector2 direction = aiAgent.DirectionToNextWaypoint();
         Flip(-direction.x);
-        enemyPosition = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y);
 
-        if (IsGrounded() || aiAgent.currentWaypoint.type != WaypointType.Cliff) {
-            Vector2 horizontalVelocity = direction * chaseSpeed;
-            rigidbody2D.linearVelocity = new Vector2(horizontalVelocity.x, rigidbody2D.linearVelocity.y);
+        enemyPosition = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y + enemyCenterOffset);
+
+        bool onLadder = current.type == WaypointType.Ladder;
+        bool goingToLadder = next.type == WaypointType.Ladder || next.bestNextWaypoint.type == WaypointType.Ladder;
+
+        if (onLadder || goingToLadder) {
+            float xTarget = next.position.x;
+            float xDiff = xTarget - transform.position.x;
+            float xVelocity = Mathf.Clamp(xDiff * 10f, -chaseSpeed, chaseSpeed);
+
+            float yVelocity = direction.y * chaseSpeed;
+
+            if (onLadder && next.type == WaypointType.Ladder) {
+                xVelocity = 0f;
+            }
+
+            if (rigidbody2D.gravityScale != 0f) {
+                rigidbody2D.gravityScale = 0f;
+            }
+
+            rigidbody2D.linearVelocity = new Vector2(xVelocity, yVelocity);
+        } else {
+            float velocityX = direction.x * chaseSpeed;
+            float velocityY = rigidbody2D.linearVelocity.y;
+
+            if (!(current.type == WaypointType.Cliff && next.type == WaypointType.Cliff)){
+                velocityY = 0;
+            }
+
+            if (rigidbody2D.gravityScale == 0f) {
+                rigidbody2D.gravityScale = 1f;
+            }
+
+            rigidbody2D.linearVelocity = new Vector2(velocityX, velocityY);
         }
 
-        if (Vector2.Distance(enemyPosition, aiAgent.nextWaypoint.position) < 0.5f){
+        if (Vector2.Distance(enemyPosition, aiAgent.nextWaypoint.position) < 0.1f){
             if (aiAgent.nextWaypoint.type == WaypointType.Ladder) {
                 transform.position = new Vector3(aiAgent.nextWaypoint.position.x, transform.position.y, 0);
             }
+
             aiAgent.AdvanceToNextWaypoint();
         }
     }
@@ -100,12 +138,12 @@ public abstract class EnemyController : MonoBehaviour
 
         Vector2 direction = aiAgent.DirectionToNextWaypoint();
         Flip(-direction.x);
-        enemyPosition = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y);
+        enemyPosition = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y + enemyCenterOffset);
 
         Vector2 horizontalVelocity = direction.normalized * patrolSpeed;
         rigidbody2D.linearVelocity = new Vector2(horizontalVelocity.x, rigidbody2D.linearVelocity.y);
 
-        if (Vector2.Distance(enemyPosition, aiAgent.nextWaypoint.position) < 0.5f){
+        if (Vector2.Distance(enemyPosition, aiAgent.nextWaypoint.position) < 0.1f){
             aiAgent.UpdatePatrolWaypointIndex();
             aiAgent.RelocateCurrentWaypoint();
         }
@@ -132,7 +170,7 @@ public abstract class EnemyController : MonoBehaviour
                 return;
             }
 
-            enemyPosition = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y);
+            enemyPosition = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y + enemyCenterOffset);
 
             Vector2 direction = aiAgent.nextWaypoint.position - aiAgent.currentWaypoint.position;
 
@@ -146,7 +184,7 @@ public abstract class EnemyController : MonoBehaviour
             rigidbody2D.linearVelocity = direction.normalized * patrolSpeed;
 
             //Cuando el enemigo llega al siguiente WP, se actualiza el currentWaypoint
-            if (Vector2.Distance(enemyPosition, aiAgent.nextWaypoint.position) < 0.6f){
+            if (Vector2.Distance(enemyPosition, aiAgent.nextWaypoint.position) < 0.1f){
                 aiAgent.RelocateCurrentWaypoint();
             }
 
@@ -164,7 +202,11 @@ public abstract class EnemyController : MonoBehaviour
     }
 
     public bool IsGrounded() {
-        return !enemyHealth.IsInBubble() && rigidbody2D.linearVelocityY == 0;
+        return !enemyHealth.IsInBubble() && Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0, groundLayer);
+    }
+
+    public bool IsFalling() {
+        return aiAgent.currentWaypoint.type == WaypointType.Cliff && !IsGrounded();
     }
 
     public bool IsTargetInChaseRange() {
@@ -240,6 +282,10 @@ public abstract class EnemyController : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawLine(transform.position, transform.position + (Vector3)(direction * attackRange));
         }
+
+        //Dibuja el área de detección del suelo para depuración
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(groundCheckPoint.position, groundCheckSize);
     }
 
     public abstract void EnemyAttack();

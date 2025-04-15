@@ -127,9 +127,15 @@ public class WaypointGenerator : MonoBehaviour {
             return;
         }
 
-        Gizmos.color = Color.blue;
-
         foreach (var waypoint in graph.waypoints) {
+            if (waypoint.type == WaypointType.Ground) {
+                Gizmos.color = Color.blue;
+            } else if (waypoint.type == WaypointType.Ladder) {
+                Gizmos.color = Color.yellow;
+            } else if (waypoint.type == WaypointType.Cliff) {
+                Gizmos.color = Color.red;
+            }
+
             Gizmos.DrawSphere(waypoint.position, 0.1f);
 
             foreach (var neighbor in waypoint.neighbors) {
