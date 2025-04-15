@@ -12,18 +12,19 @@ public class EnemyChaseState : EnemyState
 
         if (controller.enemyHealth.IsInBubble()) {
             controller.ChangeState(new EnemyBubbleTrappedState());
-        }
+        } else {
+            if (controller.IsFalling()) {
+                controller.ChangeState(new EnemyFallingState());
+            }
 
-        if (controller.IsFalling()) {
-            controller.ChangeState(new EnemyFallingState());
-        }
+            if (controller.DistanceToOriginWaypoint() > controller.MaxDistanceFromOrigin || controller.CantReachTarget()) {
+                controller.ChangeState(new EnemyRetreatState());
+            }
 
-        if (controller.DistanceToOriginWaypoint() > controller.MaxDistanceFromOrigin || controller.CantReachTarget()) {
-            controller.ChangeState(new EnemyRetreatState());
-        }
-
-        if (controller.IsTrappedEnemyInAttackRange() || (controller.IsTargetInAttackRange() && controller.IsGrounded() && controller.IsAttackCooldownReady())) {
-            controller.ChangeState(new EnemyAttackState());
+            if ((controller is RangeEnemyController) && controller.IsTrappedEnemyInAttackRange() 
+                || (controller.IsTargetInAttackRange() && controller.IsGrounded() && controller.IsAttackCooldownReady())) {
+                controller.ChangeState(new EnemyAttackState());
+            }
         }
     }
 
