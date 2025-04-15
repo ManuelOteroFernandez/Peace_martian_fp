@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 904781585685772269}
   - component: {fileID: 2274722259668000685}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: Weapon
   m_TagString: EnemyAttack
   m_Icon: {fileID: 0}
