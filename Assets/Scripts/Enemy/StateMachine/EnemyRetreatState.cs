@@ -4,7 +4,7 @@ public class EnemyRetreatState : EnemyState
 {
     public override void Enter(EnemyController controller)
     {
-        //controller.animator.SetTrigger("isRunning");
+        controller.animator.SetTrigger("isRunning");
     }
 
     public override void Update(EnemyController controller)
@@ -30,6 +30,6 @@ public class EnemyRetreatState : EnemyState
 
     public override void Exit(EnemyController controller)
     {
-        //controller.animator.ResetTrigger("isRunning");
+        controller.animator.ResetTrigger("isRunning");
     }
 }

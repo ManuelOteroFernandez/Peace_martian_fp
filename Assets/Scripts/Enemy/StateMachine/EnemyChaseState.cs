@@ -4,7 +4,7 @@ public class EnemyChaseState : EnemyState
 {
     public override void Enter(EnemyController controller) {
         controller.StartChasing();
-        //controller.animator.SetTrigger("isRunning");
+        controller.animator.SetTrigger("isRunning");
     }
 
     public override void Update(EnemyController controller) {
@@ -28,7 +28,9 @@ public class EnemyChaseState : EnemyState
         }
     }
 
-    public override void Exit(EnemyController controller) {
-        //controller.animator.ResetTrigger("isRunning");
+
+    public override void Exit(EnemyController controller)
+    {
+        controller.animator.ResetTrigger("isRunning");
     }
 }
