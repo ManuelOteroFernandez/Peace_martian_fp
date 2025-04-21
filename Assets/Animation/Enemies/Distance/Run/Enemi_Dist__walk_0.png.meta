@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0ea5f68b68ade28449a20f529230e156
+guid: 64518be81c8898d43b324c613c730657
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5932412691128237095
-    second: jump_t_Martian_Chibi_3_0
+      213: -2257938230360127291
+    second: Enemi_Dist__walk_0_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,7 +48,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jump_t_Martian_Chibi_3_0
+      name: Enemi_Dist__walk_0_0
       rect:
         serializedVersion: 2
-        x: 18
-        y: 22
-        width: 200
-        height: 210
+        x: 66
+        y: 15
+        width: 136
+        height: 205
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 72cb7bb49e9245250800000000000000
-      internalID: 5932412691128237095
+      spriteID: 5c84c9e74213aa0e0800000000000000
+      internalID: -2257938230360127291
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      jump_t_Martian_Chibi_3_0: 5932412691128237095
+      Enemi_Dist__walk_0_0: -2257938230360127291
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
