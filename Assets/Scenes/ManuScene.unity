@@ -444,7 +444,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.3071835, y: 5.0475354, z: -9.968524}
+  m_LocalPosition: {x: 0.24058276, y: 5.0475354, z: -9.968524}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2910,6 +2910,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalMovementSpeed: 500
+  dashUnlocked: 0
+  doubleJumpUnlocked: 0
+  hasArmor: 0
   dashSpeed: 1000
   dashDuration: 0.2
   dashCd: 1
