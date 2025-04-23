@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour {
             if (saveData.hasDash) {
                 player.GetComponent<PlayerController>().UnlockDash();
             }
+
+            RemovePreviousEnemies(player.transform);
         }
     }
 
@@ -65,6 +67,15 @@ public class GameManager : MonoBehaviour {
         SaveData saveData = SaveSystem.GetSaveData();
         foreach (int weaponID in saveData.unlockedWeaponsId) {
             weaponDatabase.LoadWeapon(weaponID);
+        }
+    }
+
+    public void RemovePreviousEnemies(Transform playerTransform) {
+        List<GameObject> enemies = GameObject.FindGameObjectsWithTag("Enemy").ToList();
+        foreach (GameObject enemy in enemies) {
+            if (enemy.transform.position.x < playerTransform.position.x) {
+                Destroy(enemy);
+            }
         }
     }
 }
