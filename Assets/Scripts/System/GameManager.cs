@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour {
     void Start() {
         RespawnPlayer();
         LoadUnlockedWeapons();
+        PlayMusic();
     }
 
     public void RespawnPlayer() {
@@ -76,6 +77,24 @@ public class GameManager : MonoBehaviour {
             if (enemy.transform.position.x < playerTransform.position.x) {
                 Destroy(enemy);
             }
+        }
+    }
+
+    void PlayMusic() {
+        switch (SceneManager.GetActiveScene().buildIndex)
+        {
+            case -1:
+                AudioManager.Instance.PlayMusicMainMenu();
+                break;
+            case 0:
+                AudioManager.Instance.PlayMusic(AudioManager.Instance.level1Theme);
+                break;
+            case 2:
+                AudioManager.Instance.PlayMusic(AudioManager.Instance.level2Theme);
+                break;
+            case 3:
+                AudioManager.Instance.PlayMusic(AudioManager.Instance.level3Theme);
+                break;
         }
     }
 }
