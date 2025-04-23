@@ -167,6 +167,7 @@ public class PlayerController : MonoBehaviour
 
     public void Dash() {
         if (canDash) {
+            gameObject.layer = LayerMask.NameToLayer("Invulnerable");
             dashCurrentCd = dashCd;
             canDash = false;
             //Desactivamos la gravedad para no caer durante un dash aéreo
@@ -183,6 +184,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void EndDash() {
+        gameObject.layer = LayerMask.NameToLayer("Player");
         rigidbody2D.gravityScale = gravityScale;
         rigidbody2D.linearVelocity = new Vector2(0, 0);
     }
