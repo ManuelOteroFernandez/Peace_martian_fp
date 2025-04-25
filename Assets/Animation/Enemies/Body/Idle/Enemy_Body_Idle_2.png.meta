@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 12782d8960a35f64687d92b0cb049d1b
+guid: 922f41733f80b0b4cb733ac54ef693e2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1166227510392200495
-    second: Enemy_Body_climb0000_0
+      213: -4601874083257485754
+    second: Enemy_Body_Idle_2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Enemy_Body_climb0000_0
+      name: Enemy_Body_Idle_2_0
       rect:
         serializedVersion: 2
-        x: 118
-        y: 26
-        width: 72
-        height: 231
+        x: 75
+        y: 14
+        width: 143
+        height: 209
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1d2e8cb124ab0dfe0800000000000000
-      internalID: -1166227510392200495
+      spriteID: 6467c5e27ebd220c0800000000000000
+      internalID: -4601874083257485754
       vertices: []
       indices: 
       edges: []
