@@ -10,7 +10,9 @@ TagManager:
   - BigBubbleTrap
   - Enemy
   - EnemyAttack
+  - opciones
   - EnemyProjectile
+  - pausa
   layers:
   - Default
   - TransparentFX
@@ -27,7 +29,7 @@ TagManager:
   - PlayerAttack
   - EnemyAttack
   - TrappedEnemies
-  - 
+  - Invulnerable
   - 
   - 
   - 

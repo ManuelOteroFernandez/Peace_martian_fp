@@ -23,8 +23,8 @@ public abstract class EnemyController : MonoBehaviour
     [SerializeField] protected float patrolSpeed = 2f;
     [SerializeField] protected float chaseDistance = 10f;
     [SerializeField] protected float maxDistanceFromOrigin = 5f;
+    [SerializeField] protected float enemyCenterOffset = 0.5f;
     protected Vector2 enemyPosition;
-    protected float enemyCenterOffset = 0.5f;
 
     [Header("General Attack Parameters")]
     [SerializeField] protected float attackRange = 5f;

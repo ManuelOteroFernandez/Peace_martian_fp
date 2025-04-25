@@ -25,6 +25,7 @@ public class RangeEnemyController : EnemyController {
         aiAgent.UpdateFieldFlowNextWaypoint();
 
         if (aiAgent.nextWaypoint == null){
+            rigidbody2D.linearVelocity = Vector2.zero;
             return;
         }
 
@@ -65,6 +66,7 @@ public class RangeEnemyController : EnemyController {
         float randomAimOffset = Random.Range(-aimOffsetAngle, aimOffsetAngle);
 
         Vector2 direction = (target.position - transform.position).normalized;
+        Flip(-direction.x);
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         float finalAngle = angle + randomAimOffset;
