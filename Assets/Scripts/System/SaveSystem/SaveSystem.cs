@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 //TODO: Refactorizar todo el sistema de checkpoints y guardado para abstraerlo y hacerlo más escalable
 public static class SaveSystem {
@@ -31,11 +32,12 @@ public static class SaveSystem {
     }
 
     // Setear nuevo checkpoint y estado de hasArmor
-    public static void SetCheckpoint(Vector2 checkpoint, string checkpointID, PlayerController player) {
-        saveData.lastCheckpoint = checkpoint;
+    public static void SetCheckpoint(string checkpointID, PlayerController player) {
+        saveData.lastCheckpointID = checkpointID;
         saveData.hasArmor = player.HasArmor;
         saveData.hasDoubleJump = player.DoubleJumpUnlocked;
         saveData.hasDash = player.DashUnlocked;
+        saveData.sceneIndex = SceneManager.GetActiveScene().buildIndex;
         if (!saveData.activatedCheckpoints.Contains(checkpointID)) {
             saveData.activatedCheckpoints.Add(checkpointID);
         }

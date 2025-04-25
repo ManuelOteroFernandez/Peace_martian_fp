@@ -5,7 +5,7 @@ namespace PlayerStateMachine{
     {
         public override int id {
             get {
-                return 0;
+                return (int)PlayerStateID.Idle;
             }
         }
         public override void Enter(PlayerController controller) {

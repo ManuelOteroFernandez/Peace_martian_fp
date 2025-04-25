@@ -5,12 +5,13 @@ namespace PlayerStateMachine{
     {
         public override int id {
             get {
-                return 3;
+                return (int)PlayerStateID.Jumping;
             }
         }
 
         public override void Enter(PlayerController controller) {
             controller.animator.SetInteger("currentStateId", id);
+            controller.animator.SetTrigger("isJumping");
             Jump(controller);
         }
 

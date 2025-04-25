@@ -5,6 +5,8 @@ public class Checkpoint : MonoBehaviour
 {
     [SerializeField] string checkpointID;
 
+    public string CheckpointID => checkpointID;
+
     void OnValidate() {
         if (Application.isPlaying) {
             ValidateUniqueID();
@@ -34,7 +36,7 @@ public class Checkpoint : MonoBehaviour
             if (!SaveSystem.IsCheckpointActive(checkpointID)) {
                 PlayerController player = collision.GetComponent<PlayerController>();
                 if (player != null) {
-                    SaveSystem.SetCheckpoint(transform.position, checkpointID, player);
+                    SaveSystem.SetCheckpoint(checkpointID, player);
                     Debug.Log("Checkpoint activado: " + checkpointID);
                     DisableCheckpoint();
                 }

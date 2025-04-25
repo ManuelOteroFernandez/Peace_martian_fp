@@ -21,6 +21,39 @@ public class RangeEnemyController : EnemyController {
         base.FixedUpdate();
     }
 
+    public override void MoveEnemy() {
+        aiAgent.UpdateFieldFlowNextWaypoint();
+
+        if (aiAgent.nextWaypoint == null){
+            rigidbody2D.linearVelocity = Vector2.zero;
+            return;
+        }
+
+        if (aiAgent.nextWaypoint.type == WaypointType.Cliff) {
+            if (!aiAgent.CanJumpFromCliff(aiAgent.nextWaypoint)) {
+                aiAgent.nextWaypoint = null;
+                rigidbody2D.linearVelocity = Vector2.zero;
+                return;
+            }
+        }
+
+        Vector2 direction = aiAgent.nextWaypoint.position - aiAgent.currentWaypoint.position;
+        Flip(-direction.x);
+        enemyPosition = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y + enemyCenterOffset);
+
+        if (IsGrounded() || aiAgent.currentWaypoint.type != WaypointType.Cliff) {
+            Vector2 horizontalVelocity = direction * chaseSpeed;
+            rigidbody2D.linearVelocity = new Vector2(horizontalVelocity.x, rigidbody2D.linearVelocity.y);
+        }
+
+        if (Vector2.Distance(enemyPosition, aiAgent.nextWaypoint.position) < 0.1f){
+            if (aiAgent.nextWaypoint.type == WaypointType.Ladder) {
+                transform.position = new Vector3(aiAgent.nextWaypoint.position.x, transform.position.y, 0);
+            }
+            aiAgent.AdvanceToNextWaypoint();
+        }
+    }
+
     public override void EnemyAttack() {
         Transform target = this.target;
 
@@ -33,6 +66,7 @@ public class RangeEnemyController : EnemyController {
         float randomAimOffset = Random.Range(-aimOffsetAngle, aimOffsetAngle);
 
         Vector2 direction = (target.position - transform.position).normalized;
+        Flip(-direction.x);
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         float finalAngle = angle + randomAimOffset;
@@ -51,5 +85,4 @@ public class RangeEnemyController : EnemyController {
 
         currentAttackCooldown = attackCooldown;
     }
-
 }
