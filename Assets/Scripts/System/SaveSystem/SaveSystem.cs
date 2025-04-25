@@ -54,4 +54,9 @@ public static class SaveSystem {
     public static bool IsCheckpointActive(string checkpointID) {
         return saveData.activatedCheckpoints.Contains(checkpointID);
     }
+
+    public static void ClearData() {
+        saveData = new SaveData();
+        SaveGame();
+    }
 }
