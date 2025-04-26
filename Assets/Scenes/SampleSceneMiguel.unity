@@ -1688,6 +1688,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &675810467
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 675810468}
+  m_Layer: 0
+  m_Name: Cambio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &675810468
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675810467}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 859.8649, y: 516.13324, z: 4.8280582}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &710251939
 GameObject:
   m_ObjectHideFlags: 0
@@ -9577,7 +9608,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxSource: {fileID: 1645813532}
-  musicSource: {fileID: 0}
+  introSource: {fileID: 0}
+  audioSource: {fileID: 0}
+  menuTheme1: {fileID: 0}
+  menuTheme2: {fileID: 0}
+  level1Theme: {fileID: 0}
+  level2Theme: {fileID: 0}
+  level3Theme: {fileID: 0}
   minPitch: 0.9
   maxPitch: 1.2
 --- !u!1 &1546433015
@@ -10257,6 +10294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalMovementSpeed: 500
+  airHorizontalMovementSpeed: 0
   dashUnlocked: 0
   doubleJumpUnlocked: 0
   hasArmor: 0
@@ -16782,3 +16820,4 @@ SceneRoots:
   - {fileID: 563648064}
   - {fileID: 1706789664}
   - {fileID: 1780669245}
+  - {fileID: 675810468}
