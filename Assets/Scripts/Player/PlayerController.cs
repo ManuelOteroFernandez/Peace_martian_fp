@@ -18,6 +18,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool dashUnlocked;
     [SerializeField] bool doubleJumpUnlocked;
 
+    [Header("Effects")]
+    [SerializeField] GameObject dashEffectPrefab;
+    [SerializeField] GameObject doubleJumpEffectPrefab;
+    [SerializeField] Vector2 dashEffectOffset = new Vector2(-2, 0);
+    [SerializeField] Vector2 doubleJumpEffectOffset = new Vector2 (-1, -1.5f);
+
     [Header("HP")]
     [SerializeField] bool hasArmor;
 
@@ -180,6 +186,9 @@ public class PlayerController : MonoBehaviour
             } else {
                 rigidbody2D.linearVelocity = new Vector2(Time.fixedDeltaTime * Mathf.Sign(transform.localScale.x) * dashSpeed, 0);
             }
+
+            //Efecto de dash
+            CastDashEffect();
         }
     }
 
@@ -304,6 +313,26 @@ public class PlayerController : MonoBehaviour
     public void Die() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         GameManager.Instance.RespawnPlayer();
+    }
+
+    public void CastDashEffect() {
+        Vector3 spawnPos = (Vector2)transform.position + dashEffectOffset * transform.localScale.x;
+        spawnPos.z = -10;
+
+        int particleScale = rigidbody2D.linearVelocityX > 0 ? -1 : 1;
+
+        ParticleSystem ps = dashEffectPrefab.GetComponent<ParticleSystem>();
+        var velocity = ps.velocityOverLifetime;
+        velocity.x = new ParticleSystem.MinMaxCurve(0.5f * particleScale);
+
+        Instantiate(dashEffectPrefab, spawnPos, Quaternion.identity, transform);
+    }
+
+    public void CastJumpEffect() {
+         Vector3 spawnPos = (Vector2)transform.position + new Vector2(doubleJumpEffectOffset.x * transform.localScale.x, doubleJumpEffectOffset.y);
+         spawnPos.z = -10;
+
+         Instantiate(doubleJumpEffectPrefab, spawnPos, doubleJumpEffectPrefab.transform.rotation, transform);
     }
 
 
