@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour {
             //Calculo de la mitad de la altura del sprite del jugador para que no se quede bajo tierra
             Vector2 yOffset = player.GetComponent<SpriteRenderer>().bounds.extents.y / 2 * Vector2.up;
 
-            if (saveData.sceneIndex != SceneManager.GetActiveScene().buildIndex) {
+            if (saveData.sceneIndex != 0 && saveData.sceneIndex != SceneManager.GetActiveScene().buildIndex) {
                 SceneManager.LoadScene(saveData.sceneIndex);
             }
 

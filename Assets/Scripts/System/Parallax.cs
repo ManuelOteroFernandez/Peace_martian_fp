@@ -18,7 +18,7 @@ public class Parallax : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(cameraTransform.position.x, initialPos.y, initialPos.z);
+        transform.position = new Vector3(cameraTransform.position.x, initialPos.y, 0);
         mat.mainTextureOffset = new Vector2(cameraTransform.position.x * parallaxSpeed, 0);
     }
 }
