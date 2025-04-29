@@ -1,19 +1,15 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LogicaPausa : MonoBehaviour
 {
     public GameObject ManuPause;
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            PausarJuego();
-        }
-    }
 
     public void PausarJuego()
     {
+        // No se puede pausar en el menu de inicio
+        if (SceneManager.GetActiveScene().buildIndex == 0) return;
+
         if (Time.timeScale == 1)
         {
             Time.timeScale = 0;
