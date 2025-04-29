@@ -18,6 +18,7 @@ public class MenuSystem : MonoBehaviour
     public void NuevaPartida()
     {
         LevelManager.StartPlay();
+        gameObject.SetActive(false);
     }
 
     public void OpcionesAJugar()
