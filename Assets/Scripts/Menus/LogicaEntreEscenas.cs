@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class LogicaEntreEscenas : MonoBehaviour
 {
+    public GameObject MenuOpciones;
     private void Awake()
     {
         var noDestruirEntreEscenas = FindObjectsOfType<LogicaEntreEscenas>();
@@ -16,15 +19,16 @@ public class LogicaEntreEscenas : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void SetActiveOptionMenu(GameObject LastMenu,bool value)
     {
+        if(MenuOpciones.IsUnityNull()){
+            Debug.LogError("LogicaEntreEscenas error: ManuOpciones == null");
+            return;
+        }
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        MenuOpciones.SetActive(value);
+        OptionsReturn optionsRet = MenuOpciones.GetComponent<OptionsReturn>();
+        optionsRet.SetLastMenu(LastMenu);
 
     }
 }

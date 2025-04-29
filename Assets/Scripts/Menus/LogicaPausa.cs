@@ -2,12 +2,7 @@ using UnityEngine;
 
 public class LogicaPausa : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
+    public GameObject ManuPause;
     // Update is called once per frame
     void Update()
     {
@@ -22,10 +17,12 @@ public class LogicaPausa : MonoBehaviour
         if (Time.timeScale == 1)
         {
             Time.timeScale = 0;
+            ManuPause.SetActive(true);
         }
         else
         {
             Time.timeScale = 1;
+            ManuPause.SetActive(false);
         }
 
     }
