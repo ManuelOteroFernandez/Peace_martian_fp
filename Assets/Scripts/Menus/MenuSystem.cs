@@ -4,10 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class MenuSystem : MonoBehaviour
 {
-    /*
+    
     public void Jugar()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        LevelManager.RestoreLastPlay();
     }
 
     public void Opciones()
@@ -15,16 +15,17 @@ public class MenuSystem : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
 
-    public void Inicio()
+    public void NuevaPartida()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+        LevelManager.StartPlay();
+        gameObject.SetActive(false);
     }
 
     public void OpcionesAJugar()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
-    */
+    
 
     public void CambiarEscenaInicio()
     {

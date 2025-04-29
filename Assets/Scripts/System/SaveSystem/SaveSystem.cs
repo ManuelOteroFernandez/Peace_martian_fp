@@ -45,6 +45,15 @@ public static class SaveSystem {
         SaveGame();
     }
 
+    public static void SetSceneIndex(int Index)
+    {        
+        if (0 < Index &&  Index < SceneManager.sceneCountInBuildSettings){
+            saveData = GetSaveData();
+            saveData.sceneIndex = Index;
+            SaveGame();
+        }
+    }
+
     public static void SetUnlockedWeapon(int weaponID) {
         if (!saveData.unlockedWeaponsId.Contains(weaponID)) {
             saveData.unlockedWeaponsId.Add(weaponID);

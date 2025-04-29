@@ -13,6 +13,7 @@ TagManager:
   - opciones
   - EnemyProjectile
   - pausa
+  - EntreEscenas
   layers:
   - Default
   - TransparentFX
