@@ -54,8 +54,8 @@ MonoBehaviour:
   menuTheme1: {fileID: 8300000, guid: b5d6f55ee9532164f96351a93e86c8dd, type: 3}
   menuTheme2: {fileID: 8300000, guid: 198dc2f3042ac1044a56a9a621f0259e, type: 3}
   level1Theme: {fileID: 8300000, guid: e950c8c03f00f4b46805c54145924586, type: 3}
-  level2Theme: {fileID: 0}
-  level3Theme: {fileID: 0}
+  level2Theme: {fileID: 8300000, guid: e950c8c03f00f4b46805c54145924586, type: 3}
+  level3Theme: {fileID: 8300000, guid: e950c8c03f00f4b46805c54145924586, type: 3}
   minPitch: 0.9
   maxPitch: 1.2
 --- !u!114 &8451941626795908444
@@ -80,7 +80,7 @@ AudioSource:
   m_GameObject: {fileID: 2630662869219134907}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -1101583959916205322, guid: 26ede92fe34f4074ca028044d839b9e1, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -177,7 +177,7 @@ AudioSource:
   m_GameObject: {fileID: 2630662869219134907}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8868308754808544393, guid: 26ede92fe34f4074ca028044d839b9e1, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -274,7 +274,7 @@ AudioSource:
   m_GameObject: {fileID: 2630662869219134907}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8868308754808544393, guid: 26ede92fe34f4074ca028044d839b9e1, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
