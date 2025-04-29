@@ -37,12 +37,8 @@ public class GameManager : MonoBehaviour {
                 Checkpoint lastActiveCheckpoint = checkpointList.Find(checkpoint => checkpoint.CheckpointID == saveData.lastCheckpointID);
                 if (lastActiveCheckpoint != null) {
                     player.transform.position = (Vector2) lastActiveCheckpoint.transform.position + yOffset;
-                } else {
-                    player.transform.position = Vector2.zero + yOffset;
-                }
-            } else {
-                player.transform.position = Vector2.zero + yOffset;
-            }
+                } 
+            } 
 
             if (saveData.hasArmor) {
                 player.GetComponent<PlayerController>().AddArmor();

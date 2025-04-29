@@ -13,11 +13,17 @@ public static class LevelManager {
     }
 
     public static void NextLevel() {
+        SceneManager.LoadScene(getNextLevelIndex());
+    }
+
+    public static int getNextLevelIndex()
+    {
         int NextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         if (NextSceneIndex > 3)
-            SceneManager.LoadScene(0);
-        else
-            SceneManager.LoadScene(NextSceneIndex);
+        {
+            return 0;
+        }
+        return NextSceneIndex;
     }
 
     public static void StartPlay() {
