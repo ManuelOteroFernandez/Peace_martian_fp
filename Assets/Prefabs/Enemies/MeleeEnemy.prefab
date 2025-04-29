@@ -193,9 +193,9 @@ SpriteRenderer:
   m_SortingLayerID: -1438841367
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: -3776344444533854117, guid: 4d3c4e990c5a9974a9d51555f3621c1d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 2}
@@ -214,7 +214,7 @@ Animator:
   m_GameObject: {fileID: 5825225980843053711}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5ff8a0663c489b14b85583f30e29e8d6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -309,6 +309,7 @@ MonoBehaviour:
   patrolSpeed: 2
   chaseDistance: 10
   maxDistanceFromOrigin: 5
+  enemyCenterOffset: 0.5
   attackRange: 2
   attackCooldown: 2
   attackDuration: 1
