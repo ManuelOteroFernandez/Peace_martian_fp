@@ -23,9 +23,10 @@ public class AIAgent : MonoBehaviour {
     //Esto provoca que a veces el movimiento resulte en un movimiento negativo en el eje Y cuando queremos movimiento en el eje X. 
     //Por culpa de esto, el enemigo se queda bloqueado en secciones donde hay Ladders o Cliffs.
     //¿Corregido usando el spriteRenderer?
-    private void Start() {
+    public void Initialize() {
         currentWaypoint = waypointGenerator.GetGraph.FindClosestWaypoint(transform, transform.GetComponent<SpriteRenderer>());
         originWaypoint = currentWaypoint;
+        GetPatrolRoute();
     }
 
     public void GetPatrolRoute() {
