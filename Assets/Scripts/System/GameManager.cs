@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     public static GameManager Instance { get; private set; }
+    SceneFader sceneFader;
     public WeaponDatabase weaponDatabase;
 
     void Awake() {
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour {
     }
 
     void Start() {
+        sceneFader = FindFirstObjectByType<SceneFader>();
         RespawnPlayer();
         LoadUnlockedWeapons();
         PlayMusic();
@@ -35,13 +37,14 @@ public class GameManager : MonoBehaviour {
 
     public void RespawnPlayer() {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+
         if (player != null) {
             SaveData saveData = SaveSystem.GetSaveData();
             //Calculo de la mitad de la altura del sprite del jugador para que no se quede bajo tierra
             Vector2 yOffset = player.GetComponent<SpriteRenderer>().bounds.extents.y / 2 * Vector2.up;
 
             if (saveData.sceneIndex != 0 && saveData.sceneIndex != SceneManager.GetActiveScene().buildIndex) {
-                SceneManager.LoadScene(saveData.sceneIndex);
+                sceneFader.FadeOutAndLoad(saveData.sceneIndex);
             }
 
             if (saveData.lastCheckpointID != null) {
@@ -71,6 +74,15 @@ public class GameManager : MonoBehaviour {
 
             RemovePreviousEnemies(player.transform);
         }
+    }
+
+    public void ReloadScene(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+
+    public void LoadScene(int sceneIndex) {
+        sceneFader.FadeOutAndLoad(sceneIndex);
     }
 
     public void LoadUnlockedWeapons() {
