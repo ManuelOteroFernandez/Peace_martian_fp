@@ -1,7 +1,5 @@
 using System;
 using PlayerStateMachine;
-using UnityEditor.Callbacks;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.InputSystem.XR.Haptics;
 using UnityEngine.SceneManagement;

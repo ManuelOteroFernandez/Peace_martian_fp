@@ -55,8 +55,12 @@ public abstract class EnemyController : MonoBehaviour
     }
 
     protected virtual void Start(){
-        aiAgent.GetPatrolRoute();
-        ChangeState(new EnemyPatrolState());
+        aiAgent.Initialize();
+        if (patrolSpeed == 0f) {
+            ChangeState(new EnemyIdleState());
+        } else {
+            ChangeState(new EnemyPatrolState());
+        }
     }
 
     protected virtual void FixedUpdate(){
