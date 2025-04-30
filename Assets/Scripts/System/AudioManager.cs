@@ -42,10 +42,6 @@ public class AudioManager : MonoBehaviour
     }
 
     public void PlayMusic(AudioClip clip, bool loop = true) {
-        if (audioSource.clip == clip){
-            return;
-        }
-
         audioSource.clip = clip;
         audioSource.loop = loop;
         audioSource.Play();

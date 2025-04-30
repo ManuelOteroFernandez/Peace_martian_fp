@@ -22,6 +22,7 @@ namespace PlayerStateMachine{
 
             if (inputController.jumpInput && controller.CanDoubleJump() && controller.DoubleJumpUnlocked){
                 Jump(controller);
+                controller.CastJumpEffect();
             }
 
             if(!controller.isGrounded && controller.rigidbody2D.linearVelocityY < 0) {

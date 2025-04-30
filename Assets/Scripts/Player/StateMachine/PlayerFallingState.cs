@@ -21,6 +21,7 @@ namespace PlayerStateMachine{
             controller.Flip(inputController.aimDirection.x);
 
             if (inputController.jumpInput && controller.CanDoubleJump() && controller.DoubleJumpUnlocked){
+                controller.CastJumpEffect();
                 controller.ChangeState(new PlayerJumpingState());
             }
 

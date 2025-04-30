@@ -288,6 +288,10 @@ MonoBehaviour:
   airHorizontalMovementSpeed: 300
   dashUnlocked: 0
   doubleJumpUnlocked: 0
+  dashEffectPrefab: {fileID: 2138115022984013994, guid: d710fe72049398f40bfc974638d32d3c, type: 3}
+  doubleJumpEffectPrefab: {fileID: 3678689947675558299, guid: 196374f8661c1ea4283872db3c5e8233, type: 3}
+  dashEffectOffset: {x: -2, y: 0}
+  doubleJumpEffectOffset: {x: -1, y: -1.5}
   hasArmor: 0
   dashSpeed: 1000
   dashDuration: 0.2
