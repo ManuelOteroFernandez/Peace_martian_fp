@@ -166,8 +166,8 @@ Camera:
   m_GameObject: {fileID: 115569068}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2653,7 +2653,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3030,6 +3030,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5695238660072905633, guid: 0be82bc9feb827d4793ec2a7920f6eb5, type: 3}
       propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848541631031043556, guid: 0be82bc9feb827d4793ec2a7920f6eb5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848541631031043556, guid: 0be82bc9feb827d4793ec2a7920f6eb5, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848541631031043556, guid: 0be82bc9feb827d4793ec2a7920f6eb5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848541631031043556, guid: 0be82bc9feb827d4793ec2a7920f6eb5, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848541631031043556, guid: 0be82bc9feb827d4793ec2a7920f6eb5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848541631031043556, guid: 0be82bc9feb827d4793ec2a7920f6eb5, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5861653441421788222, guid: 0be82bc9feb827d4793ec2a7920f6eb5, type: 3}

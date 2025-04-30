@@ -13,7 +13,7 @@ public class LogicaBrillo : MonoBehaviour
     void Start()
     {
         slider.value = PlayerPrefs.GetFloat("brillo", 0.5f);
-        panelBrillo.color = new Color(panelBrillo.color.r, panelBrillo.color.g, panelBrillo.color.b, slider.value);
+        panelBrillo.color = new Color(panelBrillo.color.r, panelBrillo.color.g, panelBrillo.color.b, 0.8f - slider.value);
     }
 
     // Update is called once per frame
@@ -26,6 +26,6 @@ public class LogicaBrillo : MonoBehaviour
     {
         sliderValue = valor;
         PlayerPrefs.SetFloat("brillo", sliderValue);
-        panelBrillo.color = new Color(panelBrillo.color.r, panelBrillo.color.g, panelBrillo.color.b, slider.value);
+        panelBrillo.color = new Color(panelBrillo.color.r, panelBrillo.color.g, panelBrillo.color.b, 0.8f - slider.value);
     }
 }
