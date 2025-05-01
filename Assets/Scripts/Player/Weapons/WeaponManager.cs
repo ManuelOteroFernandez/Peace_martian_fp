@@ -12,7 +12,11 @@ public class WeaponManager : MonoBehaviour
     List<Weapon> availableWeapons;
     int currentWeaponIndex = 0;
 
+    Animator animator;
+
     private void Start(){
+        animator = GetComponent<Animator>();
+
         availableWeapons = new List<Weapon>(weaponDatabase.unlockedWeapons);
 
         if (availableWeapons.Count > 0){
@@ -38,6 +42,8 @@ public class WeaponManager : MonoBehaviour
         }
 
         currentWeapon = Instantiate(weaponDatabase.unlockedWeapons[index], weaponHolder.position, Quaternion.identity, weaponHolder);
+
+        animator.SetFloat("currentWeaponIndex",currentWeaponIndex);
     }
 
     public void UnlockWeapon(Weapon newWeapon){
