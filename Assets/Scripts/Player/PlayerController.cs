@@ -1,7 +1,6 @@
 using System;
+using System.Collections;
 using PlayerStateMachine;
-using UnityEditor.Callbacks;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.InputSystem.XR.Haptics;
 using UnityEngine.SceneManagement;
@@ -26,6 +25,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("HP")]
     [SerializeField] bool hasArmor;
+    [SerializeField] float PLAYER_RESPAWN_TIME = 2f;
+    bool isDying = false;
 
     [Header("Dash Parameters")]
     [SerializeField] float dashSpeed;
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
     public Animator animator {get; private set;}
     public PlayerInputController inputController {get; private set;}
     public WeaponManager weaponManager {get; private set;}
+    public Collider2D collider {get; private set;}
 
     [Header("States")]
     PlayerState currentState;
@@ -84,6 +86,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake() {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        collider = GetComponent<Collider2D>();
         animator = GetComponent<Animator>();
         inputController = GetComponent<PlayerInputController>();
         weaponManager = GetComponentInChildren<WeaponManager>();
@@ -329,8 +332,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Die() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    void Die() {
+        StartCoroutine(DeathAndRespawn());
+    }
+
+    IEnumerator DeathAndRespawn() {
+        isDying = true;
+        inputController.enabled = false;
+        rigidbody2D.linearVelocity = new Vector2(0, 10);
+        collider.enabled = false;
+
+        yield return new WaitForSeconds(PLAYER_RESPAWN_TIME);
+
+        inputController.enabled = true;
+        isDying = false;
+        collider.enabled = true;
+        GameManager.Instance.ReloadScene();
         GameManager.Instance.RespawnPlayer();
     }
 

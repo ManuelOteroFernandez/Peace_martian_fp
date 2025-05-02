@@ -1,4 +1,5 @@
 
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public static class LevelManager {
@@ -6,14 +7,14 @@ public static class LevelManager {
     public static void RestoreLastPlay() {
         SaveData saveData = SaveSystem.GetSaveData();
         if (saveData.sceneIndex > 0 && saveData.sceneIndex <= 3) {
-            SceneManager.LoadScene(saveData.sceneIndex);
+            GameObject.FindFirstObjectByType<SceneFader>().FadeOutAndLoad(saveData.sceneIndex);
         }else{
-            SceneManager.LoadScene(1);
+            GameObject.FindFirstObjectByType<SceneFader>().FadeOutAndLoad(1);
         }
     }
 
     public static void NextLevel() {
-        SceneManager.LoadScene(getNextLevelIndex());
+        GameObject.FindFirstObjectByType<SceneFader>().FadeOutAndLoad(getNextLevelIndex());
     }
 
     public static int getNextLevelIndex()
