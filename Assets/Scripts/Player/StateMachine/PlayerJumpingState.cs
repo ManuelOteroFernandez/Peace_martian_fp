@@ -11,7 +11,13 @@ namespace PlayerStateMachine{
 
         public override void Enter(PlayerController controller) {
             controller.animator.SetInteger("currentStateId", id);
+            controller.mochilaAnimator.SetInteger("currentStateId", id);
+            controller.tuboAnimator.SetInteger("currentStateId", id);
+            controller.armaAnimator.SetInteger("currentStateId", id);
             controller.animator.SetTrigger("isJumping");
+            controller.mochilaAnimator.SetTrigger("isJumping");
+            controller.tuboAnimator.SetTrigger("isJumping");
+            controller.armaAnimator.SetTrigger("isJumping");
             Jump(controller);
         }
 
@@ -42,7 +48,9 @@ namespace PlayerStateMachine{
 
         public override void Exit(PlayerController controller) {
             controller.animator.ResetTrigger("isJumping");
-            controller.animator.ResetTrigger("isDoubleJumping");
+            controller.mochilaAnimator.ResetTrigger("isJumping");
+            controller.tuboAnimator.ResetTrigger("isJumping");
+            controller.armaAnimator.ResetTrigger("isJumping");
         }
 
         void Jump(PlayerController controller) {
@@ -51,7 +59,9 @@ namespace PlayerStateMachine{
 
             if (!controller.isGrounded) {
                 controller.animator.ResetTrigger("isJumping");
-                controller.animator.SetTrigger("isDoubleJumping");
+                controller.mochilaAnimator.ResetTrigger("isJumping");
+                controller.tuboAnimator.ResetTrigger("isJumping");
+                controller.armaAnimator.ResetTrigger("isJumping");
             }
         }
 

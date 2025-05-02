@@ -11,6 +11,9 @@ namespace PlayerStateMachine{
 
         public override void Enter(PlayerController controller) {
             controller.animator.SetInteger("currentStateId", id);
+            controller.mochilaAnimator.SetInteger("currentStateId", id);
+            controller.tuboAnimator.SetInteger("currentStateId", id);
+            controller.armaAnimator.SetInteger("currentStateId", id);
             controller.StartWalkSFX();
         }
 

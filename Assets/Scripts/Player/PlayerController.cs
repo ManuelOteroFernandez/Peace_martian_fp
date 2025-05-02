@@ -77,15 +77,29 @@ public class PlayerController : MonoBehaviour
     public bool DashUnlocked => dashUnlocked;
     public bool HasArmor => hasArmor;
 
+    [Header("PowerUps")]
+    [SerializeField] GameObject mochila;
+    [SerializeField] GameObject tubo;
+    public Animator mochilaAnimator {get; private set;}
+    public Animator tuboAnimator {get; private set;}
+    public Animator armaAnimator {get; private set;}
+
     void Awake() {
         rigidbody2D = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
         animator = GetComponent<Animator>();
         inputController = GetComponent<PlayerInputController>();
         weaponManager = GetComponentInChildren<WeaponManager>();
+
+        mochilaAnimator = mochila.GetComponent<Animator>();
+        tuboAnimator = tubo.GetComponent<Animator>();
+        armaAnimator = weaponManager.GetComponent<Animator>();
     }
     void Start() {
         ChangeState(new PlayerIdleState());
+
+        tubo.SetActive(dashUnlocked);
+        mochila.SetActive(doubleJumpUnlocked);
     }
 
     void FixedUpdate()
@@ -137,6 +151,9 @@ public class PlayerController : MonoBehaviour
         }
         if(animator.GetFloat("aimDirection") != aimDirection)
             animator.SetFloat("aimDirection",aimDirection);
+            mochilaAnimator.SetFloat("aimDirection",aimDirection);
+            tuboAnimator.SetFloat("aimDirection",aimDirection);
+            armaAnimator.SetFloat("aimDirection",aimDirection);
     }
 
     public void ChangeState(PlayerState newState) {
@@ -212,10 +229,12 @@ public class PlayerController : MonoBehaviour
 
     public void UnlockDoubleJump() {
         doubleJumpUnlocked = true;
+        mochila.SetActive(true);
     }
 
     public void UnlockDash() {
         dashUnlocked = true;
+        tubo.SetActive(true);
     }
 
     void UpdateCooldowns() {
