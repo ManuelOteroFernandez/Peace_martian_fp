@@ -80,6 +80,7 @@ public class PlayerController : MonoBehaviour
     [Header("PowerUps")]
     [SerializeField] GameObject mochila;
     [SerializeField] GameObject tubo;
+    [SerializeField] GameObject shild;
     public Animator mochilaAnimator {get; private set;}
     public Animator tuboAnimator {get; private set;}
     public Animator armaAnimator {get; private set;}
@@ -100,6 +101,7 @@ public class PlayerController : MonoBehaviour
 
         tubo.SetActive(dashUnlocked);
         mochila.SetActive(doubleJumpUnlocked);
+        shild.SetActive(hasArmor);
     }
 
     void FixedUpdate()
@@ -225,6 +227,7 @@ public class PlayerController : MonoBehaviour
 
     public void AddArmor() {
         hasArmor = true;
+        shild.SetActive(true);
     }
 
     public void UnlockDoubleJump() {
@@ -326,6 +329,7 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("EnemyAttack") || collision.CompareTag("EnemyProjectile")) {
             if (hasArmor) {
                 hasArmor = false;
+                shild.SetActive(false);
             } else {
                 Die();
             }
