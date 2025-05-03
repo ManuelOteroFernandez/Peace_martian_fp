@@ -10,6 +10,11 @@ public class MenuSystem : MonoBehaviour
         LevelManager.RestoreLastPlay();
     }
 
+    public void ContinuarSiguienteNivel()
+    {
+        LevelManager.NextLevel();
+    }
+
     public void Opciones()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
