@@ -29,9 +29,9 @@ Transform:
   m_GameObject: {fileID: 2968890381435723290}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 65.4693, y: -0.1805613, z: 0}
+  m_LocalPosition: {x: 65.503, y: -0.1611, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -79,9 +79,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2346302928887187388, guid: 494bda3c30ae1ca47a6853e17e9e3ae8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0f07353a1432d704b8c7c36db3ebc490, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 5.13, y: 0.91}
@@ -124,8 +124,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.010697783, y: -0.00000012538462}
-  m_Size: {x: 0.8336053, y: 0.15959577}
+  m_Offset: {x: 0.017168941, y: -0.0030657747}
+  m_Size: {x: 0.75881386, y: 0.24743001}
   m_Direction: 1
 --- !u!50 &9062222231056588869
 Rigidbody2D:
