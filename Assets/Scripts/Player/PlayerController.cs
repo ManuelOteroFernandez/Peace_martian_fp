@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     [Header("Dash Parameters")]
     [SerializeField] float dashSpeed;
     [SerializeField] float dashDuration;
+    public Color dashColor;
     public float DashDuration => dashDuration;
     [SerializeField] float dashCd;
     float dashCurrentCd;
@@ -195,6 +196,11 @@ public class PlayerController : MonoBehaviour
 
     public void Dash() {
         if (canDash) {
+            GetComponent<SpriteRenderer>().color = dashColor;
+            weaponManager.GetComponent<SpriteRenderer>().color = dashColor;
+            tuboAnimator.GetComponentInParent<SpriteRenderer>().color = dashColor;
+            mochilaAnimator.GetComponentInParent<SpriteRenderer>().color = dashColor;
+
             gameObject.layer = LayerMask.NameToLayer("Invulnerable");
             dashCurrentCd = dashCd;
             canDash = false;
@@ -218,6 +224,11 @@ public class PlayerController : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("Player");
         rigidbody2D.gravityScale = gravityScale;
         rigidbody2D.linearVelocity = new Vector2(0, 0);
+
+        GetComponent<SpriteRenderer>().color = Color.white;
+        weaponManager.GetComponent<SpriteRenderer>().color = Color.white;
+        tuboAnimator.GetComponentInParent<SpriteRenderer>().color = Color.white;
+        mochilaAnimator.GetComponentInParent<SpriteRenderer>().color = Color.white;
     }
 
     public void ResetDash() {
