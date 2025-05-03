@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
     public static GameManager Instance { get; private set; }
     SceneFader sceneFader;
+    LogicaEntreEscenas entreEscenas;
+
     public WeaponDatabase weaponDatabase;
 
     void Awake() {
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour {
 
     void Start() {
         sceneFader = FindFirstObjectByType<SceneFader>();
+        entreEscenas = FindFirstObjectByType<LogicaEntreEscenas>();
         RespawnPlayer();
         LoadUnlockedWeapons();
         PlayMusic();
@@ -116,6 +119,28 @@ public class GameManager : MonoBehaviour {
             case 3:
                 AudioManager.Instance.PlayMusic(AudioManager.Instance.level3Theme);
                 break;
+        }
+    }
+
+    public void Win()
+    {
+        SaveSystem.SetSceneIndex(LevelManager.getNextLevelIndex());
+        if (entreEscenas == null) {
+            LevelManager.NextLevel();
+        }else{
+            entreEscenas.SetActiveVictoryMenu(true);
+        }
+    }
+
+    public void Defeat()
+    {
+        if (entreEscenas == null)
+        {            
+            ReloadScene();
+            RespawnPlayer();
+        }else
+        {
+            entreEscenas.SetActiveDefeatMenu(true);
         }
     }
 }

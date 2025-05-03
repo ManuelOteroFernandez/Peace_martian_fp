@@ -7,6 +7,13 @@ public class Checkpoint : MonoBehaviour
 
     public string CheckpointID => checkpointID;
 
+    void Start()
+    {
+        if (SaveSystem.IsCheckpointActive(checkpointID)) {
+            GetComponent<SpriteRenderer>().color = new Color(0.52f,1.0f,0.63f,0.5f);
+        }
+    }
+
     void OnValidate() {
         if (Application.isPlaying) {
             ValidateUniqueID();
@@ -37,7 +44,8 @@ public class Checkpoint : MonoBehaviour
                 PlayerController player = collision.GetComponent<PlayerController>();
                 if (player != null) {
                     SaveSystem.SetCheckpoint(checkpointID, player);
-                    Debug.Log("Checkpoint activado: " + checkpointID);
+                    GetComponent<SpriteRenderer>().color = new Color(0.52f,1.0f,0.63f,0.5f);
+                    //Debug.Log("Checkpoint activado: " + checkpointID);
                     DisableCheckpoint();
                 }
             } else {

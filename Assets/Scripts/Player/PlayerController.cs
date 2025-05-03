@@ -80,6 +80,7 @@ public class PlayerController : MonoBehaviour
     [Header("PowerUps")]
     [SerializeField] GameObject mochila;
     [SerializeField] GameObject tubo;
+    [SerializeField] GameObject shild;
     public Animator mochilaAnimator {get; private set;}
     public Animator tuboAnimator {get; private set;}
     public Animator armaAnimator {get; private set;}
@@ -100,6 +101,7 @@ public class PlayerController : MonoBehaviour
 
         tubo.SetActive(dashUnlocked);
         mochila.SetActive(doubleJumpUnlocked);
+        shild.SetActive(hasArmor);
     }
 
     void FixedUpdate()
@@ -225,6 +227,7 @@ public class PlayerController : MonoBehaviour
 
     public void AddArmor() {
         hasArmor = true;
+        shild.SetActive(true);
     }
 
     public void UnlockDoubleJump() {
@@ -322,18 +325,37 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collision) {
-        Debug.Log("Recibe ataque enemigo");
         if (collision.CompareTag("EnemyAttack") || collision.CompareTag("EnemyProjectile")) {
             if (hasArmor) {
                 hasArmor = false;
+                shild.SetActive(false);
             } else {
                 Die();
             }
+        }
+        if (collision.CompareTag("Finish"))
+        {
+            Win();
         }
     }
 
     void Die() {
         StartCoroutine(DeathAndRespawn());
+    }
+    void Win() {
+        StartCoroutine(WinAndRun());
+    }
+
+    IEnumerator WinAndRun() {
+        inputController.enabled = false;
+        // FIXME Aqui deberia moverse pero no lo hace
+        rigidbody2D.linearVelocity = new Vector2(4000, 0);
+        
+        
+        yield return new WaitForSeconds(PLAYER_RESPAWN_TIME);
+        
+        rigidbody2D.linearVelocity = new Vector2(0, 0);
+        
     }
 
     IEnumerator DeathAndRespawn() {
@@ -344,11 +366,8 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(PLAYER_RESPAWN_TIME);
 
-        inputController.enabled = true;
-        isDying = false;
-        collider.enabled = true;
-        GameManager.Instance.ReloadScene();
-        GameManager.Instance.RespawnPlayer();
+        rigidbody2D.gravityScale = 0;
+        GameManager.Instance.Defeat();
     }
 
     public void CastDashEffect() {
