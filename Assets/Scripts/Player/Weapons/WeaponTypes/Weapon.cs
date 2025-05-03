@@ -19,9 +19,15 @@ public abstract class Weapon : MonoBehaviour
     }
 
     protected virtual void Update() {
+        if (playerInputController.aimDirection.x == 0 && playerInputController.aimDirection.y == 0)
+        {
+            return;
+        }
+        // Debug.Log(playerInputController.aimDirection);
         float angle = Mathf.Atan2(playerInputController.aimDirection.y, playerInputController.aimDirection.x) * Mathf.Rad2Deg;
 
         adjustedAngle = Mathf.Round(angle / 45) * 45;
+        // Debug.Log(adjustedAngle);
         switch (adjustedAngle)
         {
             case 90:
