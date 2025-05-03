@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Recuadro Opciones Opaco_0: 494230402175899149
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
