@@ -28,6 +28,15 @@ public class SceneFader : MonoBehaviour {
         yield return StartCoroutine(Fade(1, 0));
     }
 
+    public IEnumerator FadeIn()
+    {        
+        yield return StartCoroutine(Fade(0, 1));
+    }
+    public IEnumerator FadeOut()
+    {        
+        yield return StartCoroutine(Fade(1 , 0));
+    }
+
     IEnumerator Fade(float from, float to) {
         float t = 0f;
         while (t < fadeDuration) {
