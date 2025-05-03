@@ -51,7 +51,7 @@ public class LogicaEntreEscenas : MonoBehaviour
 
     IEnumerator ActiveVictoryMenuCoroutune(bool value){
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         yield return fader.FadeIn();
         VictoryMenu.SetActive(value);
         yield return fader.FadeOut();
@@ -71,7 +71,7 @@ public class LogicaEntreEscenas : MonoBehaviour
 
      IEnumerator ActiveDefeatMenuCoroutune(bool value){
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         yield return fader.FadeIn();
         DefeatMenu.SetActive(value);
         yield return fader.FadeOut();

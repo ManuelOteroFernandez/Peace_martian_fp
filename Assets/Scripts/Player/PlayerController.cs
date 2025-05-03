@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("HP")]
     [SerializeField] bool hasArmor;
-    [SerializeField] float PLAYER_RESPAWN_TIME = 2f;
+    [SerializeField] float PLAYER_RESPAWN_TIME = 1f;
     bool isDying = false;
 
     [Header("Dash Parameters")]
