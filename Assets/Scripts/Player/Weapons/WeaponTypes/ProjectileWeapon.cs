@@ -18,6 +18,6 @@ public abstract class ProjectileWeapon : Weapon
 
     public virtual void Shoot(){
         AudioManager.Instance.PlaySFX(shootSFX);
-        Instantiate(projectilePrefab, firePoint.position, transform.rotation);
+        Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
     }
 }
