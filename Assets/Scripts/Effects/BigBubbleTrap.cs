@@ -9,7 +9,7 @@ public class BigBubbleTrap : MonoBehaviour
     private Collider2D mapLimits;
 
     [Header("Components")]
-    Rigidbody2D rigidbody2D;
+    Rigidbody2D rb2D;
 
     [Header("Trapped Enemy")]
     private GameObject trappedEnemy;
@@ -17,7 +17,7 @@ public class BigBubbleTrap : MonoBehaviour
     private bool isBeingDestroyed = false;
 
     private void Awake() {
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        rb2D = GetComponent<Rigidbody2D>();
         mapLimits = GameObject.FindGameObjectWithTag("Limits").GetComponent<Collider2D>();
     }
 
@@ -28,8 +28,8 @@ public class BigBubbleTrap : MonoBehaviour
             Destroy(gameObject);
         }*/
 
-        if (rigidbody2D.linearVelocity.y > maxFloatSpeed) {
-            rigidbody2D.linearVelocity = new Vector2(rigidbody2D.linearVelocity.x, maxFloatSpeed);
+        if (rb2D.linearVelocity.y > maxFloatSpeed) {
+            rb2D.linearVelocity = new Vector2(rb2D.linearVelocity.x, maxFloatSpeed);
         }
 
         trappedEnemy.transform.position = transform.position;
@@ -42,7 +42,7 @@ public class BigBubbleTrap : MonoBehaviour
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), trappedEnemy.GetComponent<Collider2D>(), true);
         enemyRigidbody2D.bodyType = RigidbodyType2D.Kinematic;
 
-        rigidbody2D.gravityScale = -1;
+        rb2D.gravityScale = -1;
     }
 
     void OnCollisionEnter2D(Collision2D collision){

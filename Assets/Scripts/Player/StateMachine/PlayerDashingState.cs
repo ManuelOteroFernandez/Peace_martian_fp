@@ -12,9 +12,16 @@ namespace PlayerStateMachine{
 
         public override void Enter(PlayerController controller) {
             controller.animator.SetInteger("currentStateId", id);
-            controller.mochilaAnimator.SetInteger("currentStateId", id);
-            controller.tuboAnimator.SetInteger("currentStateId", id);
             controller.armaAnimator.SetInteger("currentStateId", id);
+            
+            if (controller.mochilaAnimator.isActiveAndEnabled)
+            { 
+                controller.mochilaAnimator.SetInteger("currentStateId", id);
+            }
+            if (controller.tuboAnimator.isActiveAndEnabled)
+            { 
+                controller.tuboAnimator.SetInteger("currentStateId", id);
+            }
             controller.PlayDashSFX();
             controller.Dash();
         }
@@ -35,7 +42,6 @@ namespace PlayerStateMachine{
 
         public override void Exit(PlayerController controller) {
             controller.EndDash();
-            controller.animator.ResetTrigger("isDashing");
         }
     }
 }

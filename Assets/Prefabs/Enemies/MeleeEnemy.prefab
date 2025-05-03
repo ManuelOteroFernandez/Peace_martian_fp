@@ -308,7 +308,7 @@ MonoBehaviour:
   chaseSpeed: 5
   patrolSpeed: 2
   chaseDistance: 10
-  maxDistanceFromOrigin: 5
+  maxDistanceFromOrigin: 50
   enemyCenterOffset: 0.5
   attackRange: 2
   attackCooldown: 2

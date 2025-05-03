@@ -25,14 +25,14 @@ public class RangeEnemyController : EnemyController {
         aiAgent.UpdateFieldFlowNextWaypoint();
 
         if (aiAgent.nextWaypoint == null){
-            rigidbody2D.linearVelocity = Vector2.zero;
+            rb2d.linearVelocity = Vector2.zero;
             return;
         }
 
         if (aiAgent.nextWaypoint.type == WaypointType.Cliff) {
             if (!aiAgent.CanJumpFromCliff(aiAgent.nextWaypoint)) {
                 aiAgent.nextWaypoint = null;
-                rigidbody2D.linearVelocity = Vector2.zero;
+                rb2d.linearVelocity = Vector2.zero;
                 return;
             }
         }
@@ -43,7 +43,7 @@ public class RangeEnemyController : EnemyController {
 
         if (IsGrounded() || aiAgent.currentWaypoint.type != WaypointType.Cliff) {
             Vector2 horizontalVelocity = direction * chaseSpeed;
-            rigidbody2D.linearVelocity = new Vector2(horizontalVelocity.x, rigidbody2D.linearVelocity.y);
+            rb2d.linearVelocity = new Vector2(horizontalVelocity.x, rb2d.linearVelocity.y);
         }
 
         if (Vector2.Distance(enemyPosition, aiAgent.nextWaypoint.position) < 0.1f){
@@ -61,7 +61,7 @@ public class RangeEnemyController : EnemyController {
             target = trappedEnemyTarget;    
         }
 
-        rigidbody2D.linearVelocity = Vector2.zero;
+        rb2d.linearVelocity = Vector2.zero;
 
         float randomAimOffset = Random.Range(-aimOffsetAngle, aimOffsetAngle);
 

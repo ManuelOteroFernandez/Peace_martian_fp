@@ -10,6 +10,11 @@ public class MenuSystem : MonoBehaviour
         LevelManager.RestoreLastPlay();
     }
 
+    public void ContinuarSiguienteNivel()
+    {
+        LevelManager.NextLevel();
+    }
+
     public void Opciones()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
@@ -40,7 +45,7 @@ public class MenuSystem : MonoBehaviour
 
     public void Salir()
     {
-        Debug.Log("Saliendo del juego...");
+        // Debug.Log("Saliendo del juego...");
         Application.Quit();
     }
 }

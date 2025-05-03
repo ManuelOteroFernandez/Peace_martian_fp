@@ -11,13 +11,21 @@ namespace PlayerStateMachine{
 
         public override void Enter(PlayerController controller) {
             controller.animator.SetInteger("currentStateId", id);
-            controller.mochilaAnimator.SetInteger("currentStateId", id);
-            controller.tuboAnimator.SetInteger("currentStateId", id);
             controller.armaAnimator.SetInteger("currentStateId", id);
             controller.animator.SetTrigger("isJumping");
-            controller.mochilaAnimator.SetTrigger("isJumping");
-            controller.tuboAnimator.SetTrigger("isJumping");
             controller.armaAnimator.SetTrigger("isJumping");
+            
+            if (controller.mochilaAnimator.isActiveAndEnabled)
+            { 
+                controller.mochilaAnimator.SetInteger("currentStateId", id);
+                controller.mochilaAnimator.SetTrigger("isJumping");
+            }
+            if (controller.tuboAnimator.isActiveAndEnabled)
+            { 
+                controller.tuboAnimator.SetInteger("currentStateId", id);
+                controller.tuboAnimator.SetTrigger("isJumping");
+            }
+            
             Jump(controller);
         }
 
@@ -31,7 +39,7 @@ namespace PlayerStateMachine{
                 controller.CastJumpEffect();
             }
 
-            if(!controller.isGrounded && controller.rigidbody2D.linearVelocityY < 0) {
+            if(!controller.isGrounded && controller.rb2d.linearVelocityY < 0) {
                 controller.ChangeState(new PlayerFallingState());
             }
 
@@ -48,9 +56,16 @@ namespace PlayerStateMachine{
 
         public override void Exit(PlayerController controller) {
             controller.animator.ResetTrigger("isJumping");
-            controller.mochilaAnimator.ResetTrigger("isJumping");
-            controller.tuboAnimator.ResetTrigger("isJumping");
             controller.armaAnimator.ResetTrigger("isJumping");
+
+            if (controller.mochilaAnimator.isActiveAndEnabled)
+            {
+                controller.mochilaAnimator.ResetTrigger("isJumping");
+            }
+            if (controller.tuboAnimator.isActiveAndEnabled)
+            {
+                controller.tuboAnimator.ResetTrigger("isJumping");
+            }
         }
 
         void Jump(PlayerController controller) {
@@ -59,9 +74,16 @@ namespace PlayerStateMachine{
 
             if (!controller.isGrounded) {
                 controller.animator.ResetTrigger("isJumping");
-                controller.mochilaAnimator.ResetTrigger("isJumping");
-                controller.tuboAnimator.ResetTrigger("isJumping");
                 controller.armaAnimator.ResetTrigger("isJumping");
+                
+                if (controller.mochilaAnimator.isActiveAndEnabled) 
+                {
+                    controller.mochilaAnimator.ResetTrigger("isJumping");
+                }
+                if (controller.tuboAnimator.isActiveAndEnabled)
+                {
+                    controller.tuboAnimator.ResetTrigger("isJumping");
+                }
             }
         }
 

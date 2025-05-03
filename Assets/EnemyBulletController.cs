@@ -6,16 +6,16 @@ public class EnemyBulletController : MonoBehaviour
     [SerializeField] float speed = 2f;
     [SerializeField] float lifetime = 3f;
     Vector2 direction;
-    Rigidbody2D rigidbody2D;
+    Rigidbody2D rb2d;
 
     void Start() {
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        rb2d = GetComponent<Rigidbody2D>();
         Destroy(gameObject, lifetime);
     }
 
     void FixedUpdate()
     {
-        rigidbody2D.linearVelocity = direction * speed;
+        rb2d.linearVelocity = direction * speed;
     }
 
     public void Initialize(Vector2 direction) {

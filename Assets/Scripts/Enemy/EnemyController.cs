@@ -14,7 +14,7 @@ public abstract class EnemyController : MonoBehaviour
     public Animator animator {get; private set;}
     public EnemyHealth enemyHealth {get; private set;}
     public AIAgent aiAgent {get; private set;}
-    public Rigidbody2D rigidbody2D {get; private set;}
+    public Rigidbody2D rb2d {get; private set;}
     [SerializeField] public LayerMask obstaclesLayerMask;
     protected SpriteRenderer spriteRenderer;
 
@@ -48,7 +48,7 @@ public abstract class EnemyController : MonoBehaviour
     protected virtual void Awake(){
         animator = GetComponent<Animator>();
         enemyHealth = GetComponent<EnemyHealth>();
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         aiAgent = GetComponent<AIAgent>();
         target = GameObject.FindGameObjectWithTag("Player")?.transform;
@@ -76,7 +76,7 @@ public abstract class EnemyController : MonoBehaviour
         currentState?.Exit(this);
         currentState = newState;
 
-        Debug.Log("current state: " + currentState);
+        // Debug.Log("current state: " + currentState);
 
         currentState.Enter(this);
     }
@@ -108,24 +108,24 @@ public abstract class EnemyController : MonoBehaviour
                 xVelocity = 0f;
             }
 
-            if (rigidbody2D.gravityScale != 0f) {
-                rigidbody2D.gravityScale = 0f;
+            if (rb2d.gravityScale != 0f) {
+                rb2d.gravityScale = 0f;
             }
 
-            rigidbody2D.linearVelocity = new Vector2(xVelocity, yVelocity);
+            rb2d.linearVelocity = new Vector2(xVelocity, yVelocity);
         } else {
             float velocityX = direction.x * chaseSpeed;
-            float velocityY = rigidbody2D.linearVelocity.y;
+            float velocityY = rb2d.linearVelocity.y;
 
             if (!(current.type == WaypointType.Cliff && next.type == WaypointType.Cliff)){
                 velocityY = 0;
             }
 
-            if (rigidbody2D.gravityScale == 0f) {
-                rigidbody2D.gravityScale = 1f;
+            if (rb2d.gravityScale == 0f) {
+                rb2d.gravityScale = 1f;
             }
 
-            rigidbody2D.linearVelocity = new Vector2(velocityX, velocityY);
+            rb2d.linearVelocity = new Vector2(velocityX, velocityY);
         }
 
         if (Vector2.Distance(enemyPosition, aiAgent.nextWaypoint.position) < 0.1f){
@@ -145,7 +145,7 @@ public abstract class EnemyController : MonoBehaviour
         enemyPosition = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y + enemyCenterOffset);
 
         Vector2 horizontalVelocity = direction.normalized * patrolSpeed;
-        rigidbody2D.linearVelocity = new Vector2(horizontalVelocity.x, rigidbody2D.linearVelocity.y);
+        rb2d.linearVelocity = new Vector2(horizontalVelocity.x, rb2d.linearVelocity.y);
 
         if (Vector2.Distance(enemyPosition, aiAgent.nextWaypoint.position) < 0.1f){
             aiAgent.UpdatePatrolWaypointIndex();
@@ -185,7 +185,7 @@ public abstract class EnemyController : MonoBehaviour
             }
 
             Flip(-direction.x);
-            rigidbody2D.linearVelocity = direction.normalized * patrolSpeed;
+            rb2d.linearVelocity = direction.normalized * patrolSpeed;
 
             //Cuando el enemigo llega al siguiente WP, se actualiza el currentWaypoint
             if (Vector2.Distance(enemyPosition, aiAgent.nextWaypoint.position) < 0.1f){

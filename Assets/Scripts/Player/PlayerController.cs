@@ -25,12 +25,13 @@ public class PlayerController : MonoBehaviour
 
     [Header("HP")]
     [SerializeField] bool hasArmor;
-    [SerializeField] float PLAYER_RESPAWN_TIME = 2f;
+    [SerializeField] float PLAYER_RESPAWN_TIME = 1f;
     bool isDying = false;
 
     [Header("Dash Parameters")]
     [SerializeField] float dashSpeed;
     [SerializeField] float dashDuration;
+    public Color dashColor;
     public float DashDuration => dashDuration;
     [SerializeField] float dashCd;
     float dashCurrentCd;
@@ -49,11 +50,11 @@ public class PlayerController : MonoBehaviour
     float coyoteTimeCounter;
 
     [Header("Components")]
-    public Rigidbody2D rigidbody2D {get; private set;}
+    public Rigidbody2D rb2d {get; private set;}
     public Animator animator {get; private set;}
     public PlayerInputController inputController {get; private set;}
     public WeaponManager weaponManager {get; private set;}
-    public Collider2D collider {get; private set;}
+    public Collider2D playerCollider {get; private set;}
 
     [Header("States")]
     PlayerState currentState;
@@ -86,8 +87,8 @@ public class PlayerController : MonoBehaviour
     public Animator armaAnimator {get; private set;}
 
     void Awake() {
-        rigidbody2D = GetComponent<Rigidbody2D>();
-        collider = GetComponent<Collider2D>();
+        rb2d = GetComponent<Rigidbody2D>();
+        playerCollider = GetComponent<Collider2D>();
         animator = GetComponent<Animator>();
         inputController = GetComponent<PlayerInputController>();
         weaponManager = GetComponentInChildren<WeaponManager>();
@@ -120,7 +121,7 @@ public class PlayerController : MonoBehaviour
 
     void RemoveSliding() {
         if (isGrounded && inputController.horizontalInput < 0.1f && currentState is not PlayerDashingState) {
-            rigidbody2D.linearVelocity = new Vector2(0, rigidbody2D.linearVelocityY);
+            rb2d.linearVelocity = new Vector2(0, rb2d.linearVelocityY);
         }
     }
 
@@ -153,9 +154,17 @@ public class PlayerController : MonoBehaviour
         }
         if(animator.GetFloat("aimDirection") != aimDirection)
             animator.SetFloat("aimDirection",aimDirection);
-            mochilaAnimator.SetFloat("aimDirection",aimDirection);
-            tuboAnimator.SetFloat("aimDirection",aimDirection);
             armaAnimator.SetFloat("aimDirection",aimDirection);
+
+            
+            if (mochilaAnimator.isActiveAndEnabled)
+            {
+                mochilaAnimator.SetFloat("aimDirection",aimDirection);
+            }
+            if (tuboAnimator.isActiveAndEnabled)
+            {
+                tuboAnimator.SetFloat("aimDirection",aimDirection);
+            }
     }
 
     public void ChangeState(PlayerState newState) {
@@ -171,7 +180,7 @@ public class PlayerController : MonoBehaviour
 
         float linearVelocityX = Time.fixedDeltaTime * direction;
         linearVelocityX *= isGrounded ? horizontalMovementSpeed : airHorizontalMovementSpeed;
-        rigidbody2D.linearVelocity = new Vector2(linearVelocityX, rigidbody2D.linearVelocityY);
+        rb2d.linearVelocity = new Vector2(linearVelocityX, rb2d.linearVelocityY);
     }
 
     public void Flip(float direction) {
@@ -188,25 +197,30 @@ public class PlayerController : MonoBehaviour
         //Guardamos un flag indicando si el saltos e hizo desde tierra o no para controlar si puede realizar doble salto o no
         jumpedFromGround = isGrounded;
 
-        rigidbody2D.linearVelocity = new Vector2(rigidbody2D.linearVelocityX, 0);
-        rigidbody2D.AddForce(new Vector2(0, isGrounded ? jumpForce : airJumpForce), ForceMode2D.Impulse);
+        rb2d.linearVelocity = new Vector2(rb2d.linearVelocityX, 0);
+        rb2d.AddForce(new Vector2(0, isGrounded ? jumpForce : airJumpForce), ForceMode2D.Impulse);
         jumpCount++;
     }
 
     public void Dash() {
         if (canDash) {
+            GetComponent<SpriteRenderer>().color = dashColor;
+            weaponManager.GetComponent<SpriteRenderer>().color = dashColor;
+            tuboAnimator.GetComponentInParent<SpriteRenderer>().color = dashColor;
+            mochilaAnimator.GetComponentInParent<SpriteRenderer>().color = dashColor;
+
             gameObject.layer = LayerMask.NameToLayer("Invulnerable");
             dashCurrentCd = dashCd;
             canDash = false;
             //Desactivamos la gravedad para no caer durante un dash aéreo
-            rigidbody2D.gravityScale = 0;
+            rb2d.gravityScale = 0;
             //El dash tiene 2 comportamientos distintos
             //Si el personaje está en movimiento horizontal, se desplaza en esa dirección
             //Si no, se desplaza en la dirección en la que mira
-            if (rigidbody2D.linearVelocityX != 0) {
-                rigidbody2D.linearVelocity = new Vector2(Time.fixedDeltaTime * Mathf.Sign(rigidbody2D.linearVelocityX) * dashSpeed, 0);
+            if (rb2d.linearVelocityX != 0) {
+                rb2d.linearVelocity = new Vector2(Time.fixedDeltaTime * Mathf.Sign(rb2d.linearVelocityX) * dashSpeed, 0);
             } else {
-                rigidbody2D.linearVelocity = new Vector2(Time.fixedDeltaTime * Mathf.Sign(transform.localScale.x) * dashSpeed, 0);
+                rb2d.linearVelocity = new Vector2(Time.fixedDeltaTime * Mathf.Sign(transform.localScale.x) * dashSpeed, 0);
             }
 
             //Efecto de dash
@@ -216,8 +230,13 @@ public class PlayerController : MonoBehaviour
 
     public void EndDash() {
         gameObject.layer = LayerMask.NameToLayer("Player");
-        rigidbody2D.gravityScale = gravityScale;
-        rigidbody2D.linearVelocity = new Vector2(0, 0);
+        rb2d.gravityScale = gravityScale;
+        rb2d.linearVelocity = new Vector2(0, 0);
+
+        GetComponent<SpriteRenderer>().color = Color.white;
+        weaponManager.GetComponent<SpriteRenderer>().color = Color.white;
+        tuboAnimator.GetComponentInParent<SpriteRenderer>().color = Color.white;
+        mochilaAnimator.GetComponentInParent<SpriteRenderer>().color = Color.white;
     }
 
     public void ResetDash() {
@@ -284,10 +303,10 @@ public class PlayerController : MonoBehaviour
             return;
         }
         //Para que el movimiento sea más natural y evitar la sensación de flotar, hacemos que la gravedad sea más fuerte al caer
-        if (rigidbody2D.linearVelocityY > 0) {
-            rigidbody2D.gravityScale = gravityScale; 
+        if (rb2d.linearVelocityY > 0) {
+            rb2d.gravityScale = gravityScale; 
         } else {
-            rigidbody2D.gravityScale = fallGravityScale;
+            rb2d.gravityScale = fallGravityScale;
         }
     }
 
@@ -349,24 +368,24 @@ public class PlayerController : MonoBehaviour
     IEnumerator WinAndRun() {
         inputController.enabled = false;
         // FIXME Aqui deberia moverse pero no lo hace
-        rigidbody2D.linearVelocity = new Vector2(4000, 0);
+        rb2d.linearVelocity = new Vector2(4000, 0);
         
         
         yield return new WaitForSeconds(PLAYER_RESPAWN_TIME);
         
-        rigidbody2D.linearVelocity = new Vector2(0, 0);
+        rb2d.linearVelocity = new Vector2(0, 0);
         
     }
 
     IEnumerator DeathAndRespawn() {
         isDying = true;
         inputController.enabled = false;
-        rigidbody2D.linearVelocity = new Vector2(0, 10);
-        collider.enabled = false;
+        rb2d.linearVelocity = new Vector2(0, 10);
+        playerCollider.enabled = false;
 
         yield return new WaitForSeconds(PLAYER_RESPAWN_TIME);
 
-        rigidbody2D.gravityScale = 0;
+        rb2d.gravityScale = 0;
         GameManager.Instance.Defeat();
     }
 
@@ -374,7 +393,7 @@ public class PlayerController : MonoBehaviour
         Vector3 spawnPos = (Vector2)transform.position + dashEffectOffset * transform.localScale.x;
         spawnPos.z = -10;
 
-        int particleScale = rigidbody2D.linearVelocityX > 0 ? -1 : 1;
+        int particleScale = rb2d.linearVelocityX > 0 ? -1 : 1;
 
         ParticleSystem ps = dashEffectPrefab.GetComponent<ParticleSystem>();
         var velocity = ps.velocityOverLifetime;

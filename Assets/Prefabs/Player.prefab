@@ -519,6 +519,7 @@ MonoBehaviour:
   PLAYER_RESPAWN_TIME: 2
   dashSpeed: 1000
   dashDuration: 0.2
+  dashColor: {r: 0.6084906, g: 0.9397083, b: 1, a: 0.44705883}
   dashCd: 1
   jumpForce: 30
   airJumpForce: 30

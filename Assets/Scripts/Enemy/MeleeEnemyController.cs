@@ -18,7 +18,7 @@ public class MeleeEnemyController : EnemyController {
     }
 
     public override void EnemyAttack() {
-        rigidbody2D.linearVelocity = Vector2.zero;
+        rb2d.linearVelocity = Vector2.zero;
         currentAttackCooldown = attackCooldown;
 
         weaponCollider.enabled = true;
