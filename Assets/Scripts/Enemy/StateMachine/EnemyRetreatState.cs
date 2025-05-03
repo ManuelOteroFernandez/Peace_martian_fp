@@ -19,7 +19,7 @@ public class EnemyRetreatState : EnemyState
             controller.ChangeState(new EnemyBubbleTrappedState());
         }
 
-        if (controller.rigidbody2D.linearVelocityY < 0) {
+        if (controller.rb2d.linearVelocityY < 0) {
             controller.ChangeState(new EnemyFallingState());
         }
 

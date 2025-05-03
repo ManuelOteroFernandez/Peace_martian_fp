@@ -11,9 +11,16 @@ namespace PlayerStateMachine{
 
         public override void Enter(PlayerController controller) {
             controller.animator.SetInteger("currentStateId", id);
-            controller.mochilaAnimator.SetInteger("currentStateId", id);
-            controller.tuboAnimator.SetInteger("currentStateId", id);
             controller.armaAnimator.SetInteger("currentStateId", id);
+            
+            if (controller.mochilaAnimator.isActiveAndEnabled)
+            { 
+                controller.mochilaAnimator.SetInteger("currentStateId", id);
+            }
+            if (controller.tuboAnimator.isActiveAndEnabled)
+            { 
+                controller.tuboAnimator.SetInteger("currentStateId", id);
+            }
             controller.StartWalkSFX();
         }
 
@@ -22,7 +29,7 @@ namespace PlayerStateMachine{
             controller.Move(inputController.horizontalInput);
             controller.Flip(inputController.aimDirection.x);
 
-            if(!controller.isGrounded && controller.rigidbody2D.linearVelocityY < 0) {
+            if(!controller.isGrounded && controller.rb2d.linearVelocityY < 0) {
                 controller.ChangeState(new PlayerFallingState());
             }
 

@@ -45,7 +45,7 @@ public class MenuSystem : MonoBehaviour
 
     public void Salir()
     {
-        Debug.Log("Saliendo del juego...");
+        // Debug.Log("Saliendo del juego...");
         Application.Quit();
     }
 }

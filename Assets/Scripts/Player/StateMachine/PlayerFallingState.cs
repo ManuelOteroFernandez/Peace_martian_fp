@@ -11,10 +11,16 @@ namespace PlayerStateMachine{
 
         public override void Enter(PlayerController controller) {
             controller.animator.SetInteger("currentStateId", id);
-            controller.mochilaAnimator.SetInteger("currentStateId", id);
-            controller.tuboAnimator.SetInteger("currentStateId", id);
             controller.armaAnimator.SetInteger("currentStateId", id);
-            //controller.animator.SetTrigger("isRunning");
+            
+            if (controller.mochilaAnimator.isActiveAndEnabled)
+            { 
+                controller.mochilaAnimator.SetInteger("currentStateId", id);
+            }
+            if (controller.tuboAnimator.isActiveAndEnabled)
+            { 
+                controller.tuboAnimator.SetInteger("currentStateId", id);
+            }
         }
 
         public override void Update(PlayerController controller, PlayerInputController inputController) {
