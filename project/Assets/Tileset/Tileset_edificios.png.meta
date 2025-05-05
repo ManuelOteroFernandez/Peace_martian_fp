@@ -1,0 +1,3698 @@
+fileFormatVersion: 2
+guid: 35bdc9faacdc0754b8954f88cc091a84
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1982075780122568911
+    second: Tileset_edificios_0
+  - first:
+      213: 6444897876214669385
+    second: Tileset_edificios_1
+  - first:
+      213: 5849132842986795040
+    second: Tileset_edificios_2
+  - first:
+      213: -7074653831785205518
+    second: Tileset_edificios_3
+  - first:
+      213: 6175166784756976551
+    second: Tileset_edificios_4
+  - first:
+      213: -8605295108933643917
+    second: Tileset_edificios_5
+  - first:
+      213: 4958812302307627455
+    second: Tileset_edificios_6
+  - first:
+      213: -7694013173995554348
+    second: Tileset_edificios_7
+  - first:
+      213: -1759320853007456632
+    second: Tileset_edificios_8
+  - first:
+      213: -4538584155916778889
+    second: Tileset_edificios_9
+  - first:
+      213: 2773102750086463720
+    second: Tileset_edificios_10
+  - first:
+      213: 3919014832641593973
+    second: Tileset_edificios_11
+  - first:
+      213: -2144249139017247276
+    second: Tileset_edificios_12
+  - first:
+      213: 2010574143117553078
+    second: Tileset_edificios_13
+  - first:
+      213: -8563774554723253404
+    second: Tileset_edificios_14
+  - first:
+      213: -4778933107091627744
+    second: Tileset_edificios_15
+  - first:
+      213: 4222424798880449988
+    second: Tileset_edificios_16
+  - first:
+      213: -9140591329794663051
+    second: Tileset_edificios_17
+  - first:
+      213: -6901237906090849888
+    second: Tileset_edificios_18
+  - first:
+      213: 7607375680499634970
+    second: Tileset_edificios_19
+  - first:
+      213: -7925217710071132836
+    second: Tileset_edificios_20
+  - first:
+      213: -178501417249942458
+    second: Tileset_edificios_21
+  - first:
+      213: 4717425283640672448
+    second: Tileset_edificios_22
+  - first:
+      213: -4914412654822579388
+    second: Tileset_edificios_23
+  - first:
+      213: -8532179855007222545
+    second: Tileset_edificios_24
+  - first:
+      213: 4872532007808384290
+    second: Tileset_edificios_25
+  - first:
+      213: -8390116601280273233
+    second: Tileset_edificios_26
+  - first:
+      213: 2128378936292882841
+    second: Tileset_edificios_27
+  - first:
+      213: -6719294394227416832
+    second: Tileset_edificios_28
+  - first:
+      213: -8596051611816914964
+    second: Tileset_edificios_29
+  - first:
+      213: 2032822581920718695
+    second: Tileset_edificios_30
+  - first:
+      213: -711135287734077507
+    second: Tileset_edificios_31
+  - first:
+      213: -677013390612792826
+    second: Tileset_edificios_32
+  - first:
+      213: -8196103138720651312
+    second: Tileset_edificios_33
+  - first:
+      213: 7458176852258855949
+    second: Tileset_edificios_34
+  - first:
+      213: 7882589508491409025
+    second: Tileset_edificios_35
+  - first:
+      213: -7220952882958582190
+    second: Tileset_edificios_36
+  - first:
+      213: 8947662482519289467
+    second: Tileset_edificios_37
+  - first:
+      213: -4959499067435234824
+    second: Tileset_edificios_38
+  - first:
+      213: 7176780853012999291
+    second: Tileset_edificios_39
+  - first:
+      213: -5514928455106327075
+    second: Tileset_edificios_40
+  - first:
+      213: -3997141499366646625
+    second: Tileset_edificios_41
+  - first:
+      213: 6132643700005986707
+    second: Tileset_edificios_42
+  - first:
+      213: -1731410467659337458
+    second: Tileset_edificios_43
+  - first:
+      213: -2854371012347966042
+    second: Tileset_edificios_44
+  - first:
+      213: -4541116082877224779
+    second: Tileset_edificios_45
+  - first:
+      213: 7012139487460365418
+    second: Tileset_edificios_46
+  - first:
+      213: 4366132365053725958
+    second: Tileset_edificios_47
+  - first:
+      213: 8850998036793828303
+    second: Tileset_edificios_48
+  - first:
+      213: -8923434390927042931
+    second: Tileset_edificios_49
+  - first:
+      213: 7427621065223304136
+    second: Tileset_edificios_50
+  - first:
+      213: 3168934998073142981
+    second: Tileset_edificios_51
+  - first:
+      213: 2535337819283099053
+    second: Tileset_edificios_52
+  - first:
+      213: 5871177121079231171
+    second: Tileset_edificios_53
+  - first:
+      213: 5705897517395682233
+    second: Tileset_edificios_54
+  - first:
+      213: -8485542999595986443
+    second: Tileset_edificios_55
+  - first:
+      213: -3055062138157747345
+    second: Tileset_edificios_56
+  - first:
+      213: -7091229092558997729
+    second: Tileset_edificios_57
+  - first:
+      213: -6351361406581178648
+    second: Tileset_edificios_58
+  - first:
+      213: 948664669888906427
+    second: Tileset_edificios_59
+  - first:
+      213: -7614059921806046298
+    second: Tileset_edificios_60
+  - first:
+      213: -7982973429106006859
+    second: Tileset_edificios_61
+  - first:
+      213: -6260657694571516603
+    second: Tileset_edificios_62
+  - first:
+      213: 7128884790693509367
+    second: Tileset_edificios_63
+  - first:
+      213: -5772391500435401889
+    second: Tileset_edificios_64
+  - first:
+      213: -704999818566327251
+    second: Tileset_edificios_65
+  - first:
+      213: 1229434998631622101
+    second: Tileset_edificios_66
+  - first:
+      213: 6916545451058551779
+    second: Tileset_edificios_67
+  - first:
+      213: 6886725172925400520
+    second: Tileset_edificios_68
+  - first:
+      213: -3732370980509017633
+    second: Tileset_edificios_69
+  - first:
+      213: -6033019930163856028
+    second: Tileset_edificios_70
+  - first:
+      213: -3201972034220430468
+    second: Tileset_edificios_71
+  - first:
+      213: 3854909278276478508
+    second: Tileset_edificios_72
+  - first:
+      213: 1977729477410811306
+    second: Tileset_edificios_73
+  - first:
+      213: 2907690132040686032
+    second: Tileset_edificios_74
+  - first:
+      213: -6250421006166733621
+    second: Tileset_edificios_75
+  - first:
+      213: 7405213801327145571
+    second: Tileset_edificios_76
+  - first:
+      213: 1999442903947832501
+    second: Tileset_edificios_77
+  - first:
+      213: -5598475439237749644
+    second: Tileset_edificios_78
+  - first:
+      213: 6656791758772860014
+    second: Tileset_edificios_79
+  - first:
+      213: -8704896384067506328
+    second: Tileset_edificios_80
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 127
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Tileset_edificios_0
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 2368
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13793e754904e74e0800000000000000
+      internalID: -1982075780122568911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_1
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 2368
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 940e17dc870e07950800000000000000
+      internalID: 6444897876214669385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_2
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 2368
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0207c46a45b4c2150800000000000000
+      internalID: 5849132842986795040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_3
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 2368
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f03697b2d7c1dd90800000000000000
+      internalID: -7074653831785205518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_4
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 2368
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ab0b3a297992b550800000000000000
+      internalID: 6175166784756976551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_5
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 2368
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3719a94f0b9d39880800000000000000
+      internalID: -8605295108933643917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_6
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 2368
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb112ea148d31d440800000000000000
+      internalID: 4958812302307627455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_7
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 2368
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d9b1da68cf593590800000000000000
+      internalID: -7694013173995554348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_8
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 2368
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 886ad866103a597e0800000000000000
+      internalID: -1759320853007456632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_9
+      rect:
+        serializedVersion: 2
+        x: 1486
+        y: 2368
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7724d53b1c5b301c0800000000000000
+      internalID: -4538584155916778889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_10
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 2210
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e00098324a0c7620800000000000000
+      internalID: 2773102750086463720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_11
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 2210
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 572d619f933236630800000000000000
+      internalID: 3919014832641593973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_12
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 2210
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d590fec4c81e32e0800000000000000
+      internalID: -2144249139017247276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_13
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 2210
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bd6b1bd78ef6eb10800000000000000
+      internalID: 2010574143117553078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_14
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 2210
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46301315a6c572980800000000000000
+      internalID: -8563774554723253404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_15
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 2210
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0212372b8a1ddadb0800000000000000
+      internalID: -4778933107091627744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_16
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 2210
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c5c114bbf0199a30800000000000000
+      internalID: 4222424798880449988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_17
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 2210
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57dd29e4d98162180800000000000000
+      internalID: -9140591329794663051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_18
+      rect:
+        serializedVersion: 2
+        x: 1486
+        y: 2210
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a98ef050b0e930a0800000000000000
+      internalID: -6901237906090849888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_19
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 2052
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a13502530e3d29960800000000000000
+      internalID: 7607375680499634970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_20
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 2052
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5d43977b78f30290800000000000000
+      internalID: -7925217710071132836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_21
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 2052
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 644d9e028e5d58df0800000000000000
+      internalID: -178501417249942458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_22
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 2052
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c049dd2d49a77140800000000000000
+      internalID: 4717425283640672448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_23
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 2052
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 443ad956abf7ccbb0800000000000000
+      internalID: -4914412654822579388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_24
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 2052
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe4fc8690ab979980800000000000000
+      internalID: -8532179855007222545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_25
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 2052
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22db32a9b06be9340800000000000000
+      internalID: 4872532007808384290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_26
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 2052
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa4e4946761509b80800000000000000
+      internalID: -8390116601280273233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_27
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 2052
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 999392dad55898d10800000000000000
+      internalID: 2128378936292882841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_28
+      rect:
+        serializedVersion: 2
+        x: 1486
+        y: 2052
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0012dca495540c2a0800000000000000
+      internalID: -6719294394227416832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_29
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1894
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cef8ab65a90b4b880800000000000000
+      internalID: -8596051611816914964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_30
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 1894
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76fd6ce2e59063c10800000000000000
+      internalID: 2032822581920718695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_31
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 1894
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db77d5b393a8126f0800000000000000
+      internalID: -711135287734077507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_32
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 1894
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60a775088e3ca96f0800000000000000
+      internalID: -677013390612792826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_33
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 1894
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d76712ce97914e80800000000000000
+      internalID: -8196103138720651312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_34
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 1894
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0c1eeef454c08760800000000000000
+      internalID: 7458176852258855949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_35
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 1894
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 186f9dbe465946d60800000000000000
+      internalID: 7882589508491409025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_36
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 1894
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25ebb677c950acb90800000000000000
+      internalID: -7220952882958582190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_37
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 1894
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7ee6a00f9b7c2c70800000000000000
+      internalID: 8947662482519289467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_38
+      rect:
+        serializedVersion: 2
+        x: 1486
+        y: 1894
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f944adefd15c2bb0800000000000000
+      internalID: -4959499067435234824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_39
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1736
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7c2aae592c099360800000000000000
+      internalID: 7176780853012999291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_40
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 1736
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddd81b71ac90773b0800000000000000
+      internalID: -5514928455106327075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_41
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 1736
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9c574debfc4788c0800000000000000
+      internalID: -3997141499366646625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_42
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 1736
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 391e4e8f3f68b1550800000000000000
+      internalID: 6132643700005986707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_43
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 1736
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e01b5c26a5bc8f7e0800000000000000
+      internalID: -1731410467659337458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_44
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 1736
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6adc3d7ffac3368d0800000000000000
+      internalID: -2854371012347966042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_45
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 1736
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b82a448bf6baf0c0800000000000000
+      internalID: -4541116082877224779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_46
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 1736
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a64909146bf105160800000000000000
+      internalID: 7012139487460365418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_47
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 1736
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60d0d55d04e979c30800000000000000
+      internalID: 4366132365053725958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_48
+      rect:
+        serializedVersion: 2
+        x: 1486
+        y: 1736
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc3a6c2e1df05da70800000000000000
+      internalID: 8850998036793828303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_49
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1578
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d861a4823b7992480800000000000000
+      internalID: -8923434390927042931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_50
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 1578
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c3f7de6106341760800000000000000
+      internalID: 7427621065223304136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_51
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 1578
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cee37c47915afb20800000000000000
+      internalID: 3168934998073142981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_52
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 1578
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dad8bf750545f2320800000000000000
+      internalID: 2535337819283099053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_53
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 1578
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c2045b1c7c9a7150800000000000000
+      internalID: 5871177121079231171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_54
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 1578
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b327299f8b6f2f40800000000000000
+      internalID: 5705897517395682233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_55
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 1578
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f157c6a99b4d3a80800000000000000
+      internalID: -8485542999595986443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_56
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 1578
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f63bc58fb2d3a95d0800000000000000
+      internalID: -3055062138157747345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_57
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 1578
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f17fa1516b4e69d90800000000000000
+      internalID: -7091229092558997729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_58
+      rect:
+        serializedVersion: 2
+        x: 1486
+        y: 1578
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ee7a90a37e6bd7a0800000000000000
+      internalID: -6351361406581178648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_59
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1420
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb401b3bd755a2d00800000000000000
+      internalID: 948664669888906427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_60
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 1420
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ab463697dc655690800000000000000
+      internalID: -7614059921806046298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_61
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 1420
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b421ca36f7c63190800000000000000
+      internalID: -7982973429106006859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_62
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 1420
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54dafb64ffcad19a0800000000000000
+      internalID: -6260657694571516603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_63
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 1420
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f8b8f952f2eee260800000000000000
+      internalID: 7128884790693509367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_64
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 1420
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f535018838854efa0800000000000000
+      internalID: -5772391500435401889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_65
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 1420
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d24a3a776665736f0800000000000000
+      internalID: -704999818566327251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_66
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 1420
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d5eedf0e94df0110800000000000000
+      internalID: 1229434998631622101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_67
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 1420
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3eb503b31718cff50800000000000000
+      internalID: 6916545451058551779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_68
+      rect:
+        serializedVersion: 2
+        x: 1486
+        y: 1420
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c585fdae00929f50800000000000000
+      internalID: 6886725172925400520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_69
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1262
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd998c04e54f33cc0800000000000000
+      internalID: -3732370980509017633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_70
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 1262
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46d3bbb7658664ca0800000000000000
+      internalID: -6033019930163856028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_71
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 1262
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7b6e8f466f4093d0800000000000000
+      internalID: -3201972034220430468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_72
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 1262
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c26e60d70936f7530800000000000000
+      internalID: 3854909278276478508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_73
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 1262
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aade3e23b7e427b10800000000000000
+      internalID: 1977729477410811306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_74
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 1262
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d9913df4c03a5820800000000000000
+      internalID: 2907690132040686032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_75
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 1262
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcccac6063b0249a0800000000000000
+      internalID: -6250421006166733621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_76
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 1262
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 362bce1c7ba94c660800000000000000
+      internalID: 7405213801327145571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_77
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 1262
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bc6c764ab27fbb10800000000000000
+      internalID: 1999442903947832501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_78
+      rect:
+        serializedVersion: 2
+        x: 1486
+        y: 1262
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4742c7000483e42b0800000000000000
+      internalID: -5598475439237749644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_79
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1104
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e64776dd5dca16c50800000000000000
+      internalID: 6656791758772860014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_80
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 1104
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86fe215fbdef13780800000000000000
+      internalID: -8704896384067506328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_81
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 1104
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82ae9859bcb3e3f45b51e3ae18c4feeb
+      internalID: 1799762219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_82
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 1104
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1070f56f9f9259f49b8fcf51a980b9a5
+      internalID: 194786467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_83
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 1104
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f7446d8423246c41af4040a08ca497b
+      internalID: -224928147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_84
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 1104
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 121370ff19d23134fbb24d9905417d5a
+      internalID: 477400647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_85
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 1104
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dc7fc94b6f2e5b4c9af55822a2fb6c4
+      internalID: 209590094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_86
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 1104
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1615eee7dce06774ba3e5af58168bdaa
+      internalID: -685365353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_87
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 1104
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e64cd293bd02bf1459e9231abb2e4541
+      internalID: -629715081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_88
+      rect:
+        serializedVersion: 2
+        x: 1486
+        y: 1104
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cc942104520db6418b929fc46affdf9
+      internalID: -1235260648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_89
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 946
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24596efac63a3814a9477d3adad724ed
+      internalID: 1321976697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_90
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 946
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5a2603c0358b0a48834d98a3e87642a
+      internalID: 863628701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_91
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 946
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04372070280a2394d9194f68c54a811c
+      internalID: 1554691399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_92
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 946
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2575f2a14e53c04392557a49d205d0d
+      internalID: -257943348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_93
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 946
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7d8523ad730b6d4b9c4926b3ee0f225
+      internalID: 115202784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_94
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 946
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb4bbced992a0d248a31f74aa7b39c16
+      internalID: 1750448415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_95
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 946
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71064f7f377bd974ca4488f2435117d9
+      internalID: -1629923984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_96
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 946
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d30f6106387de146b9a55c64594beaf
+      internalID: -969605434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_97
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 946
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e5f16b751cff0243989a5fb61cdd8cd
+      internalID: -802542740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_98
+      rect:
+        serializedVersion: 2
+        x: 1486
+        y: 946
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f17a306112d58634d940b0ab51717c47
+      internalID: -829705794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_99
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 788
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3a1099568154044dbca6833a6e93e03
+      internalID: 443218898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_100
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 788
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8591841a4f0d8940a12dc21a2c14de9
+      internalID: -1470541871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_101
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 788
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd6929c9770411347abd7ef012cb5da4
+      internalID: 1325015100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_102
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 788
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d25ec0158fad0e4b96524faa1058ba9
+      internalID: -1753692096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_103
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 788
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e7052769d192d445b1e8dcaedfb5545
+      internalID: -402887989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_104
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 788
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ac7362690c00da42ae2490b2b5a5548
+      internalID: 882552825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_105
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 630
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd3382b59928c484a8779832be0f4b35
+      internalID: -1322135997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_106
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 630
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59283683081c26744a89b96ae7c0669e
+      internalID: -1558700069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_107
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 630
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15bbadf1399135c448a8b57393851313
+      internalID: 851968435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_108
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 630
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddd28994453485141b835255db1706d9
+      internalID: -227742619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_109
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 630
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2801ff6f47ba3e54086e28a82f677825
+      internalID: -1048340628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_110
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 630
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9f862fee214ec649b6e2433943c4d56
+      internalID: 1908921449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_111
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 630
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e24f55788a1308d40a49a505df6d1898
+      internalID: -1578911373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_112
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 630
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b19be3f3f0ccce4db6df36ed3c2ea11
+      internalID: 897559546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_113
+      rect:
+        serializedVersion: 2
+        x: 1486
+        y: 630
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 367998aa558ac3d43a8936bfeb68fad2
+      internalID: 751408203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_114
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 472
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5fa5ad5915f08e4099beabadaa3958a
+      internalID: -1223156096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_115
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 472
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88f19209f60e4954d844af2722e0c9cb
+      internalID: -1053022212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_116
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 472
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4740eda8a597504a891c614d34be0cb
+      internalID: -1137906596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_117
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 472
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64f02c69a9b623f40ac19a33003eb3b0
+      internalID: 1275437652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_118
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 472
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41d53a7f2cc02b747b75fe88cfd2d33e
+      internalID: -373517543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_119
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 472
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2173d823515415f4596166946d88f2d2
+      internalID: -1076703112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_120
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 314
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c467178788fb32f4e9d768ec59f27d01
+      internalID: -587450745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_121
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 314
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d73bf7f3cae3ce040bf9a2a03f016b1f
+      internalID: 811886526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_122
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 314
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b671ba6bc7648b74da06eff99f9c81b8
+      internalID: -200658581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_123
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 314
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aeb7f89b2f81055439ba2f0f9ca7d130
+      internalID: -763791570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_124
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 314
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97d9a0a55593d094eb90baa0625e6c61
+      internalID: 1444906256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_125
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 314
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b37a66599595b854da222b0eefa4b083
+      internalID: 555347993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_126
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 156
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e0f7e39f761c1648b3a2a8edb289df4
+      internalID: 676289116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_127
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 156
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c941919b5f8ed2e4d8d7bc97885c348c
+      internalID: -982602720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_128
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 156
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 736646074c4faa1419e803b7e902fd3f
+      internalID: -1418916428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_129
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 156
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9092aae578c9624985afab968cd0cc9
+      internalID: -1207946243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_130
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 156
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3651f313eb1967c45bb3662c01bf4a06
+      internalID: 1312703872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_131
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 156
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 506ce748b03ac4141aff4d56385e999b
+      internalID: -692736636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_132
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 472
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4a44a54cb11e7844b88f17d41c23be2
+      internalID: -689212269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_133
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 472
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69380b3febcef064eb894399a303a030
+      internalID: -1554678084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_134
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 472
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9197921469f33594b87e9e50e354e87c
+      internalID: -291290830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_135
+      rect:
+        serializedVersion: 2
+        x: 1486
+        y: 472
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74bf1167a449c2e47a8abc9c65c05739
+      internalID: -1673455708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_136
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 314
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02856e986cbc4c946aa87aa9eb5e792e
+      internalID: 764041558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_137
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 314
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8d54a5c614a9f944930901a9d9c8818
+      internalID: -1994436483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_138
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 314
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b59e7f585b4b4794c898aa2def9a51ae
+      internalID: -574625112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_139
+      rect:
+        serializedVersion: 2
+        x: 1486
+        y: 314
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b647598f57044f14e9ef887fccfb5b5e
+      internalID: 1008472336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_140
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 156
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3860c2f83433f8c4e9f3e573b9bf2ed0
+      internalID: -1884255335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_141
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 156
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2325bbcc6197a9c489293b2d1ddcebaa
+      internalID: 648620341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_142
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 156
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26a3895e03e7a19429da34078593c24f
+      internalID: 867544776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_edificios_143
+      rect:
+        serializedVersion: 2
+        x: 1486
+        y: 156
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7689564dbcb5b934da5d95d8541588a3
+      internalID: 95570364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 3216ab39257d0f8449d0e35551707e53
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Tileset_edificios_0: -1982075780122568911
+      Tileset_edificios_1: 6444897876214669385
+      Tileset_edificios_10: 2773102750086463720
+      Tileset_edificios_100: -1470541871
+      Tileset_edificios_101: 1325015100
+      Tileset_edificios_102: -1753692096
+      Tileset_edificios_103: -402887989
+      Tileset_edificios_104: 882552825
+      Tileset_edificios_105: -1322135997
+      Tileset_edificios_106: -1558700069
+      Tileset_edificios_107: 851968435
+      Tileset_edificios_108: -227742619
+      Tileset_edificios_109: -1048340628
+      Tileset_edificios_11: 3919014832641593973
+      Tileset_edificios_110: 1908921449
+      Tileset_edificios_111: -1578911373
+      Tileset_edificios_112: 897559546
+      Tileset_edificios_113: 751408203
+      Tileset_edificios_114: -1223156096
+      Tileset_edificios_115: -1053022212
+      Tileset_edificios_116: -1137906596
+      Tileset_edificios_117: 1275437652
+      Tileset_edificios_118: -373517543
+      Tileset_edificios_119: -1076703112
+      Tileset_edificios_12: -2144249139017247276
+      Tileset_edificios_120: -587450745
+      Tileset_edificios_121: 811886526
+      Tileset_edificios_122: -200658581
+      Tileset_edificios_123: -763791570
+      Tileset_edificios_124: 1444906256
+      Tileset_edificios_125: 555347993
+      Tileset_edificios_126: 676289116
+      Tileset_edificios_127: -982602720
+      Tileset_edificios_128: -1418916428
+      Tileset_edificios_129: -1207946243
+      Tileset_edificios_13: 2010574143117553078
+      Tileset_edificios_130: 1312703872
+      Tileset_edificios_131: -692736636
+      Tileset_edificios_132: -689212269
+      Tileset_edificios_133: -1554678084
+      Tileset_edificios_134: -291290830
+      Tileset_edificios_135: -1673455708
+      Tileset_edificios_136: 764041558
+      Tileset_edificios_137: -1994436483
+      Tileset_edificios_138: -574625112
+      Tileset_edificios_139: 1008472336
+      Tileset_edificios_14: -8563774554723253404
+      Tileset_edificios_140: -1884255335
+      Tileset_edificios_141: 648620341
+      Tileset_edificios_142: 867544776
+      Tileset_edificios_143: 95570364
+      Tileset_edificios_15: -4778933107091627744
+      Tileset_edificios_16: 4222424798880449988
+      Tileset_edificios_17: -9140591329794663051
+      Tileset_edificios_18: -6901237906090849888
+      Tileset_edificios_19: 7607375680499634970
+      Tileset_edificios_2: 5849132842986795040
+      Tileset_edificios_20: -7925217710071132836
+      Tileset_edificios_21: -178501417249942458
+      Tileset_edificios_22: 4717425283640672448
+      Tileset_edificios_23: -4914412654822579388
+      Tileset_edificios_24: -8532179855007222545
+      Tileset_edificios_25: 4872532007808384290
+      Tileset_edificios_26: -8390116601280273233
+      Tileset_edificios_27: 2128378936292882841
+      Tileset_edificios_28: -6719294394227416832
+      Tileset_edificios_29: -8596051611816914964
+      Tileset_edificios_3: -7074653831785205518
+      Tileset_edificios_30: 2032822581920718695
+      Tileset_edificios_31: -711135287734077507
+      Tileset_edificios_32: -677013390612792826
+      Tileset_edificios_33: -8196103138720651312
+      Tileset_edificios_34: 7458176852258855949
+      Tileset_edificios_35: 7882589508491409025
+      Tileset_edificios_36: -7220952882958582190
+      Tileset_edificios_37: 8947662482519289467
+      Tileset_edificios_38: -4959499067435234824
+      Tileset_edificios_39: 7176780853012999291
+      Tileset_edificios_4: 6175166784756976551
+      Tileset_edificios_40: -5514928455106327075
+      Tileset_edificios_41: -3997141499366646625
+      Tileset_edificios_42: 6132643700005986707
+      Tileset_edificios_43: -1731410467659337458
+      Tileset_edificios_44: -2854371012347966042
+      Tileset_edificios_45: -4541116082877224779
+      Tileset_edificios_46: 7012139487460365418
+      Tileset_edificios_47: 4366132365053725958
+      Tileset_edificios_48: 8850998036793828303
+      Tileset_edificios_49: -8923434390927042931
+      Tileset_edificios_5: -8605295108933643917
+      Tileset_edificios_50: 7427621065223304136
+      Tileset_edificios_51: 3168934998073142981
+      Tileset_edificios_52: 2535337819283099053
+      Tileset_edificios_53: 5871177121079231171
+      Tileset_edificios_54: 5705897517395682233
+      Tileset_edificios_55: -8485542999595986443
+      Tileset_edificios_56: -3055062138157747345
+      Tileset_edificios_57: -7091229092558997729
+      Tileset_edificios_58: -6351361406581178648
+      Tileset_edificios_59: 948664669888906427
+      Tileset_edificios_6: 4958812302307627455
+      Tileset_edificios_60: -7614059921806046298
+      Tileset_edificios_61: -7982973429106006859
+      Tileset_edificios_62: -6260657694571516603
+      Tileset_edificios_63: 7128884790693509367
+      Tileset_edificios_64: -5772391500435401889
+      Tileset_edificios_65: -704999818566327251
+      Tileset_edificios_66: 1229434998631622101
+      Tileset_edificios_67: 6916545451058551779
+      Tileset_edificios_68: 6886725172925400520
+      Tileset_edificios_69: -3732370980509017633
+      Tileset_edificios_7: -7694013173995554348
+      Tileset_edificios_70: -6033019930163856028
+      Tileset_edificios_71: -3201972034220430468
+      Tileset_edificios_72: 3854909278276478508
+      Tileset_edificios_73: 1977729477410811306
+      Tileset_edificios_74: 2907690132040686032
+      Tileset_edificios_75: -6250421006166733621
+      Tileset_edificios_76: 7405213801327145571
+      Tileset_edificios_77: 1999442903947832501
+      Tileset_edificios_78: -5598475439237749644
+      Tileset_edificios_79: 6656791758772860014
+      Tileset_edificios_8: -1759320853007456632
+      Tileset_edificios_80: -8704896384067506328
+      Tileset_edificios_81: 1799762219
+      Tileset_edificios_82: 194786467
+      Tileset_edificios_83: -224928147
+      Tileset_edificios_84: 477400647
+      Tileset_edificios_85: 209590094
+      Tileset_edificios_86: -685365353
+      Tileset_edificios_87: -629715081
+      Tileset_edificios_88: -1235260648
+      Tileset_edificios_89: 1321976697
+      Tileset_edificios_9: -4538584155916778889
+      Tileset_edificios_90: 863628701
+      Tileset_edificios_91: 1554691399
+      Tileset_edificios_92: -257943348
+      Tileset_edificios_93: 115202784
+      Tileset_edificios_94: 1750448415
+      Tileset_edificios_95: -1629923984
+      Tileset_edificios_96: -969605434
+      Tileset_edificios_97: -802542740
+      Tileset_edificios_98: -829705794
+      Tileset_edificios_99: 443218898
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
