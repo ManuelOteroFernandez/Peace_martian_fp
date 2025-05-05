@@ -1,9 +1,17 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuSystem : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI versionTextOne;
+    [SerializeField] private TextMeshProUGUI versionTextTwo;
+
+    void Start() {
+        versionTextOne.text = $"Versión {Application.version}";
+        versionTextTwo.text = $"Versión {Application.version}";
+    }
     
     public void Jugar()
     {
