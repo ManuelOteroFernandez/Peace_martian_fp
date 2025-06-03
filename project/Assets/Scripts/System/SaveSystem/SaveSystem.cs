@@ -15,7 +15,7 @@ public static class SaveSystem {
         return saveData;
     }
 
-    public static void SaveGame() {
+    /*public static void SaveGame() {
         string json = JsonUtility.ToJson(saveData, true);
         File.WriteAllText(path, json);
     }
@@ -29,16 +29,49 @@ public static class SaveSystem {
             saveData = new SaveData();
             SaveGame();
         }
+    }*/
+    
+    public static void SaveGame() {
+        string json = JsonUtility.ToJson(saveData);
+        #if UNITY_WEBGL
+            PlayerPrefs.SetString("save_data", json);
+            PlayerPrefs.Save();
+        #else
+            File.WriteAllText(path, json);
+        #endif
     }
 
+    public static void LoadGame() {
+        #if UNITY_WEBGL
+            if (PlayerPrefs.HasKey("save_data")) {
+                string json = PlayerPrefs.GetString("save_data");
+                saveData = JsonUtility.FromJson<SaveData>(json);
+            } else {
+                saveData = new SaveData();
+                SaveGame();
+            }
+        #else
+            if (File.Exists(path)) {
+                string json = File.ReadAllText(path);
+                saveData = JsonUtility.FromJson<SaveData>(json);
+            } else {
+                saveData = new SaveData();
+                SaveGame();
+            }
+        #endif
+    }
+
+
     // Setear nuevo checkpoint y estado de hasArmor
-    public static void SetCheckpoint(string checkpointID, PlayerController player) {
+    public static void SetCheckpoint(string checkpointID, PlayerController player)
+    {
         saveData.lastCheckpointID = checkpointID;
         saveData.hasArmor = player.HasArmor;
         saveData.hasDoubleJump = player.DoubleJumpUnlocked;
         saveData.hasDash = player.DashUnlocked;
         saveData.sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        if (!saveData.activatedCheckpoints.Contains(checkpointID)) {
+        if (!saveData.activatedCheckpoints.Contains(checkpointID))
+        {
             saveData.activatedCheckpoints.Add(checkpointID);
         }
 
