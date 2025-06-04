@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public abstract class EnemyController : MonoBehaviour
 {
@@ -21,9 +23,12 @@ public abstract class EnemyController : MonoBehaviour
     [Header("Movement Parameters")]
     [SerializeField] protected float chaseSpeed = 5f;
     [SerializeField] protected float patrolSpeed = 2f;
-    [SerializeField] protected float chaseDistance = 10f;
+    [SerializeField] protected float chaseDistance = 20f;
+    [SerializeField] protected float detectionDistance = 10f;
     [SerializeField] protected float maxDistanceFromOrigin = 5f;
     [SerializeField] protected float enemyCenterOffset = 0.5f;
+
+    [SerializeField] protected float maxJumpFromCliff = 1;
     protected Vector2 enemyPosition;
 
     [Header("General Attack Parameters")]
@@ -63,7 +68,14 @@ public abstract class EnemyController : MonoBehaviour
         }
     }
 
-    protected virtual void FixedUpdate(){
+    protected virtual void Update()
+    {
+        animator.SetFloat("velocityX", Mathf.Abs(rb2d.linearVelocityX));
+    }
+
+    protected virtual void FixedUpdate()
+    {
+        enemyPosition = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y + enemyCenterOffset);
         UpdateCooldowns();
         UpdateState();
     }
@@ -72,130 +84,147 @@ public abstract class EnemyController : MonoBehaviour
         currentState.Update(this);
     }
 
-    public void ChangeState(EnemyState newState) {
+    public void ChangeState(EnemyState newState)
+    {
         currentState?.Exit(this);
         currentState = newState;
 
         // Debug.Log("current state: " + currentState);
+        aiAgent.RelocateCurrentWaypoint();
+        aiAgent.nextWaypoint = null;
 
         currentState.Enter(this);
     }
 
-    //TODO: Necesita ajuste
-    public virtual void MoveEnemy(){
-        aiAgent.UpdateFieldFlowNextWaypoint();
-        if (aiAgent.nextWaypoint == null) return;
-
-        Waypoint current = aiAgent.currentWaypoint;
-        Waypoint next = aiAgent.nextWaypoint;
-
-        Vector2 direction = aiAgent.DirectionToNextWaypoint();
-        Flip(-direction.x);
-
-        enemyPosition = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y + enemyCenterOffset);
-
-        bool onLadder = current.type == WaypointType.Ladder;
-        bool goingToLadder = next.type == WaypointType.Ladder || next.bestNextWaypoint.type == WaypointType.Ladder;
-
-        if (onLadder || goingToLadder) {
-            float xTarget = next.position.x;
-            float xDiff = xTarget - transform.position.x;
-            float xVelocity = Mathf.Clamp(xDiff * 10f, -chaseSpeed, chaseSpeed);
-
-            float yVelocity = direction.y * chaseSpeed;
-
-            if (onLadder && next.type == WaypointType.Ladder) {
-                xVelocity = 0f;
-            }
-
-            if (rb2d.gravityScale != 0f) {
-                rb2d.gravityScale = 0f;
-            }
-
-            rb2d.linearVelocity = new Vector2(xVelocity, yVelocity);
-        } else {
-            float velocityX = direction.x * chaseSpeed;
-            float velocityY = rb2d.linearVelocity.y;
-
-            if (!(current.type == WaypointType.Cliff && next.type == WaypointType.Cliff)){
-                velocityY = 0;
-            }
-
-            if (rb2d.gravityScale == 0f) {
-                rb2d.gravityScale = 1f;
-            }
-
-            rb2d.linearVelocity = new Vector2(velocityX, velocityY);
+    public virtual void MoveTo(Waypoint waypoint, float speed)
+    {
+        if (waypoint.type == WaypointType.Cliff && !CanJumpFromCliff(waypoint))
+        {
+            // Debug.Log("Cliff?");
+            rb2d.linearVelocity = Vector2.zero;
+            return;
         }
 
-        if (Vector2.Distance(enemyPosition, aiAgent.nextWaypoint.position) < 0.1f){
-            if (aiAgent.nextWaypoint.type == WaypointType.Ladder) {
+        Vector2 dir = (waypoint.position - enemyPosition).normalized;
+        // Debug.Log("Direccion normalizada : " + dir);
+        Flip(-dir.x);
+        
+        if (!CanMoveInDirection(dir)) return;
+
+        if (waypoint.type == WaypointType.Ladder)
+        {
+            rb2d.gravityScale = 0f;
+        }
+        else
+        {
+            rb2d.gravityScale = 1f;
+            if (!IsGrounded())
+            {
+                dir.y = 0;
+            }
+        }
+
+        rb2d.linearVelocity = dir * speed * Time.deltaTime;
+    }
+
+    protected bool CanMoveInDirection(Vector2 direction)
+    {
+        
+        Vector2 dirOrigin = (aiAgent.originWaypoint.position - enemyPosition).normalized;
+
+        return DistanceToOriginWaypoint() <= MaxDistanceFromOrigin || (direction.x > 0 == dirOrigin.x > 0);
+    }
+
+    protected bool CanJumpFromCliff(Waypoint waypoint)
+    {
+        return aiAgent.NumWaypointToGround(waypoint) <= maxJumpFromCliff;
+    }
+
+    protected bool IsArrivedToWaypoint(Waypoint waypoint)
+    {
+        float distance = Vector2.Distance(waypoint.position, enemyPosition);
+        return distance <= 0.1f;
+    }
+
+    public void MoveToTarget()
+    {
+        aiAgent.UpdateFieldFlowNextWaypoint();
+        if (aiAgent.nextWaypoint == null)
+        {
+            // Debug.Log("No Next waypoint");
+            return;
+        }
+        if (aiAgent.nextWaypoint.bestNextWaypoint == aiAgent.currentWaypoint)
+        {
+            // Debug.Log("Next waypoint loop");
+            return;
+        }
+        if (CantReachTarget())
+        {
+            // Debug.Log("No reach target");
+            return;
+        }
+        if (IsInvalidWaypoint(aiAgent.nextWaypoint))
+        {
+            // Debug.Log("Invalid Waypoint");
+            rb2d.linearVelocity = new Vector2(0.0f, rb2d.linearVelocityY);
+            return;
+        }
+
+        MoveTo(aiAgent.nextWaypoint,chaseSpeed);
+
+        if (IsArrivedToWaypoint(aiAgent.nextWaypoint))
+        {
+            if (aiAgent.nextWaypoint.type == WaypointType.Ladder)
+            {
                 transform.position = new Vector3(aiAgent.nextWaypoint.position.x, transform.position.y, 0);
             }
 
             aiAgent.AdvanceToNextWaypoint();
         }
+
     }
 
     public void Patrol() {
         aiAgent.UpdateNextPatrolWaypoint();
 
-        Vector2 direction = aiAgent.DirectionToNextWaypoint();
-        Flip(-direction.x);
-        enemyPosition = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y + enemyCenterOffset);
+        MoveTo(aiAgent.nextWaypoint,patrolSpeed);
 
-        Vector2 horizontalVelocity = direction.normalized * patrolSpeed;
-        rb2d.linearVelocity = new Vector2(horizontalVelocity.x, rb2d.linearVelocity.y);
-
-        if (Vector2.Distance(enemyPosition, aiAgent.nextWaypoint.position) < 0.1f){
+        if (IsArrivedToWaypoint(aiAgent.nextWaypoint)){
             aiAgent.UpdatePatrolWaypointIndex();
             aiAgent.RelocateCurrentWaypoint();
         }
     }
 
-    //TODO: Refactorizar
+    protected bool IsInvalidWaypoint(Waypoint waypoint)
+    {
+        return waypoint.type == WaypointType.Cliff && waypoint.position.y > enemyPosition.y;
+    }
+
     public void ReturnToOrigin() {
-        if (!aiAgent.IsInOriginWaypoint()) {
-            //Se calcula la ruta al origen si esta no existe
+        if (aiAgent.nextWaypoint == null)
+        {
+            aiAgent.RelocateCurrentWaypoint();
+            aiAgent.ResetRouteToOrigin();
+            aiAgent.ResetRouteToOriginWaypointIndex();
             aiAgent.CalculateRouteToOrigin();
-
-            //Evitamos un indexOutOfBoundsException
-            if (aiAgent.RouteIndexOutOfBounds()) {
-                aiAgent.ResetRouteToOriginWaypointIndex();
-                return;
-            }
-
             aiAgent.UpdateRouteToOriginNextWaypoint();
+            return;
+        }
 
-            //Si el enemigo se encuentra con una subida que no sea escalera, se queda patrullando en el sitio en el que está
-            if (aiAgent.nextWaypoint.type == WaypointType.Cliff && aiAgent.nextWaypoint.position.y > aiAgent.currentWaypoint.position.y){
-                aiAgent.UpdateOriginWaypoint(aiAgent.currentWaypoint);
-                aiAgent.GetPatrolRoute();
-                return;
-            }
+        if (IsInvalidWaypoint(aiAgent.nextWaypoint))
+        {
+            // Debug.Log("is invalid waypoint");
+            aiAgent.UpdateOriginWaypoint(aiAgent.currentWaypoint);
+            aiAgent.GetPatrolRoute();
+            return;
+        }
 
-            enemyPosition = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y + enemyCenterOffset);
+        MoveTo(aiAgent.nextWaypoint, patrolSpeed);
 
-            Vector2 direction = aiAgent.nextWaypoint.position - aiAgent.currentWaypoint.position;
-
-            //En caso de que la dirección sea cero, significa que el WP actual y el siguiente con el mismo, así que avanzamos en la lista.
-            if (direction.Equals(Vector2.zero)) {
-                aiAgent.IncreaseRouteToOriginWaypointIndex();
-                return;
-            }
-
-            Flip(-direction.x);
-            rb2d.linearVelocity = direction.normalized * patrolSpeed;
-
-            //Cuando el enemigo llega al siguiente WP, se actualiza el currentWaypoint
-            if (Vector2.Distance(enemyPosition, aiAgent.nextWaypoint.position) < 0.1f){
-                aiAgent.RelocateCurrentWaypoint();
-            }
-
-            //Cuando el enemigo llega al originWaypoint, se reinicia la ruta al origen y se vuelve a patrullar
-            if (aiAgent.IsInOriginWaypoint()) {
-                aiAgent.ResetRouteToOrigin();
-            }
+        if (IsArrivedToWaypoint(aiAgent.nextWaypoint)) {
+            aiAgent.IncreaseRouteToOriginWaypointIndex();
+            aiAgent.UpdateRouteToOriginNextWaypoint();
         }
     }
 
@@ -213,7 +242,13 @@ public abstract class EnemyController : MonoBehaviour
         return aiAgent.currentWaypoint.type == WaypointType.Cliff && !IsGrounded();
     }
 
-    public bool IsTargetInChaseRange() {
+    public bool IsTargerInDetectionRange()
+    {
+        return Vector3.Distance(target.position, transform.position) < detectionDistance;
+    }
+
+    public bool IsTargetInChaseRange()
+    {
         return Vector3.Distance(target.position, transform.position) < chaseDistance;
     }
 
@@ -222,7 +257,7 @@ public abstract class EnemyController : MonoBehaviour
     }
 
     public bool CantReachTarget() {
-        return aiAgent.nextWaypoint == null && !IsTargetInChaseRange();
+        return !IsTargetInChaseRange();
     }
 
     private bool IsTargetInAttackRange(Transform target) {
@@ -278,6 +313,8 @@ public abstract class EnemyController : MonoBehaviour
     private void OnDrawGizmos() {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(enemyPosition, 0.1f);
+        Gizmos.DrawWireSphere(transform.position, detectionDistance);
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, chaseDistance);
 
         if (target != null) {

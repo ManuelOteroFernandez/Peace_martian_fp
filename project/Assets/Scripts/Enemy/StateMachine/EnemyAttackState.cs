@@ -27,7 +27,15 @@ public class EnemyAttackState : EnemyState
         if (controller.IsTargetInAttackRange() && controller.IsAttackCooldownReady()) {
             controller.StartCoroutine(ExecuteAttack(controller));
         } else {
-            controller.ChangeState(new EnemyIdleState());
+
+            if (controller.IsTargetInChaseRange())
+            {
+                controller.ChangeState(new EnemyChaseState());
+            }
+            else
+            {
+                controller.ChangeState(new EnemyIdleState());
+            }
         }
     }
 

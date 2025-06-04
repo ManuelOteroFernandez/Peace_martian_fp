@@ -305,19 +305,21 @@ MonoBehaviour:
   obstaclesLayerMask:
     serializedVersion: 2
     m_Bits: 1088
-  chaseSpeed: 5
-  patrolSpeed: 2
-  chaseDistance: 10
+  chaseSpeed: 200
+  patrolSpeed: 80
+  chaseDistance: 50
+  detectionDistance: 10
   maxDistanceFromOrigin: 50
   enemyCenterOffset: 0.5
+  maxJumpFromCliff: 5
   attackRange: 2
   attackCooldown: 2
-  attackDuration: 1
+  attackDuration: 0.5
   freeEnemyChance: 0.5
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  groundCheckSize: {x: 1, y: 0.1}
+  groundCheckSize: {x: 0.6, y: 0.1}
   groundCheckPoint: {fileID: 3177371684315858735}
   weaponCollider: {fileID: 2274722259668000685}
 --- !u!114 &877892585812149401

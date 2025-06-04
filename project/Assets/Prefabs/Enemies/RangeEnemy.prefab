@@ -227,11 +227,13 @@ MonoBehaviour:
   obstaclesLayerMask:
     serializedVersion: 2
     m_Bits: 1088
-  chaseSpeed: 5
-  patrolSpeed: 2
+  chaseSpeed: 200
+  patrolSpeed: 80
   chaseDistance: 15
+  detectionDistance: 10
   maxDistanceFromOrigin: 5
   enemyCenterOffset: 0.6
+  maxJumpFromCliff: 1
   attackRange: 10
   attackCooldown: 2
   attackDuration: 1
@@ -239,7 +241,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  groundCheckSize: {x: 1, y: 0.1}
+  groundCheckSize: {x: 0.6, y: 0.1}
   groundCheckPoint: {fileID: 6800772481052724049}
   firePoint: {fileID: 1404923271042333976}
   projectilePrefab: {fileID: 2968890381435723290, guid: 816c926e79f55af48a887f0e7f36ef76, type: 3}
