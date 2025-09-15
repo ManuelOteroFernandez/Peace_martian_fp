@@ -5,6 +5,12 @@ public class EnemyRetreatState : EnemyState
     public override void Enter(EnemyController controller)
     {
         controller.animator.SetTrigger("isRunning");
+        controller.aiAgent.RelocateCurrentWaypoint();
+        controller.aiAgent.ResetRouteToOrigin();
+        controller.aiAgent.ResetRouteToOriginWaypointIndex();
+        controller.aiAgent.CalculateRouteToOrigin();
+        controller.aiAgent.UpdateRouteToOriginNextWaypoint();
+        // Debug.Log("Start RETREAT");
     }
 
     public override void Update(EnemyController controller)
@@ -19,8 +25,14 @@ public class EnemyRetreatState : EnemyState
             controller.ChangeState(new EnemyBubbleTrappedState());
         }
 
-        if (controller.rb2d.linearVelocityY < 0) {
+        if (controller.IsFalling()) {
             controller.ChangeState(new EnemyFallingState());
+        }
+        
+        if (controller.IsTargerInDetectionRange() && !controller.IsTargetInAttackRange())
+        {
+            // Debug.Log("Lo veooo");
+            controller.ChangeState(new EnemyChaseState());
         }
 
         if (controller.IsTrappedEnemyInAttackRange() || (controller.IsTargetInAttackRange() && controller.IsGrounded() && controller.IsAttackCooldownReady())) {
@@ -31,5 +43,7 @@ public class EnemyRetreatState : EnemyState
     public override void Exit(EnemyController controller)
     {
         controller.animator.ResetTrigger("isRunning");
+        controller.aiAgent.ResetRouteToOrigin();
+        // Debug.Log("end RETREAT");
     }
 }

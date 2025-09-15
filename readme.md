@@ -267,6 +267,20 @@ Los soldados no saben bien por qué deben luchar contra el marciano, solo saben 
 
 No tienen una motivación clara, solo quieren cumplir con las órdenes que les han dado e irse de vuelta a casa, sus opiniones sobre el marciano son indiferentes o negativas, pero solamente porque les han dicho que deben verlo así.
 
+# Assets externos
+
+Aparte de los assets generados exclusivamente por nuestro equipo para el uso en este proyecto, se utilizan los siguientes assets de terceros:
+- Fondo parallax: Synth Cities Environment - https://ansimuz.itch.io/cyberpunk-street-environment
+- Música niveles: Cyberpunk Moonlight Sonata - https://opengameart.org/content/cyberpunk-moonlight-sonata
+- Efectos de sonido:
+  - https://assetstore.unity.com/packages/audio/sound-fx/free-casual-game-sfx-pack-54116
+  - https://assetstore.unity.com/packages/audio/sound-fx/rpg-essentials-sound-effects-free-227708
+- Fuente de texto: 
+  - Milky Vintage: https://www.dafont.com/es/milky-vintage.font
+  - Seven Moon: https://www.dafont.com/es/seven-moon.font
+  - Ethnocentric: https://www.dafont.com/es/ethnocentric.font
+  - Airstrike: https://www.dafont.com/es/airstrike.font
+
 # Nivel 1 — Tutorial
 
 Este nivel transcurre en un entrono urbano, pero a las afueras de una ciudad en el presente. Para ser más específicos, el nivel es en las afueras de Madrid, durante un día soleado, en un lugar con pocos edificios, lleno de barricadas y militares.

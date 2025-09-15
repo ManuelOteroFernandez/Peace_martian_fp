@@ -18,5 +18,6 @@ public class EnemyBubbleTrappedState : EnemyState
     public override void Exit(EnemyController controller)
     {
         controller.animator.ResetTrigger("isTrapped");
+        controller.rb2d.gravityScale = 1.0f;
     }
 }

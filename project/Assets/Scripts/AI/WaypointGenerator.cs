@@ -146,13 +146,13 @@ public class WaypointGenerator : MonoBehaviour {
                 DrawArrow(waypoint.position, waypoint.bestNextWaypoint.position);
             }
 
-            #if UNITY_EDITOR
-        UnityEditor.Handles.color = Color.white;
-        UnityEditor.Handles.Label(
-            waypoint.position + Vector2.down * 0.5f,
-            $"({waypoint.position.x:0.00}, {waypoint.position.y:0.00})"
-        );
-#endif
+//             #if UNITY_EDITOR
+//         UnityEditor.Handles.color = Color.white;
+//         UnityEditor.Handles.Label(
+//             waypoint.position + Vector2.down * 0.5f,
+//             $"({waypoint.position.x:0.00}, {waypoint.position.y:0.00})"
+//         );
+// #endif
         }
     }
 

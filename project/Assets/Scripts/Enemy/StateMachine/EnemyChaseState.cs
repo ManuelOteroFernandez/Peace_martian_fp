@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class EnemyChaseState : EnemyState
 {
-    public override void Enter(EnemyController controller) {
+    public override void Enter(EnemyController controller)
+    {
         controller.StartChasing();
         controller.animator.SetTrigger("isRunning");
+        // Debug.Log("Start CHASE");
     }
 
     public override void Update(EnemyController controller) {
-        controller.MoveEnemy();
+        controller.MoveToTarget();
 
         if (controller.enemyHealth.IsInBubble()) {
             controller.ChangeState(new EnemyBubbleTrappedState());
@@ -17,7 +19,7 @@ public class EnemyChaseState : EnemyState
                 controller.ChangeState(new EnemyFallingState());
             }
 
-            if (controller.DistanceToOriginWaypoint() > controller.MaxDistanceFromOrigin || controller.CantReachTarget()) {
+            if (controller.CantReachTarget()) {
                 controller.ChangeState(new EnemyRetreatState());
             }
 
@@ -32,5 +34,6 @@ public class EnemyChaseState : EnemyState
     public override void Exit(EnemyController controller)
     {
         controller.animator.ResetTrigger("isRunning");
+        // Debug.Log("end CHASE");
     }
 }

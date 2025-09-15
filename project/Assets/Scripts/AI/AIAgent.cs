@@ -77,16 +77,25 @@ public class AIAgent : MonoBehaviour {
             routeToOrigin = waypointGenerator.GetGraph.FindPath(currentWaypoint, originWaypoint);
         }
     }
+    
+    public float NumWaypointToGround(Waypoint waypoint)
+    {
+        float num = 0;
+        while (waypoint.type == WaypointType.Cliff || num > 20) // Una caida de más de 20 es practicamente toda la pantalla no tiene sentido que caiga tanto o más 
+        {
+            num += 1;
+            waypoint = waypoint.bestNextWaypoint;
+        }
 
-    public bool CanJumpFromCliff(Waypoint waypoint) {
-        return waypoint.bestNextWaypoint.type == WaypointType.Ground;
+        return num;
     }
 
     public bool IsInOriginWaypoint() {
         return currentWaypoint == originWaypoint;
     }
 
-    public float DistanceToOriginWaypoint() {
+    public float DistanceToOriginWaypoint()
+    {
         return Vector2.Distance(currentWaypoint.position, originWaypoint.position);
     }
 
@@ -107,15 +116,18 @@ public class AIAgent : MonoBehaviour {
     }
 
     public void UpdateRouteToOriginNextWaypoint() {
-        nextWaypoint = routeToOrigin[routeToOriginWaypointIndex];
+        if (routeToOrigin == null || routeToOriginWaypointIndex >= routeToOrigin.Count)
+        {
+            nextWaypoint = null;
+        }
+        else
+        {
+            nextWaypoint = routeToOrigin[routeToOriginWaypointIndex];
+        }
     }
 
     public void UpdateNextPatrolWaypoint() {
         nextWaypoint = patrolRoute[patrolWaypointIndex];
-    }
-
-    public bool RouteIndexOutOfBounds() {
-        return routeToOriginWaypointIndex >= routeToOrigin.Count;
     }
 
     public void IncreaseRouteToOriginWaypointIndex() {
